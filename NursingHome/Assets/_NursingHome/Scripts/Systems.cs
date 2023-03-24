@@ -6,9 +6,10 @@ namespace NursingHome
 {
     public class Systems : MonoBehaviour
     {
-        private void Awake()
+        void Awake()
         {
             // Create UI system
+            // Pass references to other systems
         }
     }
 }

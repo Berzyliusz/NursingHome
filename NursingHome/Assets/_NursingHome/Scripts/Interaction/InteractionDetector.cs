@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,7 +10,10 @@ namespace NursingHome.Interactions
         [SerializeField] float rayLength = 0.5f;
         [SerializeField] LayerMask layerMask;
 
+        public static event Action<InteractableItem> OnInteractionDetected;
+
         public InteractableItem SelectedItem { get; private set; }
+        InteractableItem previousItem;
 
         Dictionary<Transform, InteractableItem> cachedItems = new Dictionary<Transform, InteractableItem>();
 
@@ -25,10 +29,14 @@ namespace NursingHome.Interactions
                     cachedItems[hit.transform] = hit.transform.GetComponent<InteractableItem>();
                 }
 
-                if (cachedItems[hit.transform])
+                var item = cachedItems[hit.transform];
+                if (item != previousItem)
                 {
                     SelectedItem = cachedItems[hit.transform];
-                }                
+                    previousItem = item;
+
+                    OnInteractionDetected?.Invoke(item);
+                }
             }
         }
     }

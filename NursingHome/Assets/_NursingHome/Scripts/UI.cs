@@ -9,7 +9,8 @@
     public enum UIType
     {
         WinScreen,
-        LooseScreen
+        LooseScreen,
+        PickupPrompt
     }
 
     public class UI : IUI
