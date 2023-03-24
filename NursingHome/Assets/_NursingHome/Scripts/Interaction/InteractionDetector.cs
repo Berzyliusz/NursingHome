@@ -29,14 +29,17 @@ namespace NursingHome.Interactions
                     cachedItems[hit.transform] = hit.transform.GetComponent<InteractableItem>();
                 }
 
-                var item = cachedItems[hit.transform];
-                if (item != previousItem)
-                {
-                    SelectedItem = cachedItems[hit.transform];
-                    previousItem = item;
-
-                    OnInteractionDetected?.Invoke(item);
-                }
+                SelectedItem = cachedItems[hit.transform];
+            }
+            else
+            {
+                SelectedItem = null;
+            }
+            
+            if (SelectedItem != previousItem)
+            {
+                previousItem = SelectedItem;
+                OnInteractionDetected?.Invoke(SelectedItem);
             }
         }
     }
