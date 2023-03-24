@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4645251762870816}
   - component: {fileID: 33073805239170580}
   - component: {fileID: 23522810440965406}
+  - component: {fileID: 86815948590902054}
   m_Layer: 0
   m_Name: SM_Bld_House_InteriorWall_01
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &86815948590902054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591981805473076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.8999999, z: 0.19999951}
+  m_Center: {x: -1.25, y: 1.4499999, z: 0.10000026}
