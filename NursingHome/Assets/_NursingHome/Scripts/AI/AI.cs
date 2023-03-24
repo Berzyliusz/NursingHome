@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,23 +7,56 @@ namespace NursingHome.AI
 {
     public class AI : MonoBehaviour
     {
-        // List of waypoints
+        IState patrolState;
+        IState idleState;
+
+        IState currentState;
+
+        bool wasPatrolling; // This is utterly retarded;
 
         void Awake()
         {
-            // get states - for now patrol
+            idleState= GetComponent<IdleState>();
+            patrolState= GetComponent<PatrolState>();
+
+            SwitchState(idleState);
         }
 
-        void Start()
+        void SwitchState(IState newState)
         {
+            if (currentState != null)
+            {
+                currentState.EndState();
+            }
 
+            currentState = newState;
+            currentState.StartState();
         }
-
 
         void Update()
         {
-            // update current state
-            // decide if time to switch state
+            if (currentState == null)
+                return;
+
+            currentState.UpdateState();
+
+            if (currentState.IsStateDone())
+            {
+                IState newState = ChooseNewState();
+                SwitchState(newState);
+            }
+        }
+
+        IState ChooseNewState()
+        {
+            IState newState;
+            if (wasPatrolling)
+                newState = idleState;
+            else
+                newState = patrolState;
+
+            wasPatrolling = !wasPatrolling;
+            return newState;
         }
     }
 }
