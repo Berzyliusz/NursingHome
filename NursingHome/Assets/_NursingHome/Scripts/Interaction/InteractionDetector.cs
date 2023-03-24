@@ -1,26 +1,35 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionDetector : MonoBehaviour
+namespace NursingHome.Interactions
 {
-    [SerializeField] float rayLength = 0.5f;
-    [SerializeField] LayerMask layerMask;
-    
-    void Update()
+    public class InteractionDetector : MonoBehaviour
     {
-        var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
+        [SerializeField] float rayLength = 0.5f;
+        [SerializeField] LayerMask layerMask;
 
-        if (Physics.Raycast(ray, out hit, rayLength, layerMask))
+        public InteractableItem SelectedItem { get; private set; }
+
+        Dictionary<Transform, InteractableItem> cachedItems = new Dictionary<Transform, InteractableItem>();
+
+        void Update()
         {
-            // if so, store it as our current selection
-            Debug.Log("Raycast hit: " + hit.transform.name);
-        }
-        else
-        {
-            Debug.Log("Nothing hit");
+            var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, rayLength, layerMask))
+            {
+                if(!cachedItems.ContainsKey(hit.transform))
+                {
+                    cachedItems[hit.transform] = hit.transform.GetComponent<InteractableItem>();
+                }
+
+                if (cachedItems[hit.transform])
+                {
+                    SelectedItem = cachedItems[hit.transform];
+                }                
+            }
         }
     }
 }
