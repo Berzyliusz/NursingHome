@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4415241121895392}
   - component: {fileID: 33058644608997262}
   - component: {fileID: 23139742029916148}
+  - component: {fileID: 3536917514882854085}
   m_Layer: 0
   m_Name: SM_Prop_DiningTable_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4415241121895392
 Transform:
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3536917514882854085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723392780972026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1049824, y: 0.85283643, z: 1.299325}
+  m_Center: {x: -0.00000011920929, y: 0.42641827, z: 0.00000062584877}
