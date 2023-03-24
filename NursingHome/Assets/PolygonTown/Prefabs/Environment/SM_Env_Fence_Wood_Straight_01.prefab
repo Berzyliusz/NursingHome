@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4044145726038734}
   - component: {fileID: 33828845947107432}
   - component: {fileID: 23515375940851772}
+  - component: {fileID: 644836446974753380}
   m_Layer: 0
   m_Name: SM_Env_Fence_Wood_Straight_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4044145726038734
 Transform:
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &644836446974753380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719411279065754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5091255, y: 2.1108036, z: 0.13969485}
+  m_Center: {x: -1.2434378, y: 1.0461464, z: 0}
