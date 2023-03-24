@@ -18,7 +18,10 @@ namespace NursingHome.AI
         {
             idleState= GetComponent<IdleState>();
             patrolState= GetComponent<PatrolState>();
+        }
 
+        void Start()
+        {
             SwitchState(idleState);
         }
 
