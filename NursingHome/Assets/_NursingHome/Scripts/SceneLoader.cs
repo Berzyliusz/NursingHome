@@ -1,20 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace NursingHome
+namespace Utilities
 {
-    public class SceneLoader : MonoBehaviour
+    [CreateAssetMenu(menuName = "Utilities/SceneLoader")]
+    public class SceneLoader : ScriptableObject
     {
-
+        [SerializeField] int GameSceneIndex = 1;
+        [SerializeField] int MainMenuIndex = 0; 
 
         public void LoadGameScene()
         {
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene(GameSceneIndex);
         }
 
         public void LoadMainMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(MainMenuIndex);
         }
 
         public void Quit()
