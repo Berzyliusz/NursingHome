@@ -1,11 +1,8 @@
-﻿namespace NursingHome
-{
-    public interface IUI
-    {
-        void ShowScreen(UIType typeToShow);
-        void HideScreen(UIType typeToHide);
-    }
+﻿using System.Collections.Generic;
+using UnityEngine;
 
+namespace NursingHome.UserInterface
+{
     public enum UIType
     {
         WinScreen,
@@ -13,11 +10,19 @@
         PickupPrompt
     }
 
-    public class UI : IUI
+    public class UI : MonoBehaviour
     {
-        public UI()
-        {
+        [SerializeField]
+        UIElement[] uIElements;
 
+        Dictionary<UIType, UIElement> uIElementsDict;
+
+        void Awake()
+        {
+            foreach(var element in uIElements)
+            {
+                uIElementsDict[element.Type] = element;
+            }
         }
 
         public void HideScreen(UIType typeToHide)
@@ -26,6 +31,11 @@
         }
 
         public void ShowScreen(UIType typeToShow)
+        {
+
+        }
+
+        public void UpdateScreen(UIType typeToUpdate)
         {
 
         }
