@@ -29,7 +29,7 @@ namespace NursingHome.Interactions
             else
             {
                 Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
-                Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
+                Systems.Instance.UISystem.HideScreen(UIType.Use);
             }
         }
 
@@ -57,8 +57,6 @@ namespace NursingHome.Interactions
         {
             if (item.CompareTag(interactableTag))
             {
-                Debug.Log($"Interactable item detected {item.DisplayName}");
-
                 var availablePranks = Systems.Instance.Inventory.GetAvailablePranksForItem(item.ItemParams);
 
                 uiParams.Names = new string[availablePranks.Count];
