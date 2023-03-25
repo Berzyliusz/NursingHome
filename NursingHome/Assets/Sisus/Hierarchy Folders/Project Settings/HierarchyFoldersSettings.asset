@@ -19,7 +19,7 @@ MonoBehaviour:
   nameSuffix: 
   forceNamesUpperCase: 0
   removeFromScenes: 1
-  foldersInPrefabs: 0
+  foldersInPrefabs: 2
   warnWhenNotRemovedFromBuild: 1
   playModeBehaviour: 6
   playModeStrippingMethod: 2
