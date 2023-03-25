@@ -16,7 +16,7 @@ namespace NursingHome.Interactions
         public void Pickup()
         {
             gameObject.SetActive(false);
-            Destroy(gameObject, 0.01f);
+            Destroy(gameObject, 1f);
         }
     }
 }
