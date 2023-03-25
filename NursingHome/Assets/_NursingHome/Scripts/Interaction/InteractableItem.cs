@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace NursingHome.Interactions
@@ -5,7 +6,9 @@ namespace NursingHome.Interactions
     [RequireComponent(typeof(Collider))]
     public class InteractableItem : MonoBehaviour
     {
-        // Hold a reference for what pranks does this item allow
+        [SerializeField]
+        [InlineEditor]
+        ItemParams itemParams;
 
         public void Pickup()
         {
