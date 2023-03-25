@@ -8,7 +8,8 @@ namespace NursingHome.UserInterface
         WinScreen,
         LooseScreen,
         PickupPrompt,
-        Inventory
+        Inventory,
+        Use
     }
 
     public struct UIParams //TODO: Make it more generic or derived

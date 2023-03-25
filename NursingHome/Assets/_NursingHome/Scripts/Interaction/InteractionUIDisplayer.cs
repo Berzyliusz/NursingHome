@@ -22,22 +22,55 @@ namespace NursingHome.Interactions
 
         void HandleInteractionDetected(InteractableItem item)
         {
-            if(item == null || !item.CompareTag(pickupTag))
+            if(item != null)
+            {
+                DisplayInteractableUI(item);
+            }
+            else
             {
                 Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
-                return;
+                Systems.Instance.UISystem.HideScreen(UIType.Use);
             }
+        }
 
-            if(item.CompareTag(pickupTag))
+        void DisplayInteractableUI(InteractableItem item)
+        {
+            HandlePickableItem(item);
+            HandleUsableItem(item);
+        }
+
+        void HandlePickableItem(InteractableItem item)
+        {
+            if (item.CompareTag(pickupTag))
             {
                 uiParams.Name = item.DisplayName;
                 Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
                 Systems.Instance.UISystem.UpdateScreen(UIType.PickupPrompt, uiParams);
             }
-
-            if(item.CompareTag(interactableTag))
+            else
             {
-                Debug.Log($"Interactable item detected {item.DisplayName}");
+                Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
+            }
+        }
+
+        void HandleUsableItem(InteractableItem item)
+        {
+            if (item.CompareTag(interactableTag))
+            {
+                var availablePranks = Systems.Instance.Inventory.GetAvailablePranksForItem(item.ItemParams);
+
+                uiParams.Names = new string[availablePranks.Count];
+                for (int i = 0; i < availablePranks.Count; i++)
+                {
+                    uiParams.Names[i] = availablePranks[i].DisplayName;
+                }
+
+                Systems.Instance.UISystem.ShowScreen(UIType.Use);
+                Systems.Instance.UISystem.UpdateScreen(UIType.Use, uiParams);
+            }
+            else
+            {
+                Systems.Instance.UISystem.HideScreen(UIType.Use);
             }
         }
     }

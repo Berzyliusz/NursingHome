@@ -9,7 +9,7 @@ namespace NursingHome.Interactions
 
         [SerializeField]
         [InlineEditor]
-        ItemParams itemParams;
+        PickableItemParams itemParams;
 
         public override ItemParams ItemParams => itemParams;
 
