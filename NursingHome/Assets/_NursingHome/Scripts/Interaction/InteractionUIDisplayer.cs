@@ -21,7 +21,7 @@ namespace NursingHome.Interactions
 
         void HandleInteractionDetected(InteractableItem item)
         {
-            if(item == null)
+            if(item == null || !item.CompareTag(pickupTag))
             {
                 Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
                 return;
