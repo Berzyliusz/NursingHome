@@ -9,9 +9,12 @@ namespace NursingHome.Interactions
 
         public event Action<ItemParams> OnItemPicked;
 
+        IInputs inputs;
+
         void Start()
         {
             interactionDetector = Systems.Instance.InteractionDetector;
+            inputs = Systems.Instance.Inputs;
             InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
             enabled = false;
         }
@@ -35,17 +38,9 @@ namespace NursingHome.Interactions
 
         void Update()
         {
-            //TODO:
-            // get inputs from systems
-            var item = interactionDetector.SelectedItem;
-            
-            if (item == null)
+            if (inputs.Use)
             {
-                return;
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+                var item = interactionDetector.SelectedItem;
                 item.UseItem();
                 OnItemPicked?.Invoke(item.ItemParams);
             }

@@ -16,6 +16,7 @@ namespace NursingHome
         [SerializeField]
         ItemPicker itemPicker;
 
+        public IInputs Inputs { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -23,6 +24,7 @@ namespace NursingHome
         {
             Instance = this;
             Inventory = new PlayerInventory(itemPicker);
+            Inputs = new Inputs();
         }
     }
 }
