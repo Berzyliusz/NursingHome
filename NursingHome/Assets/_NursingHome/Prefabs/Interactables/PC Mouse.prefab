@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2107468919977491880}
   - component: {fileID: 3719025057962819169}
   - component: {fileID: 4358597640808902532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PC Mouse
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
