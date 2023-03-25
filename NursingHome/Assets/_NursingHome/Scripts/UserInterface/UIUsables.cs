@@ -16,11 +16,7 @@ namespace NursingHome.UserInterface
 
         public override void UpdateUI(UIParams uiParams)
         {
-            // Display this items "normal" usages if it has any 
-
-            // Check player inventory to see if we can add more actions 
-
-            // Display them if necessary
+            // Just display given actions in given order
         }
     }
 }

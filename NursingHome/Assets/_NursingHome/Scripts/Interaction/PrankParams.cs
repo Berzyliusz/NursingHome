@@ -9,6 +9,7 @@ namespace NursingHome.Interactions
 
         [field:SerializeField]
         public int PrankPoints { get; private set; }
+
         // We can add PrankParams instance to both:
         // the item we pick up, so it knows WHAT it allows
         // to the usable item, so whe know WHERE it allows

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5349335146907515632}
   - component: {fileID: 5339171797193762834}
   - component: {fileID: 7657980016201798754}
-  - component: {fileID: -4905943703757718090}
+  - component: {fileID: 8387045334199795209}
   m_Layer: 10
   m_Name: Fountain
   m_TagString: Interactable
@@ -99,7 +99,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2095207
   m_Center: {x: 0.00000011920929, y: 0.073548034, z: -0.000000059604645}
---- !u!114 &-4905943703757718090
+--- !u!114 &8387045334199795209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemParams: {fileID: 11400000, guid: 42c1f37e0f4fadf4ba97e9fc74188e68, type: 2}
 --- !u!1001 &5353253988125396615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029192922726276, guid: 21994bb82f8cacf49898887357c00fc0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.092140675
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4029192922726276, guid: 21994bb82f8cacf49898887357c00fc0, type: 3}
       propertyPath: m_LocalRotation.w
