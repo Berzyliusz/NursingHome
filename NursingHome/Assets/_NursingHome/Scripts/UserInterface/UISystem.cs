@@ -11,9 +11,10 @@ namespace NursingHome.UserInterface
         Inventory
     }
 
-    public struct UIParams
+    public struct UIParams //TODO: Make it more generic or derived
     {
         public string Name;
+        public string[] Names;
     }
 
     public class UISystem : MonoBehaviour
