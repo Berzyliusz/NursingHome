@@ -178,9 +178,9 @@ GameObject:
   - component: {fileID: 7639452768492497371}
   - component: {fileID: 7647254383910650197}
   - component: {fileID: 2758747612700046222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Toilet
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
