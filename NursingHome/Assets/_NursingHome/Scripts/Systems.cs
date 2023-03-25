@@ -10,9 +10,12 @@ namespace NursingHome
 
         [field:SerializeField]
         public UISystem UISystem { get; private set; }
+        [field: SerializeField]
+        public InteractionDetector InteractionDetector { get; private set; }
 
         [SerializeField]
         ItemPicker itemPicker;
+
 
         public PlayerInventory Inventory { get; private set; }
 

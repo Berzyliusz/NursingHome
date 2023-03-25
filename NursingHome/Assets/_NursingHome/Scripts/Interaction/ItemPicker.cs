@@ -5,10 +5,14 @@ namespace NursingHome.Interactions
 {
     public class ItemPicker : MonoBehaviour
     {
-        [SerializeField]
         InteractionDetector interactionDetector;
 
         public event Action<ItemParams> OnItemPicked;
+
+        void Start()
+        {
+            interactionDetector = Systems.Instance.InteractionDetector;
+        }
 
         void Update()
         {
