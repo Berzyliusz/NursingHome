@@ -7,7 +7,8 @@ namespace NursingHome.UserInterface
     {
         WinScreen,
         LooseScreen,
-        PickupPrompt
+        PickupPrompt,
+        Inventory
     }
 
     public struct UIParams

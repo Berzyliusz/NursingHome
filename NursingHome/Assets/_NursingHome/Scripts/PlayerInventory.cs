@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using NursingHome.Interactions;
+using System;
+using System.Collections.Generic;
 
 namespace NursingHome
 {
     public class PlayerInventory
     {
+        public event Action<ItemParams> OnItemAdded;
+
+        public List<ItemParams> Items { get; private set; } = new List<ItemParams>();
+
         public PlayerInventory(ItemPicker picker)
         {
             picker.OnItemPicked += HandleItemPicked;
@@ -12,7 +18,8 @@ namespace NursingHome
 
         void HandleItemPicked(ItemParams pickedItem)
         {
-            Debug.Log($"Inventory received item: {pickedItem.name}");
+            OnItemAdded?.Invoke(pickedItem);
+            Items.Add(pickedItem);
         }
     }
 }
