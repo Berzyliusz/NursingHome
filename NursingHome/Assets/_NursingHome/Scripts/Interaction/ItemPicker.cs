@@ -16,6 +16,7 @@ namespace NursingHome.Interactions
             // Update only when we need to]
             // get inputs from systems
             var item = interactionDetector.SelectedItem;
+            
             if (item == null)
             {
                 return;
@@ -23,7 +24,7 @@ namespace NursingHome.Interactions
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                item.Pickup();
+                item.UseItem();
                 OnItemPicked?.Invoke(item.ItemParams);
             }
         }

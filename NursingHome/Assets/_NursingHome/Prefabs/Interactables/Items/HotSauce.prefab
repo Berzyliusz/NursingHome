@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3497110109053558524}
   - component: {fileID: 3505123798316672680}
   - component: {fileID: 3497110109053558526}
-  - component: {fileID: 3497110109053558527}
+  - component: {fileID: 1378082012124116520}
   m_Layer: 10
   m_Name: HotSauce
   m_TagString: Pickup
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.13476562, y: 0.39687884, z: 0.11671051}
   m_Center: {x: -0.0000003054738, y: 0.19843942, z: -0.0000001527369}
---- !u!114 &3497110109053558527
+--- !u!114 &1378082012124116520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3527505290938637666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee05d21df6ed3948bc8912892c0537a, type: 3}
+  m_Script: {fileID: 11500000, guid: a4d9771be02c8cb449d63b544f98e9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemParams: {fileID: 11400000, guid: 008642f2e4c06844dbfbde2f00ffcc0e, type: 2}

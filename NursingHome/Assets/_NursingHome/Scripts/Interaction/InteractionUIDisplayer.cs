@@ -6,6 +6,7 @@ namespace NursingHome.Interactions
     public class InteractionUIDisplayer : MonoBehaviour
     {
         const string pickupTag = "Pickup";
+        const string interactableTag = "Interactable";
 
         UIParams uiParams;
 
@@ -32,6 +33,11 @@ namespace NursingHome.Interactions
                 uiParams.Name = item.DisplayName;
                 Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
                 Systems.Instance.UISystem.UpdateScreen(UIType.PickupPrompt, uiParams);
+            }
+
+            if(item.CompareTag(interactableTag))
+            {
+                Debug.Log($"Interactable item detected {item.DisplayName}");
             }
         }
     }
