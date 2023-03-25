@@ -25,10 +25,16 @@ namespace NursingHome.Interactions
             if(item == null || !item.CompareTag(pickupTag))
             {
                 Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
-                return;
             }
 
-            if(item.CompareTag(pickupTag))
+            //TODO: solve the bails, for null, but also handle hiding UI screens.
+
+            if (item == null || !item.CompareTag(interactableTag))
+            {
+                Systems.Instance.UISystem.HideScreen(UIType.Use);
+            }
+
+            if (item.CompareTag(pickupTag))
             {
                 uiParams.Name = item.DisplayName;
                 Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
