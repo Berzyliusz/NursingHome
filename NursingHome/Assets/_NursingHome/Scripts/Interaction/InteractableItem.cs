@@ -6,6 +6,8 @@ namespace NursingHome.Interactions
     [RequireComponent(typeof(Collider))]
     public class InteractableItem : MonoBehaviour
     {
+        public string DisplayName => itemParams.ItemName;
+
         [SerializeField]
         [InlineEditor]
         ItemParams itemParams;

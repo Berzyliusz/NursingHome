@@ -7,6 +7,8 @@ namespace NursingHome.Interactions
     {
         const string pickupTag = "Pickup";
 
+        UIParams uiParams;
+
         void Awake()
         {
             InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
@@ -27,8 +29,9 @@ namespace NursingHome.Interactions
 
             if(item.CompareTag(pickupTag))
             {
+                uiParams.Name = item.DisplayName;
                 Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
-
+                Systems.Instance.UISystem.UpdateScreen(UIType.PickupPrompt, uiParams);
             }
         }
     }

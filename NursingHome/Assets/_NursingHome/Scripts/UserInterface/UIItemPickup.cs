@@ -1,10 +1,12 @@
 using TMPro;
+using UnityEngine;
 
 namespace NursingHome.UserInterface
 {
     public class UIItemPickup : UIElement
     {
-
+        [SerializeField]
+        TextMeshProUGUI itemNameText;
 
         public override UIType Type => UIType.PickupPrompt;
 
@@ -20,7 +22,7 @@ namespace NursingHome.UserInterface
 
         public override void UpdateUI(UIParams uiParams)
         {
-            
+            itemNameText.text = uiParams.Name;
         }
     }
 }
