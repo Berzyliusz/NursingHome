@@ -33,7 +33,13 @@ namespace NursingHome.Interactions
             }
         }
 
-        private void DisplayInteractableUI(InteractableItem item)
+        void DisplayInteractableUI(InteractableItem item)
+        {
+            HandlePickableItem(item);
+            HandleUsableItem(item);
+        }
+
+        void HandlePickableItem(InteractableItem item)
         {
             if (item.CompareTag(pickupTag))
             {
@@ -45,10 +51,20 @@ namespace NursingHome.Interactions
             {
                 Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
             }
+        }
 
+        void HandleUsableItem(InteractableItem item)
+        {
             if (item.CompareTag(interactableTag))
             {
                 Debug.Log($"Interactable item detected {item.DisplayName}");
+
+                var availablePranks = Systems.Instance.Inventory.GetAvailablePranksForItem(item.ItemParams);
+
+                foreach(var prank in availablePranks)
+                {
+                    Debug.Log($"We have prank: {prank.DisplayName}");
+                }
             }
             else
             {

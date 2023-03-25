@@ -1,6 +1,5 @@
 using UnityEngine;
 using NursingHome.UserInterface;
-using System;
 using NursingHome.Interactions;
 
 namespace NursingHome
@@ -15,12 +14,12 @@ namespace NursingHome
         [SerializeField]
         ItemPicker itemPicker;
 
-        PlayerInventory inventory;
+        public PlayerInventory Inventory { get; private set; }
 
         void Awake()
         {
             Instance = this;
-            inventory = new PlayerInventory(itemPicker);
+            Inventory = new PlayerInventory(itemPicker);
         }
     }
 }
