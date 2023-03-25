@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6714247784490423363}
   - component: {fileID: 6705739405257278199}
   - component: {fileID: 6705739405257278193}
-  - component: {fileID: 6705739405257278192}
+  - component: {fileID: 5829790424386486959}
   m_Layer: 10
   m_Name: Saw
   m_TagString: Pickup
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7604521, y: 0.23121914, z: 0.029231345}
   m_Center: {x: 0.32628945, y: -0.005180595, z: 0}
---- !u!114 &6705739405257278192
+--- !u!114 &5829790424386486959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6728000834707662845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee05d21df6ed3948bc8912892c0537a, type: 3}
+  m_Script: {fileID: 11500000, guid: a4d9771be02c8cb449d63b544f98e9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemParams: {fileID: 11400000, guid: 2ab96200c22987d4bb029a4d5e73c486, type: 2}

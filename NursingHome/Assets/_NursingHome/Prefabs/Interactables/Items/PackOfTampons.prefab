@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 403519969556000495}
   - component: {fileID: 413765137401352295}
   - component: {fileID: 8504219015363857275}
-  - component: {fileID: 5731790156268524736}
+  - component: {fileID: 7158538911488014462}
   m_Layer: 10
   m_Name: PackOfTampons
   m_TagString: Pickup
@@ -101,7 +101,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.13881102, y: 0.20826027, z: 0.06517578}
   m_Center: {x: 0.0000018291175, y: -0.08807339, z: 0.03258789}
---- !u!114 &5731790156268524736
+--- !u!114 &7158538911488014462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 426186506196935513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee05d21df6ed3948bc8912892c0537a, type: 3}
+  m_Script: {fileID: 11500000, guid: a4d9771be02c8cb449d63b544f98e9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemParams: {fileID: 11400000, guid: 87584e66e7b338a429ce4c5411b16084, type: 2}
