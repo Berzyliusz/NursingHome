@@ -10,7 +10,7 @@ namespace NursingHome
         public static Systems Instance { get; private set; }
 
         [SerializeField]
-        UI ui;
+        UISystem ui;
 
         void Awake()
         {
