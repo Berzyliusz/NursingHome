@@ -1,26 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using TMPro;
 
 namespace NursingHome.UserInterface
 {
     public class UIItemPickup : UIElement
     {
-        public override UIType Type => throw new System.NotImplementedException();
+
+
+        public override UIType Type => UIType.PickupPrompt;
 
         public override void Hide()
         {
-            throw new System.NotImplementedException();
+            parent.SetActive(false);
         }
 
         public override void Show()
         {
-            throw new System.NotImplementedException();
+            parent.SetActive(true);
         }
 
-        public override void Update()
+        public override void UpdateUI(UIParams uiParams)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

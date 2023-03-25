@@ -10,12 +10,17 @@ namespace NursingHome.UserInterface
         PickupPrompt
     }
 
+    public struct UIParams
+    {
+        public string Name;
+    }
+
     public class UISystem : MonoBehaviour
     {
         [SerializeField]
         UIElement[] uIElements;
 
-        Dictionary<UIType, UIElement> uIElementsDict;
+        Dictionary<UIType, UIElement> uIElementsDict = new Dictionary<UIType, UIElement>();
 
         void Awake()
         {
@@ -42,11 +47,11 @@ namespace NursingHome.UserInterface
             }
         }
 
-        public void UpdateScreen(UIType typeToUpdate)
+        public void UpdateScreen(UIType typeToUpdate, UIParams uiParams)
         {
             if (uIElementsDict.TryGetValue(typeToUpdate, out var element))
             {
-
+                element.UpdateUI(uiParams);
             }
         }
     }

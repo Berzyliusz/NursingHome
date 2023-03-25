@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using NursingHome.UserInterface;
 
@@ -9,13 +7,12 @@ namespace NursingHome
     {
         public static Systems Instance { get; private set; }
 
-        [SerializeField]
-        UISystem ui;
+        [field:SerializeField]
+        public UISystem UISystem { get; private set; } 
 
         void Awake()
         {
             Instance = this;
-            // Create UI system
             // Pass references to other systems
         }
     }

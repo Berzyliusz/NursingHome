@@ -1,4 +1,5 @@
 using UnityEngine;
+using NursingHome.UserInterface;
 
 namespace NursingHome.Interactions
 {
@@ -20,13 +21,14 @@ namespace NursingHome.Interactions
         {
             if(item == null)
             {
-                Debug.Log("Hiding UI");
+                Systems.Instance.UISystem.HideScreen(UIType.PickupPrompt);
                 return;
             }
 
             if(item.CompareTag(pickupTag))
             {
-                Debug.Log("Displaying pickup UI!");
+                Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
+
             }
         }
     }
