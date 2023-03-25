@@ -1,5 +1,7 @@
 using UnityEngine;
 using NursingHome.UserInterface;
+using System;
+using NursingHome.Interactions;
 
 namespace NursingHome
 {
@@ -8,12 +10,17 @@ namespace NursingHome
         public static Systems Instance { get; private set; }
 
         [field:SerializeField]
-        public UISystem UISystem { get; private set; } 
+        public UISystem UISystem { get; private set; }
+
+        [SerializeField]
+        ItemPicker itemPicker;
+
+        PlayerInventory inventory;
 
         void Awake()
         {
             Instance = this;
-            // Pass references to other systems
+            inventory = new PlayerInventory(itemPicker);
         }
     }
 }

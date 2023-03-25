@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NursingHome.Interactions
@@ -7,19 +8,23 @@ namespace NursingHome.Interactions
         [SerializeField]
         InteractionDetector interactionDetector;
 
+        public event Action<ItemParams> OnItemPicked;
+
         void Update()
         {
             //TODO:
             // Update only when we need to]
             // get inputs from systems
-            if(interactionDetector.SelectedItem == null)
+            var item = interactionDetector.SelectedItem;
+            if (item == null)
             {
                 return;
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                interactionDetector.SelectedItem.Pickup();
+                item.Pickup();
+                OnItemPicked?.Invoke(item.ItemParams);
             }
         }
     }
