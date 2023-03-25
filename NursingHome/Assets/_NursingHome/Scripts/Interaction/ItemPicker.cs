@@ -12,12 +12,30 @@ namespace NursingHome.Interactions
         void Start()
         {
             interactionDetector = Systems.Instance.InteractionDetector;
+            InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
+            enabled = false;
+        }
+
+        void OnDestroy()
+        {
+            InteractionDetector.OnInteractionDetected -= HandleInteractionDetected;
+        }
+
+        void HandleInteractionDetected(InteractableItem interactedItem)
+        {
+            if (interactedItem == null || !interactedItem.gameObject.CompareTag(Tags.Pickable))
+            {
+                enabled = false;
+            }
+            else
+            {
+                enabled = true;
+            }
         }
 
         void Update()
         {
             //TODO:
-            // Update only when we need to]
             // get inputs from systems
             var item = interactionDetector.SelectedItem;
             

@@ -38,7 +38,7 @@ namespace NursingHome.Interactions
 
         void HandlePickableItem(InteractableItem item)
         {
-            if (item.CompareTag(Tags.PickupTag))
+            if (item.CompareTag(Tags.Pickable))
             {
                 uiParams.Name = item.DisplayName;
                 Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
