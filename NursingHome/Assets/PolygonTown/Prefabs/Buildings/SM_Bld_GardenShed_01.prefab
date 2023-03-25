@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4262932238702620
 Transform:
@@ -94,12 +94,13 @@ GameObject:
   - component: {fileID: 4860399737766368}
   - component: {fileID: 33931916049973508}
   - component: {fileID: 23731795992385020}
+  - component: {fileID: 5493886599210277253}
   m_Layer: 0
   m_Name: SM_Bld_GardenShed_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4860399737766368
 Transform:
@@ -167,3 +168,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5493886599210277253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429945603137650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.345918, y: 2.780094, z: 2.5013146}
+  m_Center: {x: 0, y: 1.390047, z: 0.00000059604645}
