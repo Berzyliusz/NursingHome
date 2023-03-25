@@ -35,11 +35,11 @@ namespace NursingHome.Interactions
             {
                 SelectedItem = null;
             }
-            
+
             if (SelectedItem != previousItem)
             {
-                previousItem = SelectedItem;
                 OnInteractionDetected?.Invoke(SelectedItem);
+                previousItem = SelectedItem;
             }
         }
     }
