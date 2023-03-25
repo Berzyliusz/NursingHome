@@ -61,10 +61,14 @@ namespace NursingHome.Interactions
 
                 var availablePranks = Systems.Instance.Inventory.GetAvailablePranksForItem(item.ItemParams);
 
-                foreach(var prank in availablePranks)
+                uiParams.Names = new string[availablePranks.Count];
+                for (int i = 0; i < availablePranks.Count; i++)
                 {
-                    Debug.Log($"We have prank: {prank.DisplayName}");
+                    uiParams.Names[i] = availablePranks[i].DisplayName;
                 }
+
+                Systems.Instance.UISystem.ShowScreen(UIType.Use);
+                Systems.Instance.UISystem.UpdateScreen(UIType.Use, uiParams);
             }
             else
             {
