@@ -17,9 +17,4 @@ namespace NursingHome.Interactions
         // And if we have a match, we can display that prank and use it
         // We can store logic, as to what happens with given item
     }
-
-    public class AddDishSoap : PrankParams
-    {
-
-    }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace NursingHome.Interactions
 {
@@ -7,6 +8,8 @@ namespace NursingHome.Interactions
         [field:SerializeField] 
         public string ItemName { get; private set; }
 
-
+        [SerializeField]
+        [InlineEditor]
+        PrankParams[] prankParams;
     }
 }
