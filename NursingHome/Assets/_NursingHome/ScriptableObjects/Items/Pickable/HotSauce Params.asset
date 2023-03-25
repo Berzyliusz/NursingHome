@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: HotSauce Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Hot Sauce
+  prankParams:
+  - {fileID: 11400000, guid: 1ec3dccc865a5b443a7ae91d65a453bb, type: 2}

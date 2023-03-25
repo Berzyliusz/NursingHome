@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DuctTape Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Duct Tape
+  prankParams:
+  - {fileID: 11400000, guid: 8f26bbc44a6629c4faacf3892911faaa, type: 2}
