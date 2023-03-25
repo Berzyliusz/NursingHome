@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5349335146907515632}
   - component: {fileID: 5339171797193762834}
   - component: {fileID: 7657980016201798754}
+  - component: {fileID: -4905943703757718090}
   m_Layer: 10
   m_Name: Fountain
   m_TagString: Interactable
@@ -98,6 +99,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2095207
   m_Center: {x: 0.00000011920929, y: 0.073548034, z: -0.000000059604645}
+--- !u!114 &-4905943703757718090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5354626774933507354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5353253988125396615
 PrefabInstance:
   m_ObjectHideFlags: 0
