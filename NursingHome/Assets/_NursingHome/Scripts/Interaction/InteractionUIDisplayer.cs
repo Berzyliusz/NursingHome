@@ -5,9 +5,6 @@ namespace NursingHome.Interactions
 {
     public class InteractionUIDisplayer : MonoBehaviour
     {
-        const string pickupTag = "Pickup";
-        const string interactableTag = "Interactable";
-
         UIParams uiParams;
 
         void Awake()
@@ -41,7 +38,7 @@ namespace NursingHome.Interactions
 
         void HandlePickableItem(InteractableItem item)
         {
-            if (item.CompareTag(pickupTag))
+            if (item.CompareTag(Tags.Pickable))
             {
                 uiParams.Name = item.DisplayName;
                 Systems.Instance.UISystem.ShowScreen(UIType.PickupPrompt);
@@ -55,14 +52,14 @@ namespace NursingHome.Interactions
 
         void HandleUsableItem(InteractableItem item)
         {
-            if (item.CompareTag(interactableTag))
+            if (item.CompareTag(Tags.Usable))
             {
                 var availablePranks = Systems.Instance.Inventory.GetAvailablePranksForItem(item.ItemParams);
 
                 uiParams.Names = new string[availablePranks.Count];
                 for (int i = 0; i < availablePranks.Count; i++)
                 {
-                    uiParams.Names[i] = availablePranks[i].DisplayName;
+                    uiParams.Names[i] = string.Format($"{i + 1}. {availablePranks[i].DisplayName}");
                 }
 
                 Systems.Instance.UISystem.ShowScreen(UIType.Use);

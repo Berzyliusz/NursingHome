@@ -5,25 +5,42 @@ namespace NursingHome.Interactions
 {
     public class ItemPicker : MonoBehaviour
     {
-        [SerializeField]
         InteractionDetector interactionDetector;
 
         public event Action<ItemParams> OnItemPicked;
 
+        IInputs inputs;
+
+        void Start()
+        {
+            interactionDetector = Systems.Instance.InteractionDetector;
+            inputs = Systems.Instance.Inputs;
+            InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
+            enabled = false;
+        }
+
+        void OnDestroy()
+        {
+            InteractionDetector.OnInteractionDetected -= HandleInteractionDetected;
+        }
+
+        void HandleInteractionDetected(InteractableItem interactedItem)
+        {
+            if (interactedItem == null || !interactedItem.gameObject.CompareTag(Tags.Pickable))
+            {
+                enabled = false;
+            }
+            else
+            {
+                enabled = true;
+            }
+        }
+
         void Update()
         {
-            //TODO:
-            // Update only when we need to]
-            // get inputs from systems
-            var item = interactionDetector.SelectedItem;
-            
-            if (item == null)
+            if (inputs.Use)
             {
-                return;
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+                var item = interactionDetector.SelectedItem;
                 item.UseItem();
                 OnItemPicked?.Invoke(item.ItemParams);
             }
