@@ -24,6 +24,7 @@ namespace NursingHome
 
         public IPlayer Player { get; private set; }
         public IInputs Inputs { get; private set; }
+        public ICursor Cursor { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -33,6 +34,7 @@ namespace NursingHome
             Inventory = new PlayerInventory(itemPicker);
             Inputs = new Inputs();
             Player = playerController;
+            Cursor = new CursorHandler();
         }
 
         [Button]

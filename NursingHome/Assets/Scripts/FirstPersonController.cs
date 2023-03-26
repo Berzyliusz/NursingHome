@@ -130,7 +130,10 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+            if (freezePlayer)
+                return;
+
+            CameraRotation();
 		}
 
 		private void GroundedCheck()
