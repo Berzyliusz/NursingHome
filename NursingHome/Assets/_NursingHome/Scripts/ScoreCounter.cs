@@ -50,8 +50,6 @@ namespace NursingHome
             {
                 pranksCount[prankParams]++;
             }
-
-            Debug.Log($"Total score: {GetTotalScore()}");
         }
     }
 }
