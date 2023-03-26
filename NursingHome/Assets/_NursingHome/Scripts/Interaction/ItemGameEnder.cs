@@ -54,5 +54,6 @@ public class ItemGameEnder : InteractionReceiverBase
         }
 
         systems.UISystem.UpdateScreen(UIType.WinScreen, winParams);
+        systems.interactionDetector.SetCanDetectInteraction(false);
     }
 }

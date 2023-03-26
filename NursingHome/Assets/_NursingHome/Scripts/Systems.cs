@@ -30,6 +30,7 @@ namespace NursingHome
         public ICursor Cursor { get; private set; }
         public IScoreCounter Score { get; private set; }
         public ITime Time { get; private set; }
+        public IInteractionDetector interactionDetector { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -42,6 +43,7 @@ namespace NursingHome
             Cursor = new CursorHandler();
             Score = new ScoreCounter(itemUser);
             Time = new TimeHandler();
+            interactionDetector = InteractionDetector;
         }
 
         void Start()
@@ -50,6 +52,7 @@ namespace NursingHome
             Cursor.SetCursorVisible(false);
             Time.SetTimeScale(1.0f);
             UISystem.ShowScreen(UIType.AimDot);
+            interactionDetector.SetCanDetectInteraction(true);
         }
     }
 }
