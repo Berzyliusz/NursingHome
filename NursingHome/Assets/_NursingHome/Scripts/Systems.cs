@@ -29,6 +29,7 @@ namespace NursingHome
         public IInputs Inputs { get; private set; }
         public ICursor Cursor { get; private set; }
         public IScoreCounter Score { get; private set; }
+        public ITime Time { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -40,6 +41,15 @@ namespace NursingHome
             Player = playerController;
             Cursor = new CursorHandler();
             Score = new ScoreCounter(itemUser);
+            Time = new TimeHandler();
+        }
+
+        void Start()
+        {
+            Cursor.SetCursorLocked(CursorLockMode.Locked);
+            Cursor.SetCursorVisible(false);
+            Time.SetTimeScale(1.0f);
+            UISystem.ShowScreen(UIType.AimDot);
         }
     }
 }

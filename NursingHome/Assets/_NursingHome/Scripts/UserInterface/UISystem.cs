@@ -9,7 +9,9 @@ namespace NursingHome.UserInterface
         LooseScreen,
         PickupPrompt,
         Inventory,
-        Use
+        Use,
+        GameEndPrompt,
+        AimDot
     }
 
     public struct UIParams //TODO: Make it more generic or derived
