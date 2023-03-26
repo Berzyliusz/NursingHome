@@ -23,7 +23,7 @@ namespace NursingHome.UserInterface
             foreach (var itemName in uiParams.Names)
             {
                 var newItem = GameObject.Instantiate(itemPrefab, spawnParent.transform);
-                newItem.SetItemName(itemName);
+                newItem.SetItemText(itemName);
                 spawnedItems.Add(newItem);
             }
         }

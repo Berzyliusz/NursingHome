@@ -33,11 +33,25 @@ public class ItemGameEnder : InteractionReceiverBase
 
             systems.UISystem.ShowScreen(UIType.WinScreen);
 
-            // What do we need to pass to the UI?
-            // We need prank names
-            // and their point values
-            // for now we can pass it as a set of strings?
-            // update WinUI
+            var totalScore = systems.Score.GetTotalScore();
+            var pranks = systems.Score.GetPranks();
+
+            UIParams winParams = new();
+            winParams.Name = totalScore.ToString();
+
+            winParams.Names = new string[pranks.Count];
+
+            int i = 0;
+            foreach(var pair in pranks)
+            {
+                var points = pair.Key.PrankPoints;
+                var amount = pair.Value;
+                string entry = (i + 1).ToString() + ". " + pair.Key.DisplayName + ".  " + points + " x " + amount + " = " + (points * amount).ToString();
+                winParams.Names[i] = entry;
+                i++;
+            }
+
+            systems.UISystem.UpdateScreen(UIType.WinScreen, winParams);
         }
     }
 }

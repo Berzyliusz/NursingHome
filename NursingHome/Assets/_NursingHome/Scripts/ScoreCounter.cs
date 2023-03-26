@@ -8,6 +8,7 @@ namespace NursingHome
     public interface IScoreCounter
     {
         public int GetTotalScore();
+        public Dictionary<PrankParams, int> GetPranks();
     }
 
     public class ScoreCounter : IScoreCounter
@@ -17,6 +18,11 @@ namespace NursingHome
         public ScoreCounter(ItemUser itemUser)
         {
             itemUser.OnItemUsed += HandleItemUsed;
+        }
+
+        public Dictionary<PrankParams, int> GetPranks()
+        {
+            return pranksCount;
         }
 
         public int GetTotalScore()

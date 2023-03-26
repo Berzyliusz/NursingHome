@@ -8,9 +8,9 @@ namespace NursingHome.UserInterface
         [SerializeField]
         TextMeshProUGUI itemNameText;
 
-        public void SetItemName(string itemName)
+        public void SetItemText(string text)
         {
-            itemNameText.text = itemName;
+            itemNameText.text = text;
         }
     }
 }
