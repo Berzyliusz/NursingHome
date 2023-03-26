@@ -1,4 +1,5 @@
 ﻿using NursingHome.Lures;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NursingHome.AI
@@ -6,6 +7,7 @@ namespace NursingHome.AI
     public class LureProcessor
     {
         readonly LureDetector detector;
+        List<Lure> lures = new List<Lure>();
 
         public LureProcessor(LureDetector detector)
         {

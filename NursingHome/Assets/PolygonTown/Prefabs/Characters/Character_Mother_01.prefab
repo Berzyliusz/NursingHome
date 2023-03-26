@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825d4b12f118a7945b9613c2caa3edb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lureDetector: {fileID: 3728691392075268831}
 --- !u!54 &5645902955479639805
 Rigidbody:
   m_ObjectHideFlags: 0
