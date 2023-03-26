@@ -5,11 +5,11 @@ namespace NursingHome.Lures
 {
     public class Lure : MonoBehaviour
     {
-        PrankParams prank;
+        public PrankParams Prank { get; private set; }
 
         public void SetPrankParams(PrankParams prank)
         {
-            this.prank = prank;
+            this.Prank = prank;
         }
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NursingHome.AI
@@ -11,8 +8,6 @@ namespace NursingHome.AI
         IState idleState;
 
         IState currentState;
-
-        bool wasPatrolling; // This is utterly retarded;
 
         void Awake()
         {
@@ -50,6 +45,8 @@ namespace NursingHome.AI
             }
         }
 
+
+        bool wasPatrolling; // This is utterly retarded;
         IState ChooseNewState()
         {
             IState newState;
