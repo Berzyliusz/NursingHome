@@ -9,6 +9,9 @@ namespace NursingHome.Interactions
 
         public override ItemParams ItemParams => itemParams;
 
+        [field: SerializeField]
+        public Transform Waypoint { get; private set; }
+
         [SerializeField]
         [InlineEditor]
         UsableItemParams itemParams;

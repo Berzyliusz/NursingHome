@@ -21,34 +21,43 @@ namespace NursingHome.Lures
 
         void HandleItemUsed(ItemParams itemParams, PrankParams prankParams)
         {
-            Debug.Log("Spawning lure");
-            Lure lure = CreateLureObject(interactionDetector.SelectedItem.transform, prankParams);
+            var selectedItem = interactionDetector.SelectedItem;
 
-            // arm that lure with params of what staff should be looking for
+            if(selectedItem is UsableItem)
+            {
+                var usableItem = (UsableItem)selectedItem;
+                var parent = usableItem.Waypoint == null ? usableItem.transform : usableItem.Waypoint.transform;
+                Lure lure = CreateLureObject(parent, prankParams);
+                lure.SetPrankParams(prankParams);
+            }
+            else
+            {
+                throw new InvalidCastException("Lures can only be spawned on usable items!");
+            }
         }
 
         Lure CreateLureObject(Transform parent, PrankParams prank)
         {
             var lureObj = new GameObject("Lure");
-            lureObj.transform.parent = parent;
-            lureObj.tag = Tags.Lure;
 
+            lureObj.tag = Tags.Lure;
             var lureLayer = LayerMask.NameToLayer(Tags.Lure);
             lureObj.layer = lureLayer;
-            
-            lureObj.transform.localPosition = Vector3.zero;
-            //Todo: We may need to add some kind of waypoint, so we know where to go
 
+            lureObj.transform.parent = parent;
+            lureObj.transform.localPosition = Vector3.zero;
+
+            Lure lure = AddComponentsToLure(prank, lureObj);
+            return lure;
+        }
+
+        Lure AddComponentsToLure(PrankParams prank, GameObject lureObj)
+        {
             var lure = lureObj.AddComponent<Lure>();
             var trigger = lureObj.AddComponent<SphereCollider>();
             trigger.isTrigger = true;
             trigger.radius = prank.LureRange;
             return lure;
         }
-    }
-
-    public class Lure : MonoBehaviour
-    {
-
     }
 }
