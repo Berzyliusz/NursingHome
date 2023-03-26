@@ -18,11 +18,11 @@ namespace NursingHome.AI
         {
             this.detector = detector;
 
-            detector.OnLureEnter += HandleLureEntered;
-            detector.OnLureExit += HandleLureExit;
+            detector.OnLureDetectionEnter += HandleLureDetectionEntered;
+            detector.OnLureDetectionExit += HandleLureDetectionExit;
         }
 
-        void HandleLureEntered(Lure lure)
+        void HandleLureDetectionEntered(Lure lure)
         {
             spottedLures.Add(lure);
 
@@ -30,7 +30,6 @@ namespace NursingHome.AI
             {
                 currentStrongestLure = lure;
                 OnStrongestLureSet?.Invoke(currentStrongestLure);
-                Debug.Log($"New lure set {lure.Prank.DisplayName}");
             }
             else
             {
@@ -38,13 +37,12 @@ namespace NursingHome.AI
                 {
                     currentStrongestLure = lure;
                     OnStrongestLureSet?.Invoke(currentStrongestLure);
-                    Debug.Log($"Stronger lure set {lure.Prank.DisplayName}");
                 }
             }
 
         }
 
-        void HandleLureExit(Lure lure)
+        void HandleLureDetectionExit(Lure lure)
         {
             // we dont want to remove lures -> we remember the spotted ones
             // and we can investigate them later

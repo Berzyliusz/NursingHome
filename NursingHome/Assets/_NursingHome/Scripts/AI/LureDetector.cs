@@ -8,8 +8,8 @@ namespace NursingHome
 {
     public class LureDetector : MonoBehaviour
     {
-        public event Action<Lure> OnLureEnter;
-        public event Action<Lure> OnLureExit;
+        public event Action<Lure> OnLureDetectionEnter;
+        public event Action<Lure> OnLureDetectionExit;
 
         Dictionary<Collider, Lure> cachedLures = new Dictionary<Collider, Lure>();
 
@@ -23,7 +23,7 @@ namespace NursingHome
                 cachedLures.Add(other, other.GetComponent<Lure>());
             }
 
-            OnLureEnter?.Invoke(cachedLures[other]);
+            OnLureDetectionEnter?.Invoke(cachedLures[other]);
         }
 
         void OnTriggerExit(Collider other)
@@ -36,7 +36,7 @@ namespace NursingHome
                 cachedLures.Add(other, other.GetComponent<Lure>());
             }
 
-            OnLureExit?.Invoke(cachedLures[other]);
+            OnLureDetectionExit?.Invoke(cachedLures[other]);
         }
     }
 }
