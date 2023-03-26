@@ -2,8 +2,13 @@ using UnityEngine;
 
 namespace NursingHome.AI
 {
+
     public class AI : MonoBehaviour
     {
+        [SerializeField] LureDetector lureDetector;
+
+        LureProcessor lureProcessor;
+
         IState patrolState;
         IState idleState;
 
@@ -13,6 +18,8 @@ namespace NursingHome.AI
         {
             idleState= GetComponent<IdleState>();
             patrolState= GetComponent<PatrolState>();
+
+            lureProcessor = new LureProcessor(lureDetector);
         }
 
         void Start()
