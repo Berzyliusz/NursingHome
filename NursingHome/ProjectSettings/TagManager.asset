@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Pickup
   - Interactable
+  - Lure
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Character
   - Ground
   - Interactable
-  - 
+  - Lure
   - 
   - 
   - 

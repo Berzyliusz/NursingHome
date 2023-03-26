@@ -31,7 +31,12 @@ namespace NursingHome.Lures
         {
             var lureObj = new GameObject("Lure");
             lureObj.transform.parent = parent;
+            lureObj.tag = Tags.Lure;
 
+            var lureLayer = LayerMask.NameToLayer(Tags.Lure);
+            lureObj.layer = lureLayer;
+            
+            lureObj.transform.localPosition = Vector3.zero;
             //Todo: We may need to add some kind of waypoint, so we know where to go
 
             var lure = lureObj.AddComponent<Lure>();
