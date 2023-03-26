@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Windows;
 
 namespace NursingHome.Interactions
 {
@@ -7,15 +8,15 @@ namespace NursingHome.Interactions
     {
         public event Action<ItemParams, PrankParams> OnItemUsed;
 
+        InteractionDetector interactionDetector;
+        IInputs inputs;
+
         void Start()
         {
-            InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
+            interactionDetector = Systems.Instance.InteractionDetector;
+            inputs = Systems.Instance.Inputs;
+            interactionDetector.OnInteracted += HandleInteractionDetected;
             enabled = false;
-        }
-
-        void OnDestroy()
-        {
-            InteractionDetector.OnInteractionDetected -= HandleInteractionDetected;
         }
 
         void HandleInteractionDetected(InteractableItem interactedItem)
@@ -37,7 +38,7 @@ namespace NursingHome.Interactions
             if (chosenPrank == null)
                 return;
 
-            if(Systems.Instance.Inputs.Use)
+            if(inputs.Use)
             {
                 var interactedItem = Systems.Instance.InteractionDetector.SelectedItem;
                 OnItemUsed?.Invoke(interactedItem.ItemParams, chosenPrank);

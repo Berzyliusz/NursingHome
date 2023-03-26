@@ -5,23 +5,17 @@ namespace NursingHome.Interactions
 {
     public class ItemPicker : MonoBehaviour
     {
-        InteractionDetector interactionDetector;
-
         public event Action<ItemParams> OnItemPicked;
 
+        InteractionDetector interactionDetector;
         IInputs inputs;
 
         void Start()
         {
             interactionDetector = Systems.Instance.InteractionDetector;
             inputs = Systems.Instance.Inputs;
-            InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
+            interactionDetector.OnInteracted += HandleInteractionDetected;
             enabled = false;
-        }
-
-        void OnDestroy()
-        {
-            InteractionDetector.OnInteractionDetected -= HandleInteractionDetected;
         }
 
         void HandleInteractionDetected(InteractableItem interactedItem)
