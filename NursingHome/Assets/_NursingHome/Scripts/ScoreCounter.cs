@@ -7,19 +7,31 @@ namespace NursingHome
 {
     public interface IScoreCounter
     {
-
+        public int GetTotalScore();
     }
 
     public class ScoreCounter : IScoreCounter
     {
-        readonly ItemUser itemUser;
-
         Dictionary<PrankParams, int> pranksCount = new Dictionary<PrankParams, int>();
 
         public ScoreCounter(ItemUser itemUser)
         {
-            this.itemUser = itemUser;
             itemUser.OnItemUsed += HandleItemUsed;
+        }
+
+        public int GetTotalScore()
+        {
+            int totalScore = 0;
+
+            foreach(var pair in pranksCount)
+            {
+                var prankScore = pair.Key.PrankPoints;
+                var amount = pair.Value;
+
+                totalScore += prankScore * amount;
+            }
+
+            return totalScore;
         }
 
         void HandleItemUsed(ItemParams itemParams, PrankParams prankParams)
@@ -33,7 +45,7 @@ namespace NursingHome
                 pranksCount[prankParams]++;
             }
 
-            Debug.Log($"Score for {prankParams.DisplayName} = {pranksCount[prankParams]}");
+            Debug.Log($"Total score: {GetTotalScore()}");
         }
     }
 }
