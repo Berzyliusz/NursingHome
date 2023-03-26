@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ActivationDelay>k__BackingField: 1
   <DisplayName>k__BackingField: Smash with hammer!
-  <PrankPoints>k__BackingField: 50
-  <LureRange>k__BackingField: 25
+  <PrankPoints>k__BackingField: 100
+  <LureRange>k__BackingField: 20
   prefabToSpawn: {fileID: 0}

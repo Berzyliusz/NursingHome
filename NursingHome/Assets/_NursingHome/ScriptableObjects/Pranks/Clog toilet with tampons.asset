@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ActivationDelay>k__BackingField: 10
   <DisplayName>k__BackingField: Clog toilet with tampons
-  <PrankPoints>k__BackingField: 50
-  <LureRange>k__BackingField: 5
+  <PrankPoints>k__BackingField: 10
+  <LureRange>k__BackingField: 4
   prefabToSpawn: {fileID: 0}

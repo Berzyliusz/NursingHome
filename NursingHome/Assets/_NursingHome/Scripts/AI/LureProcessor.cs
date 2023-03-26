@@ -1,4 +1,5 @@
 ﻿using NursingHome.Lures;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,12 @@ namespace NursingHome.AI
 {
     public class LureProcessor
     {
+        public event Action<Lure> OnStrongestLureSet;
+
         readonly LureDetector detector;
-        List<Lure> lures = new List<Lure>();
+        List<Lure> spottedLures = new List<Lure>();
+
+        Lure currentStrongestLure;
 
         public LureProcessor(LureDetector detector)
         {
@@ -19,12 +24,30 @@ namespace NursingHome.AI
 
         void HandleLureEntered(Lure lure)
         {
-            Debug.Log($"Lure ENTER {lure.Prank.DisplayName}");
+            spottedLures.Add(lure);
+
+            if(currentStrongestLure== null)
+            {
+                currentStrongestLure = lure;
+                OnStrongestLureSet?.Invoke(currentStrongestLure);
+                Debug.Log($"New lure set {lure.Prank.DisplayName}");
+            }
+            else
+            {
+                if(lure.Prank.PrankPoints > currentStrongestLure.Prank.PrankPoints)
+                {
+                    currentStrongestLure = lure;
+                    OnStrongestLureSet?.Invoke(currentStrongestLure);
+                    Debug.Log($"Stronger lure set {lure.Prank.DisplayName}");
+                }
+            }
+
         }
 
         void HandleLureExit(Lure lure)
         {
-            Debug.Log($"Lure EXIT {lure.Prank.DisplayName}");
+            // we dont want to remove lures -> we remember the spotted ones
+            // and we can investigate them later
         }
     }
 }

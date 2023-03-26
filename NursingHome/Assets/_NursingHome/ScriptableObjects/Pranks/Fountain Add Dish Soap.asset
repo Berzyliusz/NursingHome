@@ -15,5 +15,5 @@ MonoBehaviour:
   <ActivationDelay>k__BackingField: 10
   <DisplayName>k__BackingField: Add dish soap
   <PrankPoints>k__BackingField: 50
-  <LureRange>k__BackingField: 25
+  <LureRange>k__BackingField: 20
   prefabToSpawn: {fileID: 0}
