@@ -21,7 +21,7 @@ MonoBehaviour:
   removeFromScenes: 1
   foldersInPrefabs: 2
   warnWhenNotRemovedFromBuild: 1
-  playModeBehaviour: 6
+  playModeBehaviour: 0
   playModeStrippingMethod: 2
   infoBoxText: 'This is a hierarchy folder and can be used for organizing objects
     in the hierarchy.

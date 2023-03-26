@@ -1,23 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NursingHome.AI
 {
+
     public class AI : MonoBehaviour
     {
+        [SerializeField] LureDetector lureDetector;
+
+        LureProcessor lureProcessor;
+
         IState patrolState;
         IState idleState;
 
         IState currentState;
 
-        bool wasPatrolling; // This is utterly retarded;
-
         void Awake()
         {
             idleState= GetComponent<IdleState>();
             patrolState= GetComponent<PatrolState>();
+
+            lureProcessor = new LureProcessor(lureDetector);
         }
 
         void Start()
@@ -50,6 +52,8 @@ namespace NursingHome.AI
             }
         }
 
+
+        bool wasPatrolling; // This is utterly retarded;
         IState ChooseNewState()
         {
             IState newState;

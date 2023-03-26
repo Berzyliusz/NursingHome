@@ -7,9 +7,6 @@ namespace NursingHome.Interactions
     public class SpawnEffectsDelayed : PrankParams
     {
         [SerializeField]
-        float activationDelay;
-
-        [SerializeField]
         [AssetsOnly]
         GameObject prefabToSpawn;
     }

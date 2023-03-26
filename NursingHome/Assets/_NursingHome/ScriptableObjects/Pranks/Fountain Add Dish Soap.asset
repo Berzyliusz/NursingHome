@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f77a6130193e6439c9377e8ec03678, type: 3}
   m_Name: Fountain Add Dish Soap
   m_EditorClassIdentifier: 
+  <ActivationDelay>k__BackingField: 10
   <DisplayName>k__BackingField: Add dish soap
   <PrankPoints>k__BackingField: 50
+  <LureRange>k__BackingField: 25
+  prefabToSpawn: {fileID: 0}
