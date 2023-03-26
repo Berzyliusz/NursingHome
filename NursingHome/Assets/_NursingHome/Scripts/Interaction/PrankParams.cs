@@ -4,6 +4,9 @@ namespace NursingHome.Interactions
 {
     public abstract class PrankParams : ScriptableObject
     {
+        [field: SerializeField]
+        public float ActivationDelay { get; private set; }
+
         [field:SerializeField]
         public string DisplayName { get; private set; }
 

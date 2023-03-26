@@ -28,7 +28,7 @@ namespace NursingHome.Lures
                 var usableItem = (UsableItem)selectedItem;
                 var parent = usableItem.Waypoint == null ? usableItem.transform : usableItem.Waypoint.transform;
                 Lure lure = CreateLureObject(parent, prankParams);
-                lure.SetPrankParams(prankParams);
+                lure.SetupLure(prankParams);
             }
             else
             {
@@ -56,7 +56,6 @@ namespace NursingHome.Lures
             var lure = lureObj.AddComponent<Lure>();
             var trigger = lureObj.AddComponent<SphereCollider>();
             trigger.isTrigger = true;
-            trigger.radius = prank.LureRange;
             return lure;
         }
     }
