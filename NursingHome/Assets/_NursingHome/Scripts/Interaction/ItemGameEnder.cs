@@ -32,6 +32,11 @@ public class ItemGameEnder : InteractionReceiverBase
             systems.UISystem.HideScreen(UIType.GameEndPrompt);
 
             systems.UISystem.ShowScreen(UIType.WinScreen);
+
+            // What do we need to pass to the UI?
+            // We need prank names
+            // and their point values
+            // for now we can pass it as a set of strings?
             // update WinUI
         }
     }
