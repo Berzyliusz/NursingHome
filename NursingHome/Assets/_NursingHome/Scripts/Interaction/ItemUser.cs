@@ -5,7 +5,7 @@ namespace NursingHome.Interactions
 {
     public class ItemUser : MonoBehaviour
     {
-        public event Action<ItemParams> OnItemUsed;
+        public event Action<ItemParams, PrankParams> OnItemUsed;
 
         void Start()
         {
@@ -39,7 +39,8 @@ namespace NursingHome.Interactions
 
             if(Systems.Instance.Inputs.Use)
             {
-                Debug.Log($"Using Prank {chosenPrank.DisplayName}");
+                var interactedItem = Systems.Instance.InteractionDetector.SelectedItem;
+                OnItemUsed?.Invoke(interactedItem.ItemParams, chosenPrank);
             }
         }
 

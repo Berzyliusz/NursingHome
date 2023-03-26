@@ -11,6 +11,7 @@ namespace NursingHome.Interactions
         [SerializeField] LayerMask layerMask;
 
         public static event Action<InteractableItem> OnInteractionDetected;
+        public event Action<InteractableItem> OnInteracted;
 
         public InteractableItem SelectedItem { get; private set; }
         InteractableItem previousItem;
@@ -39,6 +40,7 @@ namespace NursingHome.Interactions
             if (SelectedItem != previousItem)
             {
                 OnInteractionDetected?.Invoke(SelectedItem);
+                OnInteracted?.Invoke(SelectedItem);
                 previousItem = SelectedItem;
             }
         }

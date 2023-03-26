@@ -22,9 +22,13 @@ namespace NursingHome
         [SerializeField]
         ItemPicker itemPicker;
 
+        [SerializeField]
+        ItemUser itemUser;
+
         public IPlayer Player { get; private set; }
         public IInputs Inputs { get; private set; }
         public ICursor Cursor { get; private set; }
+        public IScoreCounter Score { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -35,12 +39,7 @@ namespace NursingHome
             Inputs = new Inputs();
             Player = playerController;
             Cursor = new CursorHandler();
-        }
-
-        [Button]
-        void SetFreezePlayer(bool isFrozen)
-        {
-            Player.SetFreezePlayer(isFrozen);
+            Score = new ScoreCounter(itemUser);
         }
     }
 }
