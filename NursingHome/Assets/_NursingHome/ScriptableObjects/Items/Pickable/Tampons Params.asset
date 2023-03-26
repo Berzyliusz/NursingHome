@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Tampons Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Tampons
+  prankParams:
+  - {fileID: 11400000, guid: aa28a9ce20e11024bb54c75eb2d9f0d3, type: 2}

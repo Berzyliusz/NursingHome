@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2107468919977491880}
   - component: {fileID: 3719025057962819169}
   - component: {fileID: 4358597640808902532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PC Mouse
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,3 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemParams: {fileID: 11400000, guid: 8c4c356d0b496d942bbb14d57e89646b, type: 2}

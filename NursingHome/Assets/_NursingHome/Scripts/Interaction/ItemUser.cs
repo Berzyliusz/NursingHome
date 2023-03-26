@@ -1,24 +1,12 @@
 using System;
-using UnityEngine;
 
 namespace NursingHome.Interactions
 {
-    public class ItemUser : MonoBehaviour
+    public class ItemUser : InteractionReceiverBase
     {
-        public event Action<ItemParams> OnItemUsed;
+        public event Action<ItemParams, PrankParams> OnItemUsed;
 
-        void Start()
-        {
-            InteractionDetector.OnInteractionDetected += HandleInteractionDetected;
-            enabled = false;
-        }
-
-        void OnDestroy()
-        {
-            InteractionDetector.OnInteractionDetected -= HandleInteractionDetected;
-        }
-
-        void HandleInteractionDetected(InteractableItem interactedItem)
+        protected override void HandleInteractionDetected(InteractableItem interactedItem)
         {
             if(interactedItem == null || !interactedItem.gameObject.CompareTag(Tags.Usable))
             {
@@ -37,9 +25,10 @@ namespace NursingHome.Interactions
             if (chosenPrank == null)
                 return;
 
-            if(Systems.Instance.Inputs.Use)
+            if(inputs.Use)
             {
-                Debug.Log($"Using Prank {chosenPrank.DisplayName}");
+                var interactedItem = Systems.Instance.InteractionDetector.SelectedItem;
+                OnItemUsed?.Invoke(interactedItem.ItemParams, chosenPrank);
             }
         }
 

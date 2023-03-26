@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NursingHome;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -9,8 +10,8 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 	[RequireComponent(typeof(PlayerInput))]
 #endif
-	public class FirstPersonController : MonoBehaviour
-	{
+	public class FirstPersonController : MonoBehaviour, IPlayer
+    {
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -74,6 +75,8 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
+		bool freezePlayer;
+
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -86,7 +89,12 @@ namespace StarterAssets
 			}
 		}
 
-		private void Awake()
+        public void SetFreezePlayer(bool isFrozen)
+        {
+            freezePlayer = isFrozen;
+        }
+
+        private void Awake()
 		{
 			// get a reference to our main camera
 			if (_mainCamera == null)
@@ -112,6 +120,9 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (freezePlayer)
+				return;
+
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -119,7 +130,10 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+            if (freezePlayer)
+                return;
+
+            CameraRotation();
 		}
 
 		private void GroundedCheck()
@@ -264,5 +278,5 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
-	}
+    }
 }

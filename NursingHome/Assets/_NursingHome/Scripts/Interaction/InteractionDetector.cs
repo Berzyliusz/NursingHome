@@ -5,20 +5,40 @@ using UnityEngine.InputSystem;
 
 namespace NursingHome.Interactions
 {
-    public class InteractionDetector : MonoBehaviour
+    public interface IInteractionDetector
+    {
+        InteractableItem SelectedItem { get; }
+        void SetCanDetectInteraction(bool canDetectInteraction);
+    }
+
+    public class InteractionDetector : MonoBehaviour, IInteractionDetector
     {
         [SerializeField] float rayLength = 0.5f;
         [SerializeField] LayerMask layerMask;
 
         public static event Action<InteractableItem> OnInteractionDetected;
+        public event Action<InteractableItem> OnInteracted;
 
         public InteractableItem SelectedItem { get; private set; }
         InteractableItem previousItem;
 
+        bool canDetect;
+
         Dictionary<Transform, InteractableItem> cachedItems = new Dictionary<Transform, InteractableItem>();
+
+        public void SetCanDetectInteraction(bool canDetectInteraction)
+        {
+            canDetect = canDetectInteraction;
+
+            if(!canDetect)
+                SelectedItem= null;
+        }
 
         void Update()
         {
+            if (!canDetect)
+                return;
+
             var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
@@ -39,6 +59,7 @@ namespace NursingHome.Interactions
             if (SelectedItem != previousItem)
             {
                 OnInteractionDetected?.Invoke(SelectedItem);
+                OnInteracted?.Invoke(SelectedItem);
                 previousItem = SelectedItem;
             }
         }

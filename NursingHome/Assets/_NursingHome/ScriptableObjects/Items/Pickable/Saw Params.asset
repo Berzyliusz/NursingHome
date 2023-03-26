@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Saw Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Saw
+  prankParams:
+  - {fileID: 11400000, guid: 386c14b7325da5d46adfccabf450baf4, type: 2}

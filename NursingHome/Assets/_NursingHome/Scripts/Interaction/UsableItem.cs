@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace NursingHome.Interactions
 {
@@ -9,6 +10,7 @@ namespace NursingHome.Interactions
         public override ItemParams ItemParams => itemParams;
 
         [SerializeField]
+        [InlineEditor]
         UsableItemParams itemParams;
 
         public override void UseItem()
