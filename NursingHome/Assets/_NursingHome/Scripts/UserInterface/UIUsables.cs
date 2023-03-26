@@ -1,17 +1,9 @@
-using Sirenix.OdinInspector;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NursingHome.UserInterface
 {
-    public class UIUsables : UIElement
+    public class UIUsables : PoolingUIElement
     {
-        [SerializeField]
-        [AssetsOnly]
-        UISingleItem itemPrefab;
-
-        List<UISingleItem> spawnedItems = new List<UISingleItem>();
-
         public override UIType Type => UIType.Use;
 
         public override void Hide()
@@ -26,15 +18,11 @@ namespace NursingHome.UserInterface
 
         public override void UpdateUI(UIParams uiParams)
         {
-            while (spawnedItems.Count > 0)
-            {
-                Destroy(spawnedItems[0].gameObject);
-                spawnedItems.RemoveAt(0);
-            }
+            DestroySpawnedItems();
 
             foreach (var itemName in uiParams.Names)
             {
-                var newItem = GameObject.Instantiate(itemPrefab, parent.transform);
+                var newItem = GameObject.Instantiate(itemPrefab, spawnParent.transform);
                 newItem.SetItemName(itemName);
                 spawnedItems.Add(newItem);
             }

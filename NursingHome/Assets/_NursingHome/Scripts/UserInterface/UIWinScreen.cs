@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace NursingHome.UserInterface
 {
-    public class UIWinScreen : UIElement
+    public class UIWinScreen : PoolingUIElement
     {
         public override UIType Type => UIType.WinScreen;
 
@@ -20,7 +18,7 @@ namespace NursingHome.UserInterface
 
         public override void UpdateUI(UIParams uiParams)
         {
-            
+            DestroySpawnedItems();
         }
     }
 }
