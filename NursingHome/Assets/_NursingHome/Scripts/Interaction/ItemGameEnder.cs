@@ -23,14 +23,16 @@ public class ItemGameEnder : InteractionReceiverBase
     {
         if(inputs.Use)
         {
-            Debug.LogError("Game ending");
-            Systems.Instance.Time.SetTimeScale(0.0f);
-            Systems.Instance.Player.SetFreezePlayer(true);
-            Systems.Instance.UISystem.HideScreen(UIType.AimDot);
-            Systems.Instance.Cursor.SetCursorVisible(true);
-            Systems.Instance.Cursor.SetCursorLocked(CursorLockMode.None);
+            var systems = Systems.Instance;
+            systems.Time.SetTimeScale(0.0f);
+            systems.Player.SetFreezePlayer(true);
+            systems.UISystem.HideScreen(UIType.AimDot);
+            systems.Cursor.SetCursorVisible(true);
+            systems.Cursor.SetCursorLocked(CursorLockMode.None);
+            systems.UISystem.HideScreen(UIType.GameEndPrompt);
 
-            // display WinUI
+            systems.UISystem.ShowScreen(UIType.WinScreen);
+            // update WinUI
         }
     }
 }
