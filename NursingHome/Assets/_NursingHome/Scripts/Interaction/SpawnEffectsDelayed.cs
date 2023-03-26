@@ -6,8 +6,8 @@ namespace NursingHome.Interactions
     [CreateAssetMenu(menuName = "NursingHome/Pranks/Spawn Effects Delayed")]
     public class SpawnEffectsDelayed : PrankParams
     {
-        [SerializeField]
-        float activationDelay;
+        [field: SerializeField]
+        public float ActivationDelay { get; private set; }
 
         [SerializeField]
         [AssetsOnly]

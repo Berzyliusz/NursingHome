@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: Spice up the soup
   <PrankPoints>k__BackingField: 50
-  activationDelay: 0
+  <LureRange>k__BackingField: 1
+  <ActivationDelay>k__BackingField: 0
   prefabToSpawn: {fileID: 0}

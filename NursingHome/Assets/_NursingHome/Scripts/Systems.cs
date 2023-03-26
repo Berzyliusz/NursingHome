@@ -3,6 +3,7 @@ using NursingHome.UserInterface;
 using NursingHome.Interactions;
 using StarterAssets;
 using Sirenix.OdinInspector;
+using NursingHome.Lures;
 
 namespace NursingHome
 {
@@ -31,6 +32,7 @@ namespace NursingHome
         public IScoreCounter Score { get; private set; }
         public ITime Time { get; private set; }
         public IInteractionDetector interactionDetector { get; private set; }
+        public ILureSpawner LureSpawner { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -43,6 +45,7 @@ namespace NursingHome
             Cursor = new CursorHandler();
             Score = new ScoreCounter(itemUser);
             Time = new TimeHandler();
+            LureSpawner = new LureSpawner(itemUser, InteractionDetector);
             interactionDetector = InteractionDetector;
         }
 

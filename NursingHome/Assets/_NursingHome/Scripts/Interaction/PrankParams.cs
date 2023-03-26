@@ -9,5 +9,8 @@ namespace NursingHome.Interactions
 
         [field:SerializeField]
         public int PrankPoints { get; private set; }
+
+        [field:SerializeField]
+        public float LureRange { get; private set; }
     }
 }
