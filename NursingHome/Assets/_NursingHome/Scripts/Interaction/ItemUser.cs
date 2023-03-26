@@ -1,25 +1,12 @@
 using System;
-using UnityEngine;
-using UnityEngine.Windows;
 
 namespace NursingHome.Interactions
 {
-    public class ItemUser : MonoBehaviour
+    public class ItemUser : InteractionReceiverBase
     {
         public event Action<ItemParams, PrankParams> OnItemUsed;
 
-        InteractionDetector interactionDetector;
-        IInputs inputs;
-
-        void Start()
-        {
-            interactionDetector = Systems.Instance.InteractionDetector;
-            inputs = Systems.Instance.Inputs;
-            interactionDetector.OnInteracted += HandleInteractionDetected;
-            enabled = false;
-        }
-
-        void HandleInteractionDetected(InteractableItem interactedItem)
+        protected override void HandleInteractionDetected(InteractableItem interactedItem)
         {
             if(interactedItem == null || !interactedItem.gameObject.CompareTag(Tags.Usable))
             {
