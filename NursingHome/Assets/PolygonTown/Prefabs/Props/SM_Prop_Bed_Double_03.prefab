@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 4955476501858982}
   - component: {fileID: 33206356238331712}
   - component: {fileID: 23002049886974442}
-  - component: {fileID: 64953467314285666}
+  - component: {fileID: 7264324428050551725}
   m_Layer: 0
   m_Name: SM_Prop_Bed_Double_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4955476501858982
 Transform:
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64953467314285666
-MeshCollider:
+--- !u!65 &7264324428050551725
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43355236048296610, guid: 5522b62265be2454fb975828ff4b7938, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 2.0818858, y: 1.5169874, z: 2.673208}
+  m_Center: {x: -0.0000006556511, y: 0.7584937, z: 0}
