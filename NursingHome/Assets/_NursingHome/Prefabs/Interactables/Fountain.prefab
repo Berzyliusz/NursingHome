@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5351449771367928890
 Transform:
@@ -129,7 +129,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4424917887710497512
 Transform:
@@ -173,6 +173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Fountain_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1004051955260324, guid: 21994bb82f8cacf49898887357c00fc0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4029192922726276, guid: 21994bb82f8cacf49898887357c00fc0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -183,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4029192922726276, guid: 21994bb82f8cacf49898887357c00fc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.213
       objectReference: {fileID: 0}
     - target: {fileID: 4029192922726276, guid: 21994bb82f8cacf49898887357c00fc0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -225,3 +229,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5353253988125396615}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5352815188226168099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1004051955260324, guid: 21994bb82f8cacf49898887357c00fc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5353253988125396615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4054837928118705786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352815188226168099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9990597, y: 1.5174524, z: 2.008535}
+  m_Center: {x: 0.025435448, y: 0.7587262, z: 0.0129926205}

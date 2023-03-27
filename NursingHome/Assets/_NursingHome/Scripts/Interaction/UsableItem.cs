@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NursingHome.Interactions
 {
@@ -13,12 +14,16 @@ namespace NursingHome.Interactions
         public Transform Waypoint { get; private set; }
 
         [SerializeField]
+        UnityEvent onItemUsed; 
+
+        [SerializeField]
         [InlineEditor]
         UsableItemParams itemParams;
 
         public override void UseItem()
         {
-            
+            Debug.LogError("Item used");
+            onItemUsed?.Invoke();
         }
     }
 }
