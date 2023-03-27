@@ -18,9 +18,9 @@ MonoBehaviour:
   namePrefix: 
   nameSuffix: 
   forceNamesUpperCase: 0
-  removeFromScenes: 1
+  removeFromScenes: 0
   foldersInPrefabs: 2
-  warnWhenNotRemovedFromBuild: 1
+  warnWhenNotRemovedFromBuild: 0
   playModeBehaviour: 0
   playModeStrippingMethod: 2
   infoBoxText: 'This is a hierarchy folder and can be used for organizing objects
