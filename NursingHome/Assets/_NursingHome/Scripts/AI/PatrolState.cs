@@ -8,8 +8,6 @@ namespace NursingHome.AI
     {
         [SerializeField]
         Transform[] waypoints;
-        [SerializeField]
-        float inRangeDistance = 0.2f;
 
         Animator animator;
         NavMeshAgent navAgent;
@@ -29,7 +27,7 @@ namespace NursingHome.AI
         public bool IsStateDone()
         {
             float distanceToTarget = Vector3.Distance(transform.position, navAgent.destination);
-            return distanceToTarget < inRangeDistance;
+            return distanceToTarget < ai.InRangeDistance;
         }
 
         public void UpdateState()

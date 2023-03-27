@@ -14,11 +14,22 @@ namespace NursingHome.AI
 
         LureProcessor lureProcessor;
 
+        public bool HasLureDetected()
+        {
+            return lureProcessor.CurrentStrongestLure != null;
+        }
+
         void Awake()
         {
             lureProcessor = new LureProcessor(lureDetector);
+
+            var states = GetComponents<StateBase>();
+            foreach(var state in states)
+            {
+                state.SetupAI(this);
+            }
         }
 
-
+        
     }
 }

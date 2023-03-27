@@ -13,6 +13,7 @@ namespace NursingHome.AI
         {
             var lure = ai.StrongestLure;
             animator.SetBool(AnimationHashes.WalkHash, true);
+            navAgent.SetDestination(lure.transform.position);
 
             Debug.Log("Starting investigation");
         }
