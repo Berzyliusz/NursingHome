@@ -1,5 +1,6 @@
 using NursingHome.Lures;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace NursingHome.AI
 {
@@ -9,6 +10,9 @@ namespace NursingHome.AI
         LureDetector lureDetector;
         [field:SerializeField]
         public float InRangeDistance { get; private set; } = 0.2f;
+
+        public Animator Animator { get; private set; }
+        public NavMeshAgent NavAgent { get; private set; }
 
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
 
@@ -23,13 +27,14 @@ namespace NursingHome.AI
         {
             lureProcessor = new LureProcessor(lureDetector);
 
+            Animator = GetComponent<Animator>();
+            NavAgent = GetComponent<NavMeshAgent>();
+
             var states = GetComponents<StateBase>();
             foreach(var state in states)
             {
                 state.SetupAI(this);
             }
-        }
-
-        
+        }        
     }
 }

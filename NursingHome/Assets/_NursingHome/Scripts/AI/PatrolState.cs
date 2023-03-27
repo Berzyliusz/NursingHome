@@ -1,6 +1,5 @@
 using NursingHome.Animations;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace NursingHome.AI
 {
@@ -9,36 +8,27 @@ namespace NursingHome.AI
         [SerializeField]
         Transform[] waypoints;
 
-        Animator animator;
-        NavMeshAgent navAgent;
-
         public void StartState()
         {
             Vector3 randomWaypoint = waypoints[Random.Range(0, waypoints.Length)].position;
-            navAgent.SetDestination(randomWaypoint);
-            animator.SetBool(AnimationHashes.WalkHash, true);
+            ai.NavAgent.SetDestination(randomWaypoint);
+            ai.Animator.SetBool(AnimationHashes.WalkHash, true);
         }
 
         public void EndState()
         {
-            animator.SetBool(AnimationHashes.WalkHash, false);
+            ai.Animator.SetBool(AnimationHashes.WalkHash, false);
         }
 
         public bool IsStateDone()
         {
-            float distanceToTarget = Vector3.Distance(transform.position, navAgent.destination);
+            float distanceToTarget = Vector3.Distance(transform.position, ai.NavAgent.destination);
             return distanceToTarget < ai.InRangeDistance;
         }
 
         public void UpdateState()
         {
 
-        }
-
-        void Awake()
-        {
-            animator = GetComponent<Animator>();
-            navAgent = GetComponent<NavMeshAgent>();
         }
     }
 }
