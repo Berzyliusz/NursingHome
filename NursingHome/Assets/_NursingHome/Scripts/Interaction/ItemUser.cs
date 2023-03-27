@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace NursingHome.Interactions
 {
     public class ItemUser : InteractionReceiverBase
     {
         public event Action<ItemParams, PrankParams> OnItemUsed;
+        Dictionary<InteractableItem, PrankParams> performedPranks = new Dictionary<InteractableItem, PrankParams>();
 
         protected override void HandleInteractionDetected(InteractableItem interactedItem)
         {
@@ -28,7 +31,13 @@ namespace NursingHome.Interactions
             if(inputs.Use)
             {
                 var interactedItem = Systems.Instance.InteractionDetector.SelectedItem;
-                OnItemUsed?.Invoke(interactedItem.ItemParams, chosenPrank);
+
+                //Todo: Rework, so we can have multiple performed pranks per item.
+                if(!performedPranks.ContainsKey(interactedItem))
+                {
+                    performedPranks[interactedItem] = chosenPrank;
+                    OnItemUsed?.Invoke(interactedItem.ItemParams, chosenPrank);
+                }
             }
         }
 
