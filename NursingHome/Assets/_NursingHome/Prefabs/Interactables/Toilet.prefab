@@ -193,7 +193,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7671741391433136315}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -19.289, y: 0, z: -10.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -201,6 +201,7 @@ Transform:
   - {fileID: 7674020016825750273}
   - {fileID: 7674095624828553117}
   - {fileID: 1114391777270531542}
+  - {fileID: 7926100441583137302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -280,6 +281,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Waypoint>k__BackingField: {fileID: 1114391777270531542}
+  onItemUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6032583311434485147}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   itemParams: {fileID: 11400000, guid: 85ae7c6dff03f834da7066c68a8ae26c, type: 2}
 --- !u!1 &8521224446813620518
 GameObject:
@@ -291,6 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114391777270531542}
   - component: {fileID: 9066212205874314696}
+  - component: {fileID: 4429081664031388597}
   m_Layer: 10
   m_Name: Waypoint
   m_TagString: Untagged
@@ -329,3 +346,100 @@ MonoBehaviour:
   alwaysDraw: 0
   radius: 0.3
   color: {r: 0.04401779, g: 1, b: 0, a: 1}
+--- !u!114 &4429081664031388597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521224446813620518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778396ae3e51e744daeb8853c8aca676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  alwaysDraw: 0
+  radius: 0.3
+  color: {r: 0.04401779, g: 1, b: 0, a: 1}
+--- !u!1001 &2320402777036166687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7674029125795357691}
+    m_Modifications:
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.537
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861635637672633542, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+        type: 3}
+      propertyPath: m_Name
+      value: Clogged Toilet VFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91, type: 3}
+--- !u!198 &6032583311434485147 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8325942431351741316, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 2320402777036166687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7926100441583137302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5606014324065903625, guid: 3aa71f8ec388b2043bfb3b57d4ba6b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 2320402777036166687}
+  m_PrefabAsset: {fileID: 0}
