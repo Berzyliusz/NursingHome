@@ -85,6 +85,8 @@ GameObject:
   - component: {fileID: 5486999056215447321}
   - component: {fileID: 34691437143325731}
   - component: {fileID: 7976987550359501430}
+  - component: {fileID: 7368649184157690151}
+  - component: {fileID: 2952653652356393157}
   m_Layer: 0
   m_Name: Character_Mother_01_VS
   m_TagString: Untagged
@@ -267,6 +269,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workDurationMinMax: {x: 1, y: 5}
   rotationSpeed: 1
+--- !u!114 &7368649184157690151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032305250981868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eab80fc629f8a74e9b4a307e48c3c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2952653652356393157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032305250981868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1238b3ec31a26334ba2c4db45c21f731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1038632498111260
 GameObject:
   m_ObjectHideFlags: 0
