@@ -26,16 +26,13 @@ namespace NursingHome.AI
 
         public void EndState()
         {
+            Debug.Log("Search done");
             // stop searching anim
         }
 
         public bool IsStateDone()
         {
-            // either we can see the player
-
-            // or search time is up
-
-            return false;
+            return searchTimer <= 0;
         }
 
         public void UpdateState()

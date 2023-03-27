@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a12d9300a40e074db2b093e02211e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workDurationMinMax: {x: 1, y: 5}
-  rotationSpeed: 1
+  workDurationMinMax: {x: 3, y: 7}
+  rotationSpeed: 1.5
 --- !u!114 &7368649184157690151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eab80fc629f8a74e9b4a307e48c3c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  searchTime: 10
 --- !u!114 &2952653652356393157
 MonoBehaviour:
   m_ObjectHideFlags: 0
