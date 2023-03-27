@@ -7,42 +7,30 @@ namespace NursingHome.AI
     {
         [SerializeField] Vector2 idleDurationMinMax = new Vector2(1, 5);
 
-        Animator animator;
-
-        float timer;
-        float idleTime;
+        float idleTimer;
 
         public void StartState()
         {
-            idleTime = Random.Range(idleDurationMinMax.x, idleDurationMinMax.y);
-            timer = 0;
-
-            animator.SetBool(AnimationHashes.IdleHash, true);
+            idleTimer = Random.Range(idleDurationMinMax.x, idleDurationMinMax.y);
+            ai.Animator.SetBool(AnimationHashes.IdleHash, true);
         }
 
         public void EndState()
         {
-            timer = 0;
-            idleTime = 0;
-
-            animator.SetBool(AnimationHashes.IdleHash, false);
+            idleTimer = float.MaxValue;
+            ai.Animator.SetBool(AnimationHashes.IdleHash, false);
         }
 
         public bool IsStateDone()
         {
-            return timer > idleTime;
+            return idleTimer <= 0;
         }
 
         public void UpdateState()
         {
-            timer += Time.deltaTime;
+            idleTimer -= Time.deltaTime;
 
             // Todo: Expand to use idle breakers, or some more interesting idles
-        }
-
-        void Awake()
-        {
-            animator = GetComponent<Animator>();
         }
     }
 }

@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6374790657904715952}
+  - {fileID: 8143061363553693623}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -100.683, z: 0}
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Waypoint>k__BackingField: {fileID: 8143061363553693623}
   itemParams: {fileID: 11400000, guid: 551d247c6d6b19f40b2cb08ec8a17ac0, type: 2}
 --- !u!1 &6376621681917454666
 GameObject:
@@ -195,3 +197,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7621244879788993946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8143061363553693623}
+  - component: {fileID: 1694813309137887010}
+  m_Layer: 10
+  m_Name: Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8143061363553693623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621244879788993946}
+  m_LocalRotation: {x: -0, y: 0.7577545, z: -0, w: 0.65253973}
+  m_LocalPosition: {x: -0.676, y: -0.938, z: 0.215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6370570395496754456}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 98.533, z: 0}
+--- !u!114 &1694813309137887010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621244879788993946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778396ae3e51e744daeb8853c8aca676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  alwaysDraw: 0
+  radius: 0.3
+  color: {r: 0.04401779, g: 1, b: 0, a: 1}

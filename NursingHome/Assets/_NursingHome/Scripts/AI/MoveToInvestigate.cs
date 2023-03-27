@@ -13,9 +13,6 @@ namespace NursingHome.AI
             ai.Animator.SetBool(AnimationHashes.WalkHash, true);
             ai.NavAgent.SetDestination(lure.transform.position);
             distanceToTarget = float.MaxValue;
-
-            Debug.Log("Moving to investigate");
-
         }
 
         public void EndState()

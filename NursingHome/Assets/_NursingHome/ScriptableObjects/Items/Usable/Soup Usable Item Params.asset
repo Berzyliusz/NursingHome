@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babb1ab4b0c80ed46bce149d533ebe46, type: 3}
   m_Name: Soup Usable Item Params
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Toilet
+  <ItemName>k__BackingField: Cooking Pot
   prankParams:
   - {fileID: 11400000, guid: 1ec3dccc865a5b443a7ae91d65a453bb, type: 2}

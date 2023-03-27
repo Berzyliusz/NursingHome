@@ -28,7 +28,7 @@ namespace NursingHome.Lures
                 var usableItem = (UsableItem)selectedItem;
                 var parent = usableItem.Waypoint == null ? usableItem.transform : usableItem.Waypoint.transform;
                 Lure lure = CreateLureObject(parent, prankParams);
-                lure.SetupLure(prankParams);
+                lure.SetupLure(prankParams, parent);
             }
             else
             {

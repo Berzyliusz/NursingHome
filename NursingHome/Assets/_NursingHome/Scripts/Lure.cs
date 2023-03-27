@@ -7,15 +7,17 @@ namespace NursingHome.Lures
     public class Lure : MonoBehaviour
     {
         public PrankParams Prank { get; private set; }
+        public Transform Waypoint { get; private set; }
 
-        SphereCollider collider;
+        SphereCollider sphereCollider;
 
-        public void SetupLure(PrankParams prank)
+        public void SetupLure(PrankParams prank, Transform waypoint)
         {
             this.Prank = prank;
+            Waypoint = waypoint;
 
-            collider = GetComponent<SphereCollider>();
-            collider.radius = 0.001f;
+            sphereCollider = GetComponent<SphereCollider>();
+            sphereCollider.radius = 0.001f;
             StartCoroutine(TriggerGrowRoutine());
         }
 
@@ -27,13 +29,13 @@ namespace NursingHome.Lures
 
             var targetRadius = Prank.LureRange;
 
-            while(collider.radius < targetRadius )
+            while(sphereCollider.radius < targetRadius )
             {
-                collider.radius += 0.1f;
+                sphereCollider.radius += 0.1f;
                 yield return wait;
             }
 
-            collider.radius = targetRadius;
+            sphereCollider.radius = targetRadius;
         }
     }
 }

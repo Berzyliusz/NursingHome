@@ -15,7 +15,6 @@ namespace NursingHome.AI
         public NavMeshAgent NavAgent { get; private set; }
 
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
-
         LureProcessor lureProcessor;
 
         public bool HasLureDetected()
