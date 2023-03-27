@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 85205822204496751}
   - component: {fileID: 3488360046308048990}
   - component: {fileID: 3931926650152203174}
+  - component: {fileID: 1223237758616195249}
   m_Layer: 10
   m_Name: Table
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &104476574191157115
 Transform:
@@ -112,7 +113,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Waypoint>k__BackingField: {fileID: 5939319405990908734}
+  onItemUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1223237758616195249}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wobble
+          m_BoolArgument: 0
+        m_CallState: 2
   itemParams: {fileID: 11400000, guid: b0d4bfbc44f08de4e982875b92d39dd3, type: 2}
+--- !u!95 &1223237758616195249
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106569261709575009}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81c5e1cc643711a4db6d81cc33161cfb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8440910084336695353
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,6 @@ namespace NursingHome.Interactions
 
         public override void UseItem()
         {
-            Debug.LogError("Item used");
             onItemUsed?.Invoke();
         }
     }
