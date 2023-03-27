@@ -6,6 +6,7 @@ namespace NursingHome.AI
     public class LureProcessor
     {
         List<Lure> spottedLures = new List<Lure>();
+        HashSet<Lure> processedLures = new HashSet<Lure>();
 
         public Lure CurrentStrongestLure { get; private set; }
 
@@ -18,6 +19,7 @@ namespace NursingHome.AI
         public void ProcessNextPrank()
         {
             spottedLures.Remove(CurrentStrongestLure);
+            processedLures.Add(CurrentStrongestLure);
             CurrentStrongestLure = null;
 
             if (spottedLures.Count == 0)
@@ -36,6 +38,9 @@ namespace NursingHome.AI
 
         void HandleLureDetectionEntered(Lure lure)
         {
+            if(processedLures.Contains(lure)) 
+                return;
+
             spottedLures.Add(lure);
 
             if(CurrentStrongestLure== null)

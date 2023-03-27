@@ -1,5 +1,7 @@
 ﻿using NursingHome.Animations;
+using System;
 using UnityEngine;
+using NursingHome.UserInterface;
 
 namespace NursingHome.AI
 {
@@ -9,6 +11,8 @@ namespace NursingHome.AI
         float maxChaseTime = 30f;
         [SerializeField]
         float distanceToGiveUpChase = 30.0f;
+        [SerializeField]
+        float distanceToCatch = 1.0f;
 
         float chaseTimer;
         float distanceToTarget;
@@ -17,7 +21,6 @@ namespace NursingHome.AI
 
         public void StartState()
         {
-            Debug.Log("CHASE");
             player = Systems.Instance.Player;
             ai.Animator.SetBool(AnimationHashes.ChaseHash, true);
             ai.NavAgent.speed = ai.ChaseSpeed;
@@ -34,8 +37,7 @@ namespace NursingHome.AI
 
         public bool IsStateDone()
         {
-            return false;
-            //return chaseTimer >= 0 || distanceToTarget > distanceToGiveUpChase;
+            return chaseTimer <= 0 || distanceToTarget > distanceToGiveUpChase;
         }
 
         public void UpdateState()
@@ -44,6 +46,22 @@ namespace NursingHome.AI
             ai.NavAgent.SetDestination(player.GetPlayerPosition());
 
             distanceToTarget = Vector3.Distance(transform.position, player.GetPlayerPosition());
+
+            if(distanceToTarget < distanceToCatch)
+            {
+                // TODO: Move this to some GameEnder
+                EndGame();
+            }
+        }
+
+        void EndGame()
+        {
+            var systems = Systems.Instance;
+            systems.Time.SetTimeScale(0);
+            player.SetFreezePlayer(true);
+            systems.Cursor.SetCursorVisible(true);
+            systems.Cursor.SetCursorLocked(CursorLockMode.None);
+            systems.UISystem.ShowScreen(UIType.LooseScreen);
         }
     }
 }
