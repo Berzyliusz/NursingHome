@@ -1,6 +1,5 @@
 ﻿using NursingHome.Animations;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace NursingHome.AI
 {
@@ -9,7 +8,6 @@ namespace NursingHome.AI
         [SerializeField] Vector2 idleDurationMinMax = new Vector2(1, 5);
 
         Animator animator;
-        NavMeshAgent navAgent;
 
         float timer;
         float idleTime;
@@ -38,12 +36,13 @@ namespace NursingHome.AI
         public void UpdateState()
         {
             timer += Time.deltaTime;
+
+            // Todo: Expand to use idle breakers, or some more interesting idles
         }
 
         void Awake()
         {
             animator = GetComponent<Animator>();
-            navAgent = GetComponent<NavMeshAgent>();
         }
     }
 }
