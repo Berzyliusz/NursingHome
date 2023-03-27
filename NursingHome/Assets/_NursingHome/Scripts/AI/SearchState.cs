@@ -17,8 +17,7 @@ namespace NursingHome.AI
             // Check if player is in range or visible 
             // if so, go to chase state
             // else
-            Vector3 point = FindNearbyRandomPoint();
-            ai.NavAgent.SetDestination(point);
+            GoToRandomPointNearby();
             ai.Animator.SetBool(AnimationHashes.WalkHash, true);
 
             searchTimer = searchTime;
@@ -31,13 +30,27 @@ namespace NursingHome.AI
 
         public bool IsStateDone()
         {
-            // or we arrived to search target
             return searchTimer <= 0;
         }
 
         public void UpdateState()
         {
             searchTimer -= Time.deltaTime;
+
+            if(Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.InRangeDistance)
+            {
+                GoToRandomPointNearby();
+            }
+
+            // Look for player
+
+            // TODO: Also look for and investigate patients
+        }
+
+        void GoToRandomPointNearby()
+        {
+            Vector3 point = FindNearbyRandomPoint();
+            ai.NavAgent.SetDestination(point);
         }
 
         Vector3 FindNearbyRandomPoint()

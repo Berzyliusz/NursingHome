@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchTime: 10
+  randomPointRanges: {x: -3, y: 3}
 --- !u!114 &2952653652356393157
 MonoBehaviour:
   m_ObjectHideFlags: 0
