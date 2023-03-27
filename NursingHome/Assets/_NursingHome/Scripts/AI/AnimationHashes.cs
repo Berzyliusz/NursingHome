@@ -7,5 +7,6 @@ namespace NursingHome.Animations
         public static int WalkHash = Animator.StringToHash("Walk");
         public static int IdleHash = Animator.StringToHash("Idle");
         public static int WorkHash = Animator.StringToHash("Work");
+        public static int ChaseHash = Animator.StringToHash("Chase");
     }
 }

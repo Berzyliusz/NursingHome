@@ -18,6 +18,12 @@ namespace NursingHome.AI
         [field: SerializeField]
         public NavMeshAgent NavAgent { get; private set; }
 
+        //Todo:
+        // Organize it into some params container
+        [field: SerializeField]
+        public float WalkSpeed { get; private set; } = 3.2f;
+        public float ChaseSpeed { get; private set; } = 5.0f;
+
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
         LureProcessor lureProcessor;
 
