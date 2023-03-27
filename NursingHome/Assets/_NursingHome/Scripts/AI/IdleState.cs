@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NursingHome.AI
 {
-    public class IdleState : MonoBehaviour, IState
+    public class IdleState : StateBase, IState
     {
         [SerializeField] Vector2 idleDurationMinMax = new Vector2(1, 5);
 

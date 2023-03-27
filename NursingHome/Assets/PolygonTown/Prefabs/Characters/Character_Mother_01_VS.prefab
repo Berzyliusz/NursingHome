@@ -80,8 +80,10 @@ GameObject:
   - component: {fileID: 5645902955479639805}
   - component: {fileID: 4929407423471347227}
   - component: {fileID: 3803698629696814692}
+  - component: {fileID: 2184198280226300537}
   - component: {fileID: 5843515233961032622}
   - component: {fileID: 5486999056215447321}
+  - component: {fileID: 34691437143325731}
   m_Layer: 0
   m_Name: Character_Mother_01_VS
   m_TagString: Untagged
@@ -196,6 +198,19 @@ MonoBehaviour:
     _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
     _objectReferences:
     - {fileID: 11400000, guid: 642a8a6215a3f0743b18294c858baf0c, type: 2}
+--- !u!114 &2184198280226300537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032305250981868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825d4b12f118a7945b9613c2caa3edb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lureDetector: {fileID: 3728691392075268831}
 --- !u!114 &5843515233961032622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +238,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   inRangeDistance: 0.2
+--- !u!114 &34691437143325731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032305250981868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b6c5ea28cb7984394dece7ffd11531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1038632498111260
 GameObject:
   m_ObjectHideFlags: 0

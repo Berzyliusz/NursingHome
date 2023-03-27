@@ -76,11 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4588386968346820}
   - component: {fileID: 95920329354498498}
-  - component: {fileID: 907868674}
   - component: {fileID: 907868677}
-  - component: {fileID: 907868673}
-  - component: {fileID: 7230540938354365097}
-  - component: {fileID: 907868675}
   - component: {fileID: 5645902955479639805}
   m_Layer: 0
   m_Name: Character_Mother_01
@@ -127,22 +123,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &907868674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032305250981868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 778396ae3e51e744daeb8853c8aca676, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  alwaysDraw: 0
-  radius: 1
-  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!195 &907868677
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -165,52 +145,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &907868673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032305250981868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db826aa500f57b4aa420fbf6da5473b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inRangeDistance: 0.2
---- !u!114 &7230540938354365097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032305250981868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 117975629b799a64eb48107764118197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleDurationMinMax: {x: 3, y: 10}
---- !u!114 &907868675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032305250981868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 825d4b12f118a7945b9613c2caa3edb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lureDetector: {fileID: 3728691392075268831}
 --- !u!54 &5645902955479639805
 Rigidbody:
   m_ObjectHideFlags: 0

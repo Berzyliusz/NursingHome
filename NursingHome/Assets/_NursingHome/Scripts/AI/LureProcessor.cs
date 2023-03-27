@@ -1,23 +1,16 @@
 ﻿using NursingHome.Lures;
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace NursingHome.AI
 {
     public class LureProcessor
     {
-        public event Action<Lure> OnStrongestLureSet;
-
-        readonly LureDetector detector;
         List<Lure> spottedLures = new List<Lure>();
 
-        Lure currentStrongestLure;
+        public Lure CurrentStrongestLure { get; private set; }
 
         public LureProcessor(LureDetector detector)
         {
-            this.detector = detector;
-
             detector.OnLureDetectionEnter += HandleLureDetectionEntered;
             detector.OnLureDetectionExit += HandleLureDetectionExit;
         }
@@ -26,17 +19,15 @@ namespace NursingHome.AI
         {
             spottedLures.Add(lure);
 
-            if(currentStrongestLure== null)
+            if(CurrentStrongestLure== null)
             {
-                currentStrongestLure = lure;
-                OnStrongestLureSet?.Invoke(currentStrongestLure);
+                CurrentStrongestLure = lure;
             }
             else
             {
-                if(lure.Prank.PrankPoints > currentStrongestLure.Prank.PrankPoints)
+                if(lure.Prank.PrankPoints > CurrentStrongestLure.Prank.PrankPoints)
                 {
-                    currentStrongestLure = lure;
-                    OnStrongestLureSet?.Invoke(currentStrongestLure);
+                    CurrentStrongestLure = lure;
                 }
             }
 

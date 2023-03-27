@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace NursingHome.AI
 {
-    public class PatrolState : MonoBehaviour, IState
+    public class PatrolState : StateBase, IState
     {
         [SerializeField]
         Transform[] waypoints;

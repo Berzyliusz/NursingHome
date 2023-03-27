@@ -1,69 +1,24 @@
+using NursingHome.Lures;
 using UnityEngine;
 
 namespace NursingHome.AI
 {
-
     public class AI : MonoBehaviour
     {
-        [SerializeField] LureDetector lureDetector;
+        [SerializeField]
+        LureDetector lureDetector;
+        [field:SerializeField]
+        public float InRangeDistance { get; private set; } = 0.2f;
+
+        public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
 
         LureProcessor lureProcessor;
 
-        IState patrolState;
-        IState idleState;
-
-        IState currentState;
-
         void Awake()
         {
-            idleState= GetComponent<IdleState>();
-            patrolState= GetComponent<PatrolState>();
-
             lureProcessor = new LureProcessor(lureDetector);
         }
 
-        void Start()
-        {
-            SwitchState(idleState);
-        }
 
-        void SwitchState(IState newState)
-        {
-            if (currentState != null)
-            {
-                currentState.EndState();
-            }
-
-            currentState = newState;
-            currentState.StartState();
-        }
-
-        void Update()
-        {
-            if (currentState == null)
-                return;
-
-            currentState.UpdateState();
-
-            if (currentState.IsStateDone())
-            {
-                IState newState = ChooseNewState();
-                SwitchState(newState);
-            }
-        }
-
-
-        bool wasPatrolling; // This is utterly retarded;
-        IState ChooseNewState()
-        {
-            IState newState;
-            if (wasPatrolling)
-                newState = idleState;
-            else
-                newState = patrolState;
-
-            wasPatrolling = !wasPatrolling;
-            return newState;
-        }
     }
 }
