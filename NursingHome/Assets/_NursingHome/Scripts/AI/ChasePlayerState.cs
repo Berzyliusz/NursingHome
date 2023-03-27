@@ -20,20 +20,22 @@ namespace NursingHome.AI
             Debug.Log("CHASE");
             player = Systems.Instance.Player;
             ai.Animator.SetBool(AnimationHashes.ChaseHash, true);
+            ai.NavAgent.speed = ai.ChaseSpeed;
             chaseTimer = maxChaseTime;
         }
 
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.ChaseHash, false);
-
+            ai.NavAgent.speed = ai.WalkSpeed;
             chaseTimer = float.MaxValue;
             distanceToTarget = float.MaxValue;
         }
 
         public bool IsStateDone()
         {
-            return chaseTimer >= 0 || distanceToTarget > distanceToGiveUpChase;
+            return false;
+            //return chaseTimer >= 0 || distanceToTarget > distanceToGiveUpChase;
         }
 
         public void UpdateState()
