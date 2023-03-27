@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lureDetector: {fileID: 3728691392075268831}
-  <InRangeDistance>k__BackingField: 0.2
+  <InRangeDistance>k__BackingField: 0.4
   <Animator>k__BackingField: {fileID: 95920329354498498}
   <NavAgent>k__BackingField: {fileID: 907868677}
 --- !u!114 &5843515233961032622

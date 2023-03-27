@@ -1,4 +1,6 @@
+using NursingHome.Interactions;
 using NursingHome.Lures;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +20,14 @@ namespace NursingHome.AI
 
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
         LureProcessor lureProcessor;
+
+        List<PrankParams> investigatedPranks = new List<PrankParams>();
+
+        public void OnPrankInvestigated()
+        {
+            investigatedPranks.Add(StrongestLure.Prank);
+            lureProcessor.ProcessNextPrank();            
+        }
 
         public bool HasLureDetected()
         {

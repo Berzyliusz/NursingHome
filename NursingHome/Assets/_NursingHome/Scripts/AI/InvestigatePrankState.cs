@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NursingHome.AI
 {
-    public class WorkState : StateBase, IState
+    public class InvestigatePrankState : StateBase, IState
     {
         [SerializeField] Vector2 workDurationMinMax = new Vector2(1, 5);
         [SerializeField] float rotationSpeed = 1.0f;
@@ -19,6 +19,9 @@ namespace NursingHome.AI
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.WorkHash, false);
+            workTimer = float.MaxValue;
+
+            ai.OnPrankInvestigated();
         }
 
         public bool IsStateDone()

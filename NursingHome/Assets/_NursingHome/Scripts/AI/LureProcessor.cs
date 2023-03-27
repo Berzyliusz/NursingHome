@@ -15,6 +15,25 @@ namespace NursingHome.AI
             detector.OnLureDetectionExit += HandleLureDetectionExit;
         }
 
+        public void ProcessNextPrank()
+        {
+            spottedLures.Remove(CurrentStrongestLure);
+            CurrentStrongestLure = null;
+
+            if (spottedLures.Count == 0)
+                return;
+
+            Lure strongestLure = spottedLures[0];
+
+            foreach(var lure in spottedLures)
+            {
+                if (lure.Prank.PrankPoints > strongestLure.Prank.PrankPoints)
+                    strongestLure = lure;
+            }
+
+            CurrentStrongestLure = strongestLure;
+        }
+
         void HandleLureDetectionEntered(Lure lure)
         {
             spottedLures.Add(lure);
