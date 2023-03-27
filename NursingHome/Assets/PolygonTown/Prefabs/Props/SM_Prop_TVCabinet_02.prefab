@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4338677648429880}
   - component: {fileID: 33270101799026718}
   - component: {fileID: 23197438213604376}
+  - component: {fileID: 9050049785192772839}
   m_Layer: 0
   m_Name: SM_Prop_TVCabinet_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4338677648429880
 Transform:
@@ -85,6 +86,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9050049785192772839
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008302923995122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6829776, y: 0.743484, z: 0.59319955}
+  m_Center: {x: 0, y: 0.371742, z: 0}
 --- !u!1 &1260772719406576
 GameObject:
   m_ObjectHideFlags: 0

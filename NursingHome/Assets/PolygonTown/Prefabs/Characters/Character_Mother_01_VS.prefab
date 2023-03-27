@@ -213,6 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lureDetector: {fileID: 3728691392075268831}
   <InRangeDistance>k__BackingField: 0.2
+  <Animator>k__BackingField: {fileID: 95920329354498498}
+  <NavAgent>k__BackingField: {fileID: 907868677}
 --- !u!114 &5843515233961032622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a12d9300a40e074db2b093e02211e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workDurationMinMax: {x: 1, y: 5}
+  rotationSpeed: 1
 --- !u!1 &1038632498111260
 GameObject:
   m_ObjectHideFlags: 0

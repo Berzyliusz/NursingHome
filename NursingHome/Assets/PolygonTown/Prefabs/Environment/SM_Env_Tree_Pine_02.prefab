@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4194245612832778}
   - component: {fileID: 33462719076309412}
   - component: {fileID: 23359761526723142}
-  - component: {fileID: 64062239492390970}
   m_Layer: 0
   m_Name: SM_Env_Tree_Pine_02
   m_TagString: Untagged
@@ -84,17 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64062239492390970
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248883933906782}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43240248389681404, guid: ae0bdc36990f0674ba5e1a3b161ea777, type: 2}

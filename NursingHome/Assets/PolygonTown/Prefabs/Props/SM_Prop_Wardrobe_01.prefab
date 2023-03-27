@@ -177,12 +177,13 @@ GameObject:
   - component: {fileID: 4405037667041956}
   - component: {fileID: 33731600626304708}
   - component: {fileID: 23538358862973156}
+  - component: {fileID: 5672491063310763224}
   m_Layer: 0
   m_Name: SM_Prop_Wardrobe_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4405037667041956
 Transform:
@@ -254,6 +255,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5672491063310763224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677048426986446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2420819, y: 1.888717, z: 0.5000018}
+  m_Center: {x: 0.00000029802322, y: 0.9443585, z: -0.03430511}
 --- !u!1 &1775949714043134
 GameObject:
   m_ObjectHideFlags: 0
