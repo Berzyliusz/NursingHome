@@ -9,14 +9,14 @@ namespace NursingHome.AI
         float searchTime = 10f;
         [SerializeField]
         Vector2 randomPointRanges = new Vector2(-5, 5);
+        [SerializeField]
+        float chaseDistance = 10f;
 
+        bool spottedPlayer;
         float searchTimer;
 
         public void StartState()
         {
-            // Check if player is in range or visible 
-            // if so, go to chase state
-            // else
             GoToRandomPointNearby();
             ai.Animator.SetBool(AnimationHashes.WalkHash, true);
 
@@ -26,6 +26,7 @@ namespace NursingHome.AI
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.WalkHash, false);
+            spottedPlayer = false;
         }
 
         public bool IsStateDone()
@@ -37,14 +38,24 @@ namespace NursingHome.AI
         {
             searchTimer -= Time.deltaTime;
 
-            if(Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.InRangeDistance)
+            if(Vector3.Distance(transform.position, Systems.Instance.Player.GetPlayerPosition()) < chaseDistance)
+            {
+                spottedPlayer = true;
+                return;
+            }
+
+            // TODO: Also look for and investigate patients
+            // Consider checking line of sight too
+
+            if (Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.InRangeDistance)
             {
                 GoToRandomPointNearby();
             }
+        }
 
-            // Look for player
-
-            // TODO: Also look for and investigate patients
+        public bool SpottedPlayer()
+        {
+            return spottedPlayer;
         }
 
         void GoToRandomPointNearby()

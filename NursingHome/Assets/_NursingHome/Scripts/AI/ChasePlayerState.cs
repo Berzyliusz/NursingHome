@@ -1,25 +1,31 @@
-﻿namespace NursingHome.AI
+﻿using UnityEngine;
+
+namespace NursingHome.AI
 {
     public class ChasePlayerState : StateBase, IState
     {
+        IPlayer player;
+
+        public void StartState()
+        {
+            // walk / run anim
+            Debug.Log("CHASE");
+            player = Systems.Instance.Player;
+        }
+
         public void EndState()
         {
-            throw new System.NotImplementedException();
+            // stop walk anim
         }
 
         public bool IsStateDone()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void StartState()
-        {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public void UpdateState()
         {
-            throw new System.NotImplementedException();
+            ai.NavAgent.SetDestination(player.GetPlayerPosition());
         }
     }
 }

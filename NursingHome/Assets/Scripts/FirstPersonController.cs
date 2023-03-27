@@ -89,6 +89,11 @@ namespace StarterAssets
 			}
 		}
 
+        public Vector3 GetPlayerPosition()
+        {
+            return transform.position;
+        }
+
         public void SetFreezePlayer(bool isFrozen)
         {
             freezePlayer = isFrozen;
