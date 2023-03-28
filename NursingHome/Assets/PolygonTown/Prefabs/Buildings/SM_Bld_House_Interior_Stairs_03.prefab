@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4813521848049654}
   - component: {fileID: 33271926031015400}
   - component: {fileID: 23229189936564372}
+  - component: {fileID: 9122153162092443519}
   m_Layer: 0
   m_Name: SM_Bld_House_Interior_Stairs_03
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9122153162092443519
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091551635668478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: bafdc41f1476f6644bae951e313949b5, type: 3}
