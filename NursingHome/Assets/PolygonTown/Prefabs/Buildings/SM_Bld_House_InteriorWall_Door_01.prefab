@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4274370554507324}
   - component: {fileID: 33817340005546272}
   - component: {fileID: 23329774550766750}
+  - component: {fileID: 7356784333126264266}
   - component: {fileID: 65156899723738834}
   - component: {fileID: 65465004244909514}
   - component: {fileID: 65735138809835496}
@@ -34,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4213143243783624}
+  - {fileID: 2841909350951602759}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,6 +89,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7356784333126264266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277292084947816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19341579e8a8c1419e5236f2a786f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors: {fileID: 4213143243783624}
 --- !u!65 &65156899723738834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152,8 +167,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634351802689424}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7439499, y: 0.01190729, z: 0.07011461}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.7500001, y: 0, z: 0.030000567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,3 +238,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0500414, y: 2.2724009, z: 0.237546}
   m_Center: {x: -0.5250206, y: 1.1362004, z: 0.06464121}
+--- !u!1 &3500089309730571807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2841909350951602759}
+  m_Layer: 0
+  m_Name: OutwardsPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2841909350951602759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500089309730571807}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.7500001, y: 0, z: 0.15999973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4274370554507324}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
