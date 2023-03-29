@@ -4,10 +4,11 @@ using NursingHome.Interactions;
 using StarterAssets;
 using Sirenix.OdinInspector;
 using NursingHome.Lures;
+using Audio;
+using NursingHome.Audio;
 
 namespace NursingHome
 {
-
     public class Systems : MonoBehaviour
     {
         public static Systems Instance { get; private set; }
@@ -17,12 +18,14 @@ namespace NursingHome
         [field: SerializeField]
         public InteractionDetector InteractionDetector { get; private set; }
 
+        //Todo: Make all those HARD dependencies be provided via externall bridge
+        // converting hard dependancies into interfaces
         [SerializeField]
         FirstPersonController playerController;
-
+        [SerializeField]
+        AudioPlayer audioPlayer;
         [SerializeField]
         ItemPicker itemPicker;
-
         [SerializeField]
         ItemUser itemUser;
 
@@ -33,6 +36,7 @@ namespace NursingHome
         public ITime Time { get; private set; }
         public IInteractionDetector interactionDetector { get; private set; }
         public ILureSpawner LureSpawner { get; private set; }
+        public IAudioSystem AudioSystem { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -47,6 +51,7 @@ namespace NursingHome
             Time = new TimeHandler();
             LureSpawner = new LureSpawner(itemUser, InteractionDetector);
             interactionDetector = InteractionDetector;
+            AudioSystem = new AudioSystem(audioPlayer);
         }
 
         void Start()
