@@ -34,12 +34,34 @@ namespace Utilities
         [FoldoutGroup("Door Params")]
         Transform outwardsLeftPivot;
 
+        [Button("Right Inwards", ButtonSizes.Large)]
+        void SetInwardRightPivot()
+        {
+            SetDoorPivot(DoorType.RightInwards);
+        }
 
-        [Button]
+        [Button("Right Outwards", ButtonSizes.Large)]
+        void SetOutwardRightPivot()
+        {
+            SetDoorPivot(DoorType.RightOutwards);
+        }
+
+        [Button("Left Inwards", ButtonSizes.Large)]
+        void SetInwardsLeftPivot()
+        {
+            SetDoorPivot(DoorType.LeftInwards);
+        }
+
+        [Button("Left Outwards", ButtonSizes.Large)]
+        void SetOutwardsLeftPivot()
+        {
+            SetDoorPivot(DoorType.LeftOutwards);
+        }
+
         void SetDoorPivot(DoorType doorType)
         {
             DisablePivot(inwardsRightPivot);
-            DisablePivot(outwardsLeftPivot);
+            DisablePivot(outwardsRightPivot);
             DisablePivot(outwardsLeftPivot);
             DisablePivot(inwardsLeftPivot);
 
@@ -76,9 +98,11 @@ namespace Utilities
                     return;
 
                 outwardsLeftPivot.localEulerAngles = new Vector3(0, 180, 0);
+
                 doors.parent = inwardsLeftPivot;
                 doors.localPosition = Vector3.zero;
                 doors.localEulerAngles = Vector3.zero;
+
                 doors.parent = outwardsLeftPivot;
                 outwardsLeftPivot.name = "DOOR " + outwardsLeftPivot.name;
                 outwardsLeftPivot.gameObject.SetActive(true);
@@ -101,7 +125,7 @@ namespace Utilities
 
         void DisablePivot(Transform pivotToDisable)
         {
-            pivotToDisable.name = inwardsRightPivot.name.Replace("DOOR ", string.Empty);
+            pivotToDisable.name = pivotToDisable.name.Replace("DOOR ", string.Empty);
             pivotToDisable.gameObject.SetActive(false);
         }
     }
