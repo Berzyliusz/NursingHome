@@ -44,6 +44,7 @@ namespace NursingHome.AI
         {
             chaseTimer -= Time.deltaTime;
             ai.NavAgent.SetDestination(player.GetPlayerPosition());
+            Systems.Instance.GameStateDispatcher.DispatchPlayerChased();
 
             distanceToTarget = Vector3.Distance(transform.position, player.GetPlayerPosition());
 
