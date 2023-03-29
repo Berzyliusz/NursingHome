@@ -24,22 +24,24 @@ namespace Audio
         [Tooltip("Used for changing the collections pitch and random pitch values")]
         [SerializeField][Range(0.0f, 2.0f)] float _pitch = 1.0f;
         [SerializeField][Range(0.0f, 1.0f)] float _pitchRandomValue = 0.0f;
-        [SerializeField] bool _randomPitch = false;
+        [SerializeField] bool _randomPitch;
+        [SerializeField] bool _looping;
         [Header("Clip Banks")]
         [Tooltip("Store AudioClips here under chosen bank number")]
         [SerializeField] ClipBank[] _audioClipBanks = new ClipBank[0];
         #endregion
 
         #region Getters
-        public ClipBank[] _AudioBanks { get { return _audioClipBanks; } }
-        public string _AudioGroup { get { return _audioGroup; } }
-        public float _Volume { get { return _volume; } }
-        public float _SpatialBlend { get { return _spatialBlend; } }
-        public int _Priority { get { return _priority; } }
-        public int _BankCount { get { return _audioClipBanks.Length; } }
-        public float _Pitch { get { return _pitch; } }
-        public float _PitchRandomValue { get { return _pitchRandomValue; } }
-        public bool _RandomPitch { get { return _randomPitch; } }
+        public ClipBank[] _AudioBanks => _audioClipBanks;
+        public string _AudioGroup => _audioGroup;
+        public float _Volume => _volume;
+        public float _SpatialBlend => _spatialBlend;
+        public int _Priority => _priority;
+        public int _BankCount => _audioClipBanks.Length;
+        public float _Pitch => _pitch;
+        public float _PitchRandomValue => _pitchRandomValue;
+        public bool _RandomPitch => _randomPitch;
+        public bool Looping => _looping;
         #endregion
 
         public AudioClip this[int i]

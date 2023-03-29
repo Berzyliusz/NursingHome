@@ -129,7 +129,7 @@ namespace Audio
         /// <param name="id"></param>
         /// <param name="volume"></param>
         /// <param name="fadeTime"></param>
-        public void SetSoundVolume(ulong id, float volume, float fadeTime = 0.0f, bool loopingSound = false)
+        public void SetSoundVolume(ulong id, float volume, float fadeTime = 0.0f)
         {
             AudioPoolItem activeSound;
             if (_activePool.TryGetValue(id, out activeSound))
