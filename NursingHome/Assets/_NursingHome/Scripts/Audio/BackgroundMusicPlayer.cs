@@ -20,6 +20,9 @@ namespace NursingHome.Audio
         const float musicCooldownTime = 5;
         float cooldownTimer = 0;
 
+        ulong currentMusicIndex;
+        ulong previousMusicIndex;
+
         IGameStateDispatcher gameStateDispatcher;
         readonly AudioCollection backgroundAudioCollection;
         private readonly AudioPlayer audioPlayer;
@@ -83,7 +86,9 @@ namespace NursingHome.Audio
             cooldownTimer = musicCooldownTime;
             currentMusicType = musicType;
 
-            audioPlayer.PlayOneShotSound(backgroundAudioCollection, (int)currentMusicType, Vector3.zero);
+            currentMusicIndex = audioPlayer.PlayOneShotSound(backgroundAudioCollection, (int)currentMusicType, Vector3.zero);
+            // set as looping
+
             // Fade out previous music
             // Fade in new music
         }

@@ -16,7 +16,6 @@ namespace Audio
         List<AudioPoolItem> _pool = new List<AudioPoolItem>();
         Dictionary<ulong, AudioPoolItem> _activePool = new Dictionary<ulong, AudioPoolItem>();
         ulong _idGiver = 1;
-        Transform _listnerPosition = null;
 
         void Awake()
         {
@@ -367,7 +366,7 @@ namespace Audio
                 return 0;
             }
 
-            float unimportance = (_listnerPosition.position - position).sqrMagnitude / Mathf.Max(1, priority);
+            float unimportance = (Camera.main.transform.position - position).sqrMagnitude / Mathf.Max(1, priority);
 
             int leastImportantIndex = -1;
             float leastImportanceValue = float.MinValue;

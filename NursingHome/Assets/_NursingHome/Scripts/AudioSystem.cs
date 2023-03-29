@@ -1,11 +1,11 @@
 ﻿using Audio;
+using UnityEngine;
 
 namespace NursingHome.Audio
 {
     public interface IAudioSystem : IUpdateable
     {
         IBackgroundMusicPlayer BackgroundPlayer { get; }
-
         // Expose common methods like Play, Pause, Stop etc.
     }
 
