@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 
 namespace Audio
 {
@@ -56,7 +55,6 @@ namespace Audio
             }
         }
 
-        #region Getters
         /// <summary>
         /// Gets a track volume of given track, or float min value, if track is not found
         /// </summary>
@@ -121,9 +119,7 @@ namespace Audio
 
             return -1.0f;
         }
-        #endregion
 
-        #region Setters
         /// <summary>
         /// Sets volume of sound. If time is passed, it will act as fader, between current value, and desired value
         /// </summary>
@@ -228,9 +224,55 @@ namespace Audio
             activeSound.AudioSource.volume = volume;
         }
 
-        #endregion
+        protected ulong ConfigurePoolObject(int poolIndex, AudioClip clip, AudioCollection collection, Vector3 position,
+            float startTime, bool ignoreListenerPause, float unimportance)
+        {
+            if (poolIndex < 0 || poolIndex >= _pool.Count)
+            {
+                return 0;
+            }
 
-        #region Internal Audio Playing and pool item configurations
+            AudioPoolItem poolItem = _pool[poolIndex];
+
+            if (poolItem.StopRoutine != null)
+                StopCoroutine(poolItem.StopRoutine);
+
+            _idGiver++;
+            AudioSource source = poolItem.AudioSource;
+            source.clip = clip;
+            source.volume = collection.Volume;
+            source.spatialBlend = collection._SpatialBlend;
+            source.ignoreListenerPause = ignoreListenerPause;
+            source.pitch = collection.Pitch;
+            source.maxDistance = maxDistance;
+            source.rolloffMode = rolloffMode;
+
+            if (collection.RandomPitch)
+            {
+                float randomValue = Random.Range(-collection.PitchRandomValue, collection.PitchRandomValue);
+                source.pitch += randomValue;
+            }
+
+            source.outputAudioMixerGroup = _tracks[collection.AudioGroup].Group;
+
+            source.transform.position = position;
+            poolItem.Playing = true;
+            poolItem.Unimportance = unimportance;
+            poolItem.ID = _idGiver;
+            source.time = Mathf.Min(startTime, source.clip.length);
+            poolItem.GameObject.SetActive(true);
+            poolItem.AudioSource.loop = collection.Looping;
+            source.Play();
+
+            if(!collection.Looping)
+            {
+                poolItem.StopRoutine = StopSoundDelayed(_idGiver, source.clip.length);
+                StartCoroutine(poolItem.StopRoutine);
+            }
+            _activePool[_idGiver] = poolItem;
+            return _idGiver;
+        }
+
         protected ulong ConfigurePoolObject(int poolIndex, string track, AudioClip clip, Vector3 position, float volume, float spatiaBlend,
             float unimportance, float startTime, bool ignoreListenerPause, float pitch, bool randomPitch, float pitchRandomValue)
         {
@@ -275,7 +317,6 @@ namespace Audio
             _activePool[_idGiver] = poolItem;
             return _idGiver;
         }
-        #endregion
 
         /// <summary>
         /// Stops sound after a given delay. 
@@ -298,7 +339,6 @@ namespace Audio
             }
         }
 
-        #region Playing / Paused getters
         /// <summary>
         /// Returns true, if audio if given ID is actually playing, and is not paused.
         /// </summary>
@@ -335,9 +375,7 @@ namespace Audio
 
             return false;
         }
-        #endregion
 
-        #region Playing Methods
         public ulong PlaySound(AudioClip clip, AudioCollection collection, Vector3 position, float startTime = 0.0f, bool ignoreListenerPause = false)
         {
             if (!_tracks.ContainsKey(collection.AudioGroup))
@@ -361,19 +399,7 @@ namespace Audio
 
                 if (!poolItem.Playing)
                 {
-                    return ConfigurePoolObject(
-                        i, 
-                        collection.AudioGroup, 
-                        clip, 
-                        position,
-                        collection.Volume,
-                        collection._SpatialBlend, 
-                        unimportance, 
-                        startTime, 
-                        ignoreListenerPause, 
-                        collection.Pitch, 
-                        collection.RandomPitch, 
-                        collection.PitchRandomValue);
+                    return ConfigurePoolObject(i, clip, collection, position, startTime, ignoreListenerPause, unimportance);
                 }
                 else if (poolItem.Unimportance > leastImportanceValue && !poolItem.AudioSource.loop)
                 {
@@ -384,136 +410,10 @@ namespace Audio
 
             if (leastImportanceValue > unimportance)
             {
-                return ConfigurePoolObject(
-                    leastImportantIndex,
-                    collection.AudioGroup,
-                    clip,
-                    position,
-                    collection.Volume,
-                    collection._SpatialBlend,
-                    unimportance,
-                    startTime,
-                    ignoreListenerPause,
-                    collection.Pitch,
-                    collection.RandomPitch,
-                    collection.PitchRandomValue);
+                return ConfigurePoolObject(leastImportantIndex, clip, collection, position, startTime, ignoreListenerPause, unimportance);
             }
 
             return 0;
         }
-
-
-        /// <summary>
-        /// Plays one shout sound If any of audio sources is available. If this sound if important, it will stop least important sound found, and play it. If its not important, 
-        /// and there is no free audio source, it will not be played at all.
-        /// </summary>
-        /// <param name="track">Audo Mixer track, that we want to play it onto</param>
-        /// <param name="clip">Audio Clip to be played</param>
-        /// <param name="position">Where do we want to play it</param>
-        /// <param name="volume"></param>
-        /// <param name="spatialBlend">2D or 3D sound?</param>
-        /// <param name="priority">Is this sound important?</param>
-        /// <param name="startTime"></param>
-        /// <param name="ignoreListenerPause">Should we still play if the pause is on?</param>
-        /// <param name="pitch">How high do we want to play this sound?</param>
-        /// <param name="randomPitch">Do we want to randomize the pitch?</param>
-        /// <param name="pitchRandomValue">How much we add or remove randomly from pitch?</param>
-        /// <returns></returns>
-        public ulong PlayOneShotSound(string track, AudioClip clip, Vector3 position, float volume, float spatialBlend,
-            int priority = 128, float startTime = 0.0f, bool ignoreListenerPause = false, float pitch = 1, bool randomPitch = false, float pitchRandomValue = 0)
-        {
-            if (!_tracks.ContainsKey(track))
-            {
-                return 0;
-            }
-
-            if (clip == null || volume.Equals(0.0f))
-            {
-                return 0;
-            }
-
-            float unimportance = (Camera.main.transform.position - position).sqrMagnitude / Mathf.Max(1, priority);
-
-            int leastImportantIndex = -1;
-            float leastImportanceValue = float.MinValue;
-
-            for (int i = 0; i < _pool.Count; i++)
-            {
-                AudioPoolItem poolItem = _pool[i];
-
-                if (!poolItem.Playing)
-                {
-                    return ConfigurePoolObject(i, track, clip, position, volume, spatialBlend, unimportance, startTime, ignoreListenerPause, pitch, randomPitch, pitchRandomValue);
-                }
-                else if (poolItem.Unimportance > leastImportanceValue && !poolItem.AudioSource.loop)
-                {
-                    leastImportanceValue = poolItem.Unimportance;
-                    leastImportantIndex = i;
-                }
-            }
-
-            if (leastImportanceValue > unimportance)
-            {
-                return ConfigurePoolObject(leastImportantIndex, track, clip, position, volume, spatialBlend, unimportance, startTime, ignoreListenerPause, pitch, randomPitch, pitchRandomValue);
-            }
-
-            return 0;
-        }
-
-        /// <summary>
-        /// Plays one shout sound If any of audio sources is available. If this sound if important, it will stop least important sound found, and play it. If its not important, 
-        /// and there is no free audio source, it will not be played at all.
-        /// </summary>
-        /// <param name="collection"></param>
-        /// <param name="bank"></param>
-        /// <param name="position"></param>
-        /// <param name="ignoreListenerPause"></param>
-        /// <returns></returns>
-        public ulong PlayOneShotSound(AudioCollection collection, int bank, Vector3 position, bool ignoreListenerPause = false)
-        {
-            return PlayOneShotSound
-                (
-                    collection.AudioGroup,
-                    collection[bank],
-                    position,
-                    collection.Volume,
-                    collection._SpatialBlend,
-                    collection.Priority,
-                    0.0f,
-                    ignoreListenerPause,
-                    collection.Pitch,
-                    collection.RandomPitch,
-                    collection.PitchRandomValue
-                    );
-        }
-
-        /// <summary>
-        /// Plays one shout sound If any of audio sources is available. If this sound if important, it will stop least important sound found, and play it. If its not important, 
-        /// and there is no free audio source, it will not be played at all.
-        /// </summary>
-        /// <param name="collection"></param>
-        /// <param name="clip"></param>
-        /// <param name="position"></param>
-        /// <param name="ignoreListenerPause"></param>
-        /// <returns></returns>
-        public ulong PlayOneShotSound(AudioCollection collection, AudioClip clip, Vector3 position, bool ignoreListenerPause = false)
-        {
-            return PlayOneShotSound
-                (
-                    collection.AudioGroup,
-                    clip,
-                    position,
-                    collection.Volume,
-                    collection._SpatialBlend,
-                    collection.Priority,
-                    0.0f,
-                    ignoreListenerPause,
-                    collection.Pitch,
-                    collection.RandomPitch,
-                    collection.PitchRandomValue
-                );
-        }
-
-        #endregion
     }
 }
