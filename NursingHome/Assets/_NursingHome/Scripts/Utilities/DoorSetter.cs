@@ -19,21 +19,33 @@ namespace Utilities
 
         [SerializeField]
         [FoldoutGroup("Door Params")]
-        Transform outwardsPivot;
+        Transform inwardsRightPivot;
 
+        [SerializeField]
+        [FoldoutGroup("Door Params")]
+        Transform outwardsRightPivot;
+
+        [Button]
         void SetDoorPivot(DoorType doorType)
         {
-
             if(doorType == DoorType.RightInwards)
             {
-                doors.parent = this.transform;
-                // set the "starting" local position for right
+                if (!inwardsRightPivot)
+                    return;
+
+                doors.parent = inwardsRightPivot;
+                doors.localPosition = Vector3.zero;
+                doors.localEulerAngles = Vector3.zero;
             }
 
             if(doorType == DoorType.RightOutwards)
             {
-                doors.parent = outwardsPivot;
-                // set the "starting" local position for right
+                if (!outwardsRightPivot)
+                    return;
+
+                doors.parent = outwardsRightPivot;
+                doors.localPosition = Vector3.zero;
+                doors.localEulerAngles = Vector3.zero;
             }
         }
     }
