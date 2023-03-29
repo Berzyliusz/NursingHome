@@ -2,9 +2,11 @@
 
 namespace NursingHome.Audio
 {
-    public interface IAudioSystem
+    public interface IAudioSystem : IUpdateable
     {
         IBackgroundMusicPlayer BackgroundPlayer { get; }
+
+        // Expose common methods like Play, Pause, Stop etc.
     }
 
     public class AudioSystem : IAudioSystem
@@ -21,5 +23,9 @@ namespace NursingHome.Audio
             // We need to pass here an audio collection with background music
         }
 
+        public void Update(float deltaTime)
+        {
+            BackgroundPlayer.Update(deltaTime);
+        }
     }
 }

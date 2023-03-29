@@ -2,10 +2,10 @@ using UnityEngine;
 using NursingHome.UserInterface;
 using NursingHome.Interactions;
 using StarterAssets;
-using Sirenix.OdinInspector;
 using NursingHome.Lures;
 using Audio;
 using NursingHome.Audio;
+using System.Collections.Generic;
 
 namespace NursingHome
 {
@@ -28,6 +28,8 @@ namespace NursingHome
         ItemPicker itemPicker;
         [SerializeField]
         ItemUser itemUser;
+
+        HashSet<IUpdateable> updateables = new HashSet<IUpdateable>();
 
         public IPlayer Player { get; private set; }
         public IInputs Inputs { get; private set; }
@@ -52,8 +54,10 @@ namespace NursingHome
             Time = new TimeHandler();
             LureSpawner = new LureSpawner(itemUser, InteractionDetector);
             interactionDetector = InteractionDetector;
-            AudioSystem = new AudioSystem(audioPlayer, GameStateDispatcher);
             GameStateDispatcher = new GameStateDispatcher();
+            AudioSystem = new AudioSystem(audioPlayer, GameStateDispatcher);
+
+            updateables.Add(AudioSystem);
         }
 
         void Start()
@@ -63,6 +67,14 @@ namespace NursingHome
             Time.SetTimeScale(1.0f);
             UISystem.ShowScreen(UIType.AimDot);
             interactionDetector.SetCanDetectInteraction(true);
+        }
+
+        void Update()
+        {
+            foreach(var updatable in updateables)
+            {
+                updatable.Update(UnityEngine.Time.deltaTime);
+            }
         }
     }
 }
