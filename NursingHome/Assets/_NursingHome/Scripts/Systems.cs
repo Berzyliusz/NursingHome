@@ -37,6 +37,7 @@ namespace NursingHome
         public IInteractionDetector interactionDetector { get; private set; }
         public ILureSpawner LureSpawner { get; private set; }
         public IAudioSystem AudioSystem { get; private set; }
+        public IGameStateDispatcher GameStateDispatcher { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
@@ -51,7 +52,8 @@ namespace NursingHome
             Time = new TimeHandler();
             LureSpawner = new LureSpawner(itemUser, InteractionDetector);
             interactionDetector = InteractionDetector;
-            AudioSystem = new AudioSystem(audioPlayer);
+            AudioSystem = new AudioSystem(audioPlayer, GameStateDispatcher);
+            GameStateDispatcher = new GameStateDispatcher();
         }
 
         void Start()

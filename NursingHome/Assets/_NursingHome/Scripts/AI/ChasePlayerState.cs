@@ -25,6 +25,7 @@ namespace NursingHome.AI
             ai.Animator.SetBool(AnimationHashes.ChaseHash, true);
             ai.NavAgent.speed = ai.ChaseSpeed;
             chaseTimer = maxChaseTime;
+            Systems.Instance.GameStateDispatcher.DispatchPlayerChased();
         }
 
         public void EndState()

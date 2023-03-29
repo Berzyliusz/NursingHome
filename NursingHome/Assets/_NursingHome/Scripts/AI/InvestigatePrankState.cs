@@ -14,6 +14,7 @@ namespace NursingHome.AI
         {
             workTimer = Random.Range(workDurationMinMax.x, workDurationMinMax.y);
             ai.Animator.SetBool(AnimationHashes.WorkHash, true);
+            Systems.Instance.GameStateDispatcher.DisptachPrankFound();
         }
 
         public void EndState()

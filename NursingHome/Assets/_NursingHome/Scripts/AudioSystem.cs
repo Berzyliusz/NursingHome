@@ -13,11 +13,11 @@ namespace NursingHome.Audio
 
         readonly AudioPlayer player;
 
-        public AudioSystem(AudioPlayer player)
+        public AudioSystem(AudioPlayer player, IGameStateDispatcher gameStateDispatcher)
         {
             this.player = player;
 
-            BackgroundPlayer = new BackgroundMusicPlayer();
+            BackgroundPlayer = new BackgroundMusicPlayer(gameStateDispatcher);
             // We need to pass here an audio collection with background music
         }
 
