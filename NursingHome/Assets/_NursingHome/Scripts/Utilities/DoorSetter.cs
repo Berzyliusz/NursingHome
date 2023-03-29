@@ -61,6 +61,7 @@ namespace Utilities
             SetDoorPivot(DoorType.LeftOutwards);
         }
 
+        [PropertySpace(40)]
         [Button("Open Halfway", ButtonSizes.Large)]
         void OpenHalfway()
         {
@@ -71,7 +72,7 @@ namespace Utilities
                     currentPivot.Rotate(0, -halfWayRotation, 0);
                     break;
                 case DoorType.LeftOutwards:
-                    currentPivot.Rotate(0, -halfWayRotation, 0);
+                    currentPivot.Rotate(0, halfWayRotation, 0);
                     break;
                 case DoorType.RightInwards:
                     currentPivot.Rotate(0, -halfWayRotation, 0);
@@ -85,7 +86,42 @@ namespace Utilities
         [Button("Open Fully", ButtonSizes.Large)]
         void OpenFully()
         {
+            float fullRotation = 145;
+            switch (currentDoorType)
+            {
+                case DoorType.LeftInwards:
+                    currentPivot.Rotate(0, -fullRotation, 0);
+                    break;
+                case DoorType.LeftOutwards:
+                    currentPivot.Rotate(0, fullRotation, 0);
+                    break;
+                case DoorType.RightInwards:
+                    currentPivot.Rotate(0, -fullRotation, 0);
+                    break;
+                case DoorType.RightOutwards:
+                    currentPivot.Rotate(0, fullRotation, 0);
+                    break;
+            }
+        }
 
+        [Button("Open By Degrees", ButtonSizes.Large)]
+        void OpenFully(float openingDegrees)
+        {
+            switch (currentDoorType)
+            {
+                case DoorType.LeftInwards:
+                    currentPivot.Rotate(0, -openingDegrees, 0);
+                    break;
+                case DoorType.LeftOutwards:
+                    currentPivot.Rotate(0, openingDegrees, 0);
+                    break;
+                case DoorType.RightInwards:
+                    currentPivot.Rotate(0, -openingDegrees, 0);
+                    break;
+                case DoorType.RightOutwards:
+                    currentPivot.Rotate(0, openingDegrees, 0);
+                    break;
+            }
         }
 
         void SetDoorPivot(DoorType doorType)
