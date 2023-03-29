@@ -28,6 +28,9 @@ namespace NursingHome
         ItemPicker itemPicker;
         [SerializeField]
         ItemUser itemUser;
+        [SerializeField]
+        AudioCollection backgroundAudioCollection;
+        // Really, get this from some kind of game params
 
         HashSet<IUpdateable> updateables = new HashSet<IUpdateable>();
 

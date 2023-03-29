@@ -8,7 +8,7 @@ namespace Audio
     {
         [Tooltip("Debug name, just for orientation and easy finding of necessities")]
         public string Name = string.Empty;
-        public List<AudioClip> Clips = new List<AudioClip>();
+        public AudioClip[] Clips = new AudioClip[0];
     }
 
     [CreateAssetMenu(fileName = "AudioCollection", menuName = "Audio/AudioCollection", order = 0)]
@@ -27,16 +27,16 @@ namespace Audio
         [SerializeField] bool _randomPitch = false;
         [Header("Clip Banks")]
         [Tooltip("Store AudioClips here under chosen bank number")]
-        [SerializeField] List<ClipBank> _audioClipBanks = new List<ClipBank>();
+        [SerializeField] ClipBank[] _audioClipBanks = new ClipBank[0];
         #endregion
 
         #region Getters
-        public List<ClipBank> _AudioBanks { get { return _audioClipBanks; } }
+        public ClipBank[] _AudioBanks { get { return _audioClipBanks; } }
         public string _AudioGroup { get { return _audioGroup; } }
         public float _Volume { get { return _volume; } }
         public float _SpatialBlend { get { return _spatialBlend; } }
         public int _Priority { get { return _priority; } }
-        public int _BankCount { get { return _audioClipBanks.Count; } }
+        public int _BankCount { get { return _audioClipBanks.Length; } }
         public float _Pitch { get { return _pitch; } }
         public float _PitchRandomValue { get { return _pitchRandomValue; } }
         public bool _RandomPitch { get { return _randomPitch; } }
@@ -46,10 +46,10 @@ namespace Audio
         {
             get
             {
-                if (_audioClipBanks == null || _audioClipBanks.Count <= i) return null;
-                if (_audioClipBanks[i].Clips.Count == 0) return null;
+                if (_audioClipBanks == null || _audioClipBanks.Length <= i) return null;
+                if (_audioClipBanks[i].Clips.Length == 0) return null;
 
-                int randomNumId = Random.Range(0, _audioClipBanks[i].Clips.Count);
+                int randomNumId = Random.Range(0, _audioClipBanks[i].Clips.Length);
                 AudioClip clip = _audioClipBanks[i].Clips[randomNumId];
                 return clip;
             }
@@ -59,13 +59,11 @@ namespace Audio
         {
             get
             {
-                if (_audioClipBanks == null || _audioClipBanks.Count == 0) return null;
-                if (_audioClipBanks[0].Clips.Count == 0) return null;
+                if (_audioClipBanks == null || _audioClipBanks.Length == 0) return null;
+                if (_audioClipBanks[0].Clips.Length == 0) return null;
 
-                List<AudioClip> clipList = _audioClipBanks[0].Clips;
-                int randomNumId = Random.Range(0, clipList.Count);
-
-                AudioClip clip = clipList[randomNumId];
+                int randomNumId = Random.Range(0, _audioClipBanks[0].Clips.Length);
+                AudioClip clip = _audioClipBanks[0].Clips[randomNumId];
                 return clip;
             }
         }
