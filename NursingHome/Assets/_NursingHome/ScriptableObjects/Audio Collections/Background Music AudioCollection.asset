@@ -19,6 +19,7 @@ MonoBehaviour:
   _pitch: 1
   _pitchRandomValue: 0
   _randomPitch: 0
+  _looping: 1
   _audioClipBanks:
   - Name: Exploration
     Clips:

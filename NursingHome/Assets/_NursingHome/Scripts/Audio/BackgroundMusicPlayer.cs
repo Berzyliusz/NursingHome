@@ -1,5 +1,6 @@
 ﻿using Audio;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace NursingHome.Audio
 {
@@ -86,8 +87,7 @@ namespace NursingHome.Audio
             cooldownTimer = musicCooldownTime;
             currentMusicType = musicType;
 
-            currentMusicIndex = audioPlayer.PlayOneShotSound(backgroundAudioCollection, (int)currentMusicType, Vector3.zero);
-            // set as looping
+            currentMusicIndex = audioPlayer.PlaySound(backgroundAudioCollection[(int)currentMusicIndex], backgroundAudioCollection, Vector3.zero);
 
             // Fade out previous music
             // Fade in new music

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 namespace Audio
 {
@@ -337,6 +338,71 @@ namespace Audio
         #endregion
 
         #region Playing Methods
+        public ulong PlaySound(AudioClip clip, AudioCollection collection, Vector3 position, float startTime = 0.0f, bool ignoreListenerPause = false)
+        {
+            if (!_tracks.ContainsKey(collection.AudioGroup))
+            {
+                return 0;
+            }
+
+            if (clip == null || collection.Volume.Equals(0.0f))
+            {
+                return 0;
+            }
+
+            float unimportance = (Camera.main.transform.position - position).sqrMagnitude / Mathf.Max(1, collection.Priority);
+
+            int leastImportantIndex = -1;
+            float leastImportanceValue = float.MinValue;
+
+            for (int i = 0; i < _pool.Count; i++)
+            {
+                AudioPoolItem poolItem = _pool[i];
+
+                if (!poolItem.Playing)
+                {
+                    return ConfigurePoolObject(
+                        i, 
+                        collection.AudioGroup, 
+                        clip, 
+                        position,
+                        collection.Volume,
+                        collection._SpatialBlend, 
+                        unimportance, 
+                        startTime, 
+                        ignoreListenerPause, 
+                        collection.Pitch, 
+                        collection.RandomPitch, 
+                        collection.PitchRandomValue);
+                }
+                else if (poolItem.Unimportance > leastImportanceValue && !poolItem.AudioSource.loop)
+                {
+                    leastImportanceValue = poolItem.Unimportance;
+                    leastImportantIndex = i;
+                }
+            }
+
+            if (leastImportanceValue > unimportance)
+            {
+                return ConfigurePoolObject(
+                    leastImportantIndex,
+                    collection.AudioGroup,
+                    clip,
+                    position,
+                    collection.Volume,
+                    collection._SpatialBlend,
+                    unimportance,
+                    startTime,
+                    ignoreListenerPause,
+                    collection.Pitch,
+                    collection.RandomPitch,
+                    collection.PitchRandomValue);
+            }
+
+            return 0;
+        }
+
+
         /// <summary>
         /// Plays one shout sound If any of audio sources is available. If this sound if important, it will stop least important sound found, and play it. If its not important, 
         /// and there is no free audio source, it will not be played at all.
@@ -407,17 +473,17 @@ namespace Audio
         {
             return PlayOneShotSound
                 (
-                    collection._AudioGroup,
+                    collection.AudioGroup,
                     collection[bank],
                     position,
-                    collection._Volume,
+                    collection.Volume,
                     collection._SpatialBlend,
-                    collection._Priority,
+                    collection.Priority,
                     0.0f,
                     ignoreListenerPause,
-                    collection._Pitch,
-                    collection._RandomPitch,
-                    collection._PitchRandomValue
+                    collection.Pitch,
+                    collection.RandomPitch,
+                    collection.PitchRandomValue
                     );
         }
 
@@ -434,17 +500,17 @@ namespace Audio
         {
             return PlayOneShotSound
                 (
-                    collection._AudioGroup,
+                    collection.AudioGroup,
                     clip,
                     position,
-                    collection._Volume,
+                    collection.Volume,
                     collection._SpatialBlend,
-                    collection._Priority,
+                    collection.Priority,
                     0.0f,
                     ignoreListenerPause,
-                    collection._Pitch,
-                    collection._RandomPitch,
-                    collection._PitchRandomValue
+                    collection.Pitch,
+                    collection.RandomPitch,
+                    collection.PitchRandomValue
                 );
         }
 

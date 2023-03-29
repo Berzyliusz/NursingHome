@@ -33,14 +33,14 @@ namespace Audio
 
         #region Getters
         public ClipBank[] _AudioBanks => _audioClipBanks;
-        public string _AudioGroup => _audioGroup;
-        public float _Volume => _volume;
+        public string AudioGroup => _audioGroup;
+        public float Volume => _volume;
         public float _SpatialBlend => _spatialBlend;
-        public int _Priority => _priority;
-        public int _BankCount => _audioClipBanks.Length;
-        public float _Pitch => _pitch;
-        public float _PitchRandomValue => _pitchRandomValue;
-        public bool _RandomPitch => _randomPitch;
+        public int Priority => _priority;
+        public int BankCount => _audioClipBanks.Length;
+        public float Pitch => _pitch;
+        public float PitchRandomValue => _pitchRandomValue;
+        public bool RandomPitch => _randomPitch;
         public bool Looping => _looping;
         #endregion
 
