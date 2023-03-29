@@ -25,7 +25,6 @@ namespace NursingHome.AI
             ai.Animator.SetBool(AnimationHashes.ChaseHash, true);
             ai.NavAgent.speed = ai.ChaseSpeed;
             chaseTimer = maxChaseTime;
-            Systems.Instance.GameStateDispatcher.DispatchPlayerChased();
         }
 
         public void EndState()
@@ -45,6 +44,7 @@ namespace NursingHome.AI
         {
             chaseTimer -= Time.deltaTime;
             ai.NavAgent.SetDestination(player.GetPlayerPosition());
+            Systems.Instance.GameStateDispatcher.DispatchPlayerChased();
 
             distanceToTarget = Vector3.Distance(transform.position, player.GetPlayerPosition());
 

@@ -14,7 +14,6 @@ namespace NursingHome.AI
         {
             workTimer = Random.Range(workDurationMinMax.x, workDurationMinMax.y);
             ai.Animator.SetBool(AnimationHashes.WorkHash, true);
-            Systems.Instance.GameStateDispatcher.DisptachPrankFound();
         }
 
         public void EndState()
@@ -33,6 +32,7 @@ namespace NursingHome.AI
         public void UpdateState()
         {
             workTimer -= Time.deltaTime;
+            Systems.Instance.GameStateDispatcher.DisptachPrankFound();
 
             var lureWaypoint = ai.StrongestLure.Waypoint;
             var lureRotation = lureWaypoint.transform.rotation;

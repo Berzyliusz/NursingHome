@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-
-namespace NursingHome.Audio
+﻿namespace NursingHome.Audio
 {
     public interface IBackgroundMusicPlayer : IUpdateable
     {
@@ -37,19 +34,13 @@ namespace NursingHome.Audio
 
         public void Update(float deltaTime)
         {
-            if(Input.GetKey(KeyCode.Space))
-            {
-                Debug.Log("Playing music: " + currentMusicType);
-            }
-
             if (currentMusicType == BackgroundMusicType.Exploration)
                 return;
 
             cooldownTimer -= deltaTime;
             if(cooldownTimer <= 0 )
             {
-                currentMusicType = (BackgroundMusicType)Mathf.Max((int)currentMusicType--, 0);
-                SwitchMusicTo(currentMusicType);
+                SwitchMusicTo(BackgroundMusicType.Exploration);
             }
         }
 
@@ -59,6 +50,10 @@ namespace NursingHome.Audio
             {
                 SwitchMusicTo(BackgroundMusicType.Chase);
             }
+            else
+            {
+                cooldownTimer = musicCooldownTime;
+            }
         }
 
         void HandlePrankFound()
@@ -67,11 +62,14 @@ namespace NursingHome.Audio
             {
                 SwitchMusicTo(BackgroundMusicType.Searching);
             }
+            else
+            {
+                cooldownTimer = musicCooldownTime;
+            }
         }
 
         void SwitchMusicTo(BackgroundMusicType musicType)
         {
-            Debug.Log("Switching music from: " + currentMusicType + " to: " + musicType);
             cooldownTimer = musicCooldownTime;
             currentMusicType = musicType;
 
