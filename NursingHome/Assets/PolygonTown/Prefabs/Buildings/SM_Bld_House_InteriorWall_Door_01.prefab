@@ -173,12 +173,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634351802689424}
-  m_LocalRotation: {x: 0, y: 0.00000007549789, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000046547223, y: 0, z: -0.12999961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6603402906863260308}
+  m_Father: {fileID: 1834094851973848942}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33351476556249006
@@ -316,12 +316,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6603402906863260308}
   m_Layer: 0
-  m_Name: DOOR Outward Left Pivot
+  m_Name: Outward Left Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6603402906863260308
 Transform:
   m_ObjectHideFlags: 0
@@ -333,8 +333,7 @@ Transform:
   m_LocalPosition: {x: -1.8, y: 0, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4213143243783624}
+  m_Children: []
   m_Father: {fileID: 4274370554507324}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -348,12 +347,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1834094851973848942}
   m_Layer: 0
-  m_Name: Inward Right Pivot
+  m_Name: DOOR Inward Right Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1834094851973848942
 Transform:
   m_ObjectHideFlags: 0
@@ -365,7 +364,8 @@ Transform:
   m_LocalPosition: {x: -0.7450009, y: 0, z: 0.030000627}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4213143243783624}
   m_Father: {fileID: 4274370554507324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

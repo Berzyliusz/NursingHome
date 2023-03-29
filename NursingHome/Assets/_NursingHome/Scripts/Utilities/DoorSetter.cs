@@ -34,6 +34,9 @@ namespace Utilities
         [FoldoutGroup("Door Params")]
         Transform outwardsLeftPivot;
 
+        DoorType currentDoorType;
+        Transform currentPivot;
+
         [Button("Right Inwards", ButtonSizes.Large)]
         void SetInwardRightPivot()
         {
@@ -58,12 +61,41 @@ namespace Utilities
             SetDoorPivot(DoorType.LeftOutwards);
         }
 
+        [Button("Open Halfway", ButtonSizes.Large)]
+        void OpenHalfway()
+        {
+            float halfWayRotation = 90;
+            switch(currentDoorType)
+            {
+                case DoorType.LeftInwards:
+                    currentPivot.Rotate(0, -halfWayRotation, 0);
+                    break;
+                case DoorType.LeftOutwards:
+                    currentPivot.Rotate(0, -halfWayRotation, 0);
+                    break;
+                case DoorType.RightInwards:
+                    currentPivot.Rotate(0, -halfWayRotation, 0);
+                    break;
+                case DoorType.RightOutwards:
+                    currentPivot.Rotate(0, halfWayRotation, 0);
+                    break;
+            }
+        }
+
+        [Button("Open Fully", ButtonSizes.Large)]
+        void OpenFully()
+        {
+
+        }
+
         void SetDoorPivot(DoorType doorType)
         {
             DisablePivot(inwardsRightPivot);
             DisablePivot(outwardsRightPivot);
             DisablePivot(outwardsLeftPivot);
             DisablePivot(inwardsLeftPivot);
+
+            currentDoorType = doorType;
 
             if (doorType == DoorType.RightInwards)
             {
@@ -76,6 +108,7 @@ namespace Utilities
                 doors.localEulerAngles = Vector3.zero;
                 inwardsRightPivot.name = "DOOR " + inwardsRightPivot.name;
                 inwardsRightPivot.gameObject.SetActive(true);
+                currentPivot = inwardsRightPivot;
             }
 
             if (doorType == DoorType.RightOutwards)
@@ -90,6 +123,7 @@ namespace Utilities
                 doors.parent = outwardsRightPivot;
                 outwardsRightPivot.name = "DOOR " + outwardsRightPivot.name;
                 outwardsRightPivot.gameObject.SetActive(true);
+                currentPivot = outwardsRightPivot;
             }
 
             if (doorType == DoorType.LeftOutwards)
@@ -106,6 +140,7 @@ namespace Utilities
                 doors.parent = outwardsLeftPivot;
                 outwardsLeftPivot.name = "DOOR " + outwardsLeftPivot.name;
                 outwardsLeftPivot.gameObject.SetActive(true);
+                currentPivot = outwardsLeftPivot;
 
             }
 
@@ -120,6 +155,7 @@ namespace Utilities
                 doors.localEulerAngles = Vector3.zero;
                 inwardsLeftPivot.name = "DOOR " + inwardsLeftPivot.name;
                 inwardsLeftPivot.gameObject.SetActive(true);
+                currentPivot = inwardsLeftPivot;
             }
         }
 
