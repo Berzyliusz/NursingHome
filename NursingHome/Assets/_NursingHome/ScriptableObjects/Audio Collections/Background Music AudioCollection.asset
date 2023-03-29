@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e20e64065d2014cbdce60f6ddcbca8, type: 3}
   m_Name: Background Music AudioCollection
   m_EditorClassIdentifier: 
-  _audioGroup: 
+  _audioGroup: Master
   _volume: 0.5
   _spatialBlend: 1
   _priority: 128

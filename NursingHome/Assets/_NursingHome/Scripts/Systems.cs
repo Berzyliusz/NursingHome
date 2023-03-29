@@ -58,7 +58,7 @@ namespace NursingHome
             LureSpawner = new LureSpawner(itemUser, InteractionDetector);
             interactionDetector = InteractionDetector;
             GameStateDispatcher = new GameStateDispatcher();
-            AudioSystem = new AudioSystem(audioPlayer, GameStateDispatcher);
+            AudioSystem = new AudioSystem(audioPlayer, GameStateDispatcher, backgroundAudioCollection);
 
             updateables.Add(AudioSystem);
         }
@@ -70,6 +70,8 @@ namespace NursingHome
             Time.SetTimeScale(1.0f);
             UISystem.ShowScreen(UIType.AimDot);
             interactionDetector.SetCanDetectInteraction(true);
+
+            AudioSystem.BackgroundPlayer.StartBackgroundMusic();
         }
 
         void Update()
