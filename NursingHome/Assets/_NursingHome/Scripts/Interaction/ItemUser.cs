@@ -6,7 +6,7 @@ namespace NursingHome.Interactions
     public class ItemUser : InteractionReceiverBase
     {
         public event Action<ItemParams, PrankParams> OnItemUsed;
-        Dictionary<InteractableItem, PrankParams> performedPranks = new Dictionary<InteractableItem, PrankParams>();
+        Dictionary<UsableItem, PrankParams> performedPranks = new Dictionary<UsableItem, PrankParams>();
 
         protected override void HandleInteractionDetected(InteractableItem interactedItem)
         {
@@ -29,21 +29,21 @@ namespace NursingHome.Interactions
 
             if(inputs.Use)
             {
-                var interactedItem = Systems.Instance.InteractionDetector.SelectedItem;
+                var usedItem = Systems.Instance.InteractionDetector.GetUsableItem();
 
                 //Todo: Rework, so we can have multiple performed pranks per item.
-                if(!performedPranks.ContainsKey(interactedItem))
+                if(!performedPranks.ContainsKey(usedItem))
                 {
-                    performedPranks[interactedItem] = chosenPrank;
-                    interactedItem.UseItem();
-                    OnItemUsed?.Invoke(interactedItem.ItemParams, chosenPrank);
+                    performedPranks[usedItem] = chosenPrank;
+                    usedItem.UseItem();
+                    OnItemUsed?.Invoke(usedItem.ItemParams, chosenPrank);
                 }
             }
         }
 
         PrankParams ChoosePrankToUse()
         {
-            var pranks = Systems.Instance.Inventory.GetAvailablePranksForItem(Systems.Instance.InteractionDetector.SelectedItem.ItemParams);
+            var pranks = Systems.Instance.Inventory.GetAvailablePranksForItem(Systems.Instance.InteractionDetector.GetUsableItem().ItemParams);
             // TODO: Add scroll to choose item, highlight it too.
 
             if (pranks == null || pranks.Count == 0)

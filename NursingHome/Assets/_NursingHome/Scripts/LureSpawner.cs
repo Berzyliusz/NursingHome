@@ -21,18 +21,14 @@ namespace NursingHome.Lures
 
         void HandleItemUsed(ItemParams itemParams, PrankParams prankParams)
         {
-            var selectedItem = interactionDetector.SelectedItem;
+            var selectedItem = interactionDetector.GetUsableItem();
 
-            if(selectedItem is UsableItem)
+            if(selectedItem)
             {
                 var usableItem = (UsableItem)selectedItem;
                 var parent = usableItem.Waypoint == null ? usableItem.transform : usableItem.Waypoint.transform;
                 Lure lure = CreateLureObject(parent, prankParams);
                 lure.SetupLure(prankParams, parent);
-            }
-            else
-            {
-                throw new InvalidCastException("Lures can only be spawned on usable items!");
             }
         }
 
@@ -47,11 +43,11 @@ namespace NursingHome.Lures
             lureObj.transform.parent = parent;
             lureObj.transform.localPosition = Vector3.zero;
 
-            Lure lure = AddComponentsToLure(prank, lureObj);
+            Lure lure = AddComponentsToLure(lureObj);
             return lure;
         }
 
-        Lure AddComponentsToLure(PrankParams prank, GameObject lureObj)
+        Lure AddComponentsToLure(GameObject lureObj)
         {
             var lure = lureObj.AddComponent<Lure>();
             var trigger = lureObj.AddComponent<SphereCollider>();

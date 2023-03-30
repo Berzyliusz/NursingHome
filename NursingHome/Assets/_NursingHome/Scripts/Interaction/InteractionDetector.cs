@@ -7,8 +7,9 @@ namespace NursingHome.Interactions
 {
     public interface IInteractionDetector
     {
-        InteractableItem SelectedItem { get; }
         void SetCanDetectInteraction(bool canDetectInteraction);
+        PickupItem GetPickupItem();
+        UsableItem GetUsableItem();
     }
 
     public class InteractionDetector : MonoBehaviour, IInteractionDetector
@@ -19,7 +20,7 @@ namespace NursingHome.Interactions
         public static event Action<InteractableItem> OnInteractionDetected;
         public event Action<InteractableItem> OnInteracted;
 
-        public InteractableItem SelectedItem { get; private set; }
+        InteractableItem selectedItem;
         InteractableItem previousItem;
 
         bool canDetect;
@@ -31,7 +32,7 @@ namespace NursingHome.Interactions
             canDetect = canDetectInteraction;
 
             if(!canDetect)
-                SelectedItem= null;
+                selectedItem= null;
         }
 
         void Update()
@@ -49,19 +50,35 @@ namespace NursingHome.Interactions
                     cachedItems[hit.transform] = hit.transform.GetComponent<InteractableItem>();
                 }
 
-                SelectedItem = cachedItems[hit.transform];
+                selectedItem = cachedItems[hit.transform];
             }
             else
             {
-                SelectedItem = null;
+                selectedItem = null;
             }
 
-            if (SelectedItem != previousItem)
+            if (selectedItem != previousItem)
             {
-                OnInteractionDetected?.Invoke(SelectedItem);
-                OnInteracted?.Invoke(SelectedItem);
-                previousItem = SelectedItem;
+                OnInteractionDetected?.Invoke(selectedItem);
+                OnInteracted?.Invoke(selectedItem);
+                previousItem = selectedItem;
             }
+        }
+
+        public PickupItem GetPickupItem()
+        {
+            if(selectedItem is PickupItem)
+                return (PickupItem)selectedItem;
+
+            return null;
+        }
+
+        public UsableItem GetUsableItem()
+        {
+            if(selectedItem is UsableItem)
+                return (UsableItem)selectedItem;
+
+            return null;
         }
     }
 }

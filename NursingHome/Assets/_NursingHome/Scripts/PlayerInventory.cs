@@ -7,10 +7,10 @@ namespace NursingHome
 {
     public class PlayerInventory
     {
-        public event Action<ItemParams> OnItemAdded;
+        public event Action<Item> OnItemAdded;
 
-        public List<ItemParams> Items { get; private set; } = new List<ItemParams>();
-        Dictionary<PrankParams, ItemParams> itemsByPranks = new Dictionary<PrankParams, ItemParams>();
+        public List<Item> Items { get; private set; } = new List<Item>();
+        Dictionary<PrankParams, Item> itemsByPranks = new Dictionary<PrankParams, Item>();
         UIParams uiParams;
 
         public PlayerInventory(ItemPicker picker)
@@ -33,12 +33,12 @@ namespace NursingHome
             return result;
         }
 
-        void HandleItemPicked(ItemParams pickedItem)
+        void HandleItemPicked(Item pickedItem)
         {
             OnItemAdded?.Invoke(pickedItem);
             Items.Add(pickedItem);
 
-            foreach(var prank in pickedItem.PrankParams)
+            foreach(var prank in pickedItem.ItemParams.PrankParams)
             {
                 itemsByPranks[prank] = pickedItem;
             }
@@ -47,7 +47,7 @@ namespace NursingHome
             uiParams.Names = new string[Items.Count];
             for(int i = 0; i < Items.Count; i++)
             {
-                uiParams.Names[i] = Items[i].ItemName;
+                uiParams.Names[i] = Items[i].ItemParams.ItemName;
             }
 
             Systems.Instance.UISystem.UpdateScreen(UIType.Inventory, uiParams);
