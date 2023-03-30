@@ -15,7 +15,7 @@ namespace NursingHome.Interactions
             enabled = false;
         }
 
-        protected virtual void HandleInteractionDetected(InteractableItem interactedItem)
+        protected virtual void HandleInteractionDetected(InteractableElement interactedItem)
         {
 
         }

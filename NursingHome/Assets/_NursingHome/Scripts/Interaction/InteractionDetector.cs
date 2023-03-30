@@ -8,8 +8,8 @@ namespace NursingHome.Interactions
     public interface IInteractionDetector
     {
         void SetCanDetectInteraction(bool canDetectInteraction);
-        PickupItem GetPickupItem();
-        UsableItem GetUsableItem();
+        PickupElement GetPickupElement();
+        UsableElement GetUsableElement();
     }
 
     public class InteractionDetector : MonoBehaviour, IInteractionDetector
@@ -17,15 +17,15 @@ namespace NursingHome.Interactions
         [SerializeField] float rayLength = 0.5f;
         [SerializeField] LayerMask layerMask;
 
-        public static event Action<InteractableItem> OnInteractionDetected;
-        public event Action<InteractableItem> OnInteracted;
+        public static event Action<InteractableElement> OnInteractionDetected;
+        public event Action<InteractableElement> OnInteracted;
 
-        InteractableItem selectedItem;
-        InteractableItem previousItem;
+        InteractableElement selectedItem;
+        InteractableElement previousItem;
 
         bool canDetect;
 
-        Dictionary<Transform, InteractableItem> cachedItems = new Dictionary<Transform, InteractableItem>();
+        Dictionary<Transform, InteractableElement> cachedItems = new Dictionary<Transform, InteractableElement>();
 
         public void SetCanDetectInteraction(bool canDetectInteraction)
         {
@@ -47,7 +47,7 @@ namespace NursingHome.Interactions
             {
                 if(!cachedItems.ContainsKey(hit.transform))
                 {
-                    cachedItems[hit.transform] = hit.transform.GetComponent<InteractableItem>();
+                    cachedItems[hit.transform] = hit.transform.GetComponent<InteractableElement>();
                 }
 
                 selectedItem = cachedItems[hit.transform];
@@ -65,18 +65,18 @@ namespace NursingHome.Interactions
             }
         }
 
-        public PickupItem GetPickupItem()
+        public PickupElement GetPickupElement()
         {
-            if(selectedItem is PickupItem)
-                return (PickupItem)selectedItem;
+            if(selectedItem is PickupElement)
+                return (PickupElement)selectedItem;
 
             return null;
         }
 
-        public UsableItem GetUsableItem()
+        public UsableElement GetUsableElement()
         {
-            if(selectedItem is UsableItem)
-                return (UsableItem)selectedItem;
+            if(selectedItem is UsableElement)
+                return ((UsableElement)selectedItem);
 
             return null;
         }

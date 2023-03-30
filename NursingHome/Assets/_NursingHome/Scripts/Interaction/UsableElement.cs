@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace NursingHome.Interactions
 {
-    public class UsableItem : InteractableItem
+    public class UsableElement : InteractableElement
     {
         public override string DisplayName => ItemParams.ItemName;
 
@@ -20,7 +20,7 @@ namespace NursingHome.Interactions
         [InlineEditor]
         UsableItemParams itemParams;
 
-        public override void UseItem()
+        public override void UseElement()
         {
             onItemUsed?.Invoke();
         }

@@ -21,11 +21,11 @@ namespace NursingHome.Lures
 
         void HandleItemUsed(ItemParams itemParams, PrankParams prankParams)
         {
-            var selectedItem = interactionDetector.GetUsableItem();
+            var selectedItem = interactionDetector.GetUsableElement();
 
             if(selectedItem)
             {
-                var usableItem = (UsableItem)selectedItem;
+                var usableItem = (UsableElement)selectedItem;
                 var parent = usableItem.Waypoint == null ? usableItem.transform : usableItem.Waypoint.transform;
                 Lure lure = CreateLureObject(parent, prankParams);
                 lure.SetupLure(prankParams, parent);

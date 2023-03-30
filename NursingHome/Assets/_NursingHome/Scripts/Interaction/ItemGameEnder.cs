@@ -5,7 +5,7 @@ using NursingHome.UserInterface;
 
 public class ItemGameEnder : InteractionReceiverBase
 {
-    protected override void HandleInteractionDetected(InteractableItem interactedItem)
+    protected override void HandleInteractionDetected(InteractableElement interactedItem)
     {
         if (interactedItem == null || !interactedItem.gameObject.CompareTag(Tags.Respawn))
         {

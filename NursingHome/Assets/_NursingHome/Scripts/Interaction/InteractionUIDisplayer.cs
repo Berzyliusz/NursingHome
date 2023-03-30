@@ -17,7 +17,7 @@ namespace NursingHome.Interactions
             InteractionDetector.OnInteractionDetected -= HandleInteractionDetected;
         }
 
-        void HandleInteractionDetected(InteractableItem item)
+        void HandleInteractionDetected(InteractableElement item)
         {
             if(item != null)
             {
@@ -30,13 +30,13 @@ namespace NursingHome.Interactions
             }
         }
 
-        void DisplayInteractableUI(InteractableItem item)
+        void DisplayInteractableUI(InteractableElement item)
         {
             HandlePickableItem(item);
             HandleUsableItem(item);
         }
 
-        void HandlePickableItem(InteractableItem item)
+        void HandlePickableItem(InteractableElement item)
         {
             if (item.CompareTag(Tags.Pickable))
             {
@@ -50,7 +50,7 @@ namespace NursingHome.Interactions
             }
         }
 
-        void HandleUsableItem(InteractableItem item)
+        void HandleUsableItem(InteractableElement item)
         {
             if (item.CompareTag(Tags.Usable))
             {

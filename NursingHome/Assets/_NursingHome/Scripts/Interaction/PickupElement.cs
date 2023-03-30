@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NursingHome.Interactions
 {
-    public class PickupItem : InteractableItem
+    public class PickupElement : InteractableElement
     {
         public override string DisplayName => itemParams.ItemName; // Remove, use item instead
         public Item Item => item;
@@ -25,7 +25,7 @@ namespace NursingHome.Interactions
             item = new Item(chargesAmount, itemParams);
         }
 
-        public override void UseItem()
+        public override void UseElement()
         {
             gameObject.SetActive(false);
             Destroy(gameObject, 1f);

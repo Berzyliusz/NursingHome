@@ -7,7 +7,7 @@ namespace NursingHome.Interactions
     {
         public event Action<Item> OnItemPicked;
 
-        protected override void HandleInteractionDetected(InteractableItem interactedItem)
+        protected override void HandleInteractionDetected(InteractableElement interactedItem)
         {
             if (interactedItem == null || !interactedItem.gameObject.CompareTag(Tags.Pickable))
             {
@@ -23,13 +23,15 @@ namespace NursingHome.Interactions
         {
             if (inputs.Use)
             {
-                var pickupItem = interactionDetector.GetPickupItem();
+                var pickup = interactionDetector.GetPickupElement();
 
-                if (pickupItem == null)
+                if (pickup == null)
                     return;
 
-                pickupItem.UseItem();
-                OnItemPicked?.Invoke(pickupItem.Item);
+                var item = pickup.Item;
+
+                pickup.UseElement();
+                OnItemPicked?.Invoke(pickup.Item);
             }
         }
     }
