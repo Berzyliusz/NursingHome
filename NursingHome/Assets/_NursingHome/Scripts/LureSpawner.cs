@@ -1,5 +1,4 @@
 ﻿using NursingHome.Interactions;
-using System;
 using UnityEngine;
 
 namespace NursingHome.Lures
