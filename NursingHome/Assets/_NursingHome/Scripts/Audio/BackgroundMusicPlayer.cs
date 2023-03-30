@@ -84,9 +84,17 @@ namespace NursingHome.Audio
 
         void SwitchMusicTo(BackgroundMusicType musicType)
         {
+            Debug.Log($"Switching music from {currentMusicType} to {musicType}");
+
             cooldownTimer = musicCooldownTime;
             currentMusicType = musicType;
 
+            previousMusicIndex = currentMusicIndex;
+            // Actually make it stop delayed, after a fade out
+            // audioPlayer.StopSoundDelayed(currentMusicIndex, fadeDuration)
+            // audioPlayer.FadeTrackVolume.. 
+            audioPlayer.StopSound(previousMusicIndex);
+            
             currentMusicIndex = audioPlayer.PlaySound(backgroundAudioCollection[(int)currentMusicIndex], backgroundAudioCollection, Vector3.zero);
 
             // Fade out previous music

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using Utilities;
 
 namespace Audio
 {
@@ -273,51 +274,6 @@ namespace Audio
             return _idGiver;
         }
 
-        protected ulong ConfigurePoolObject(int poolIndex, string track, AudioClip clip, Vector3 position, float volume, float spatiaBlend,
-            float unimportance, float startTime, bool ignoreListenerPause, float pitch, bool randomPitch, float pitchRandomValue)
-        {
-            if (poolIndex < 0 || poolIndex >= _pool.Count)
-            {
-                return 0;
-            }
-
-            AudioPoolItem poolItem = _pool[poolIndex];
-
-            if (poolItem.StopRoutine != null) 
-                StopCoroutine(poolItem.StopRoutine);
-
-            _idGiver++;
-            AudioSource source = poolItem.AudioSource;
-            source.clip = clip;
-            source.volume = volume;
-            source.spatialBlend = spatiaBlend;
-            source.ignoreListenerPause = ignoreListenerPause;
-            source.pitch = pitch;
-            source.maxDistance = maxDistance;
-            source.rolloffMode = rolloffMode;
-
-            if (randomPitch)
-            {
-                float randomValue = Random.Range(-pitchRandomValue, pitchRandomValue);
-                source.pitch += randomValue;
-            }
-
-            source.outputAudioMixerGroup = _tracks[track].Group;
-
-            source.transform.position = position;
-            poolItem.Playing = true;
-            poolItem.Unimportance = unimportance;
-            poolItem.ID = _idGiver;
-            source.time = Mathf.Min(startTime, source.clip.length);
-            poolItem.GameObject.SetActive(true);
-            poolItem.AudioSource.loop = false;
-            source.Play();
-            poolItem.StopRoutine = StopSoundDelayed(_idGiver, source.clip.length); // Disable this sound after its length expires
-            StartCoroutine(poolItem.StopRoutine);
-            _activePool[_idGiver] = poolItem;
-            return _idGiver;
-        }
-
         /// <summary>
         /// Stops sound after a given delay. 
         /// </summary>
@@ -326,7 +282,7 @@ namespace Audio
         /// <returns></returns>
         protected IEnumerator StopSoundDelayed(ulong id, float duration)
         {
-            yield return new WaitForSeconds(duration);
+            yield return CoroutineWaitTimeUtility.GetWaitForSeconds(duration);
             AudioPoolItem activeSound;
             if (_activePool.TryGetValue(id, out activeSound))
             {
@@ -336,6 +292,36 @@ namespace Audio
                 activeSound.GameObject.SetActive(false);
                 _activePool.Remove(id);
                 activeSound.Playing = false;
+            }
+        }
+
+        /// <summary>
+        /// Stops an audio from playing by given ID, if its still playing.
+        /// ID is returned when we play audio shot
+        /// </summary>
+        /// <param name="id">Id of a given sound</param>
+        public void StopSound(ulong id)
+        {
+            AudioPoolItem activeSound;
+            if (_activePool.TryGetValue(id, out activeSound))
+            {
+                CancelStoppingRoutine(activeSound);
+
+                activeSound.AudioSource.Stop();
+                activeSound.AudioSource.clip = null;
+                activeSound.GameObject.SetActive(false);
+                _activePool.Remove(id);
+
+                activeSound.Playing = false;
+            }
+        }
+
+        void CancelStoppingRoutine(AudioPoolItem activeSound)
+        {
+            if (activeSound.StopRoutine != null)
+            {
+                StopCoroutine(activeSound.StopRoutine);
+                activeSound.StopRoutine = null;
             }
         }
 
