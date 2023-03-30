@@ -11,25 +11,16 @@ namespace NursingHome.Lures
 
     public class LureSpawner : ILureSpawner
     {
-        readonly IInteractionDetector interactionDetector;
-
-        public LureSpawner(ItemUser itemUser, IInteractionDetector interactionDetector)
+        public LureSpawner(ItemUser itemUser)
         {
             itemUser.OnItemUsed += HandleItemUsed;
-            this.interactionDetector = interactionDetector;
         }
 
-        void HandleItemUsed(ItemParams itemParams, Item item, PrankParams prankParams)
+        void HandleItemUsed(UsableElement prankedElement, Item item, PrankParams prankParams)
         {
-            var selectedItem = interactionDetector.GetUsableElement();
-
-            if(selectedItem)
-            {
-                var usableItem = (UsableElement)selectedItem;
-                var parent = usableItem.Waypoint == null ? usableItem.transform : usableItem.Waypoint.transform;
-                Lure lure = CreateLureObject(parent, prankParams);
-                lure.SetupLure(prankParams, parent);
-            }
+            var parent = prankedElement.Waypoint == null ? prankedElement.transform : prankedElement.Waypoint.transform;
+            Lure lure = CreateLureObject(parent, prankParams);
+            lure.SetupLure(prankParams, parent);
         }
 
         Lure CreateLureObject(Transform parent, PrankParams prank)

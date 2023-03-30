@@ -38,7 +38,7 @@ namespace NursingHome
             return totalScore;
         }
 
-        void HandleItemUsed(ItemParams itemParams, Item item, PrankParams prankParams)
+        void HandleItemUsed(UsableElement prankedElement, Item item, PrankParams prankParams)
         {
             if(!pranksCount.ContainsKey(prankParams))
             {

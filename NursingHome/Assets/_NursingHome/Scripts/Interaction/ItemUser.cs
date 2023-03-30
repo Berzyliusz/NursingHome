@@ -5,7 +5,10 @@ namespace NursingHome.Interactions
 {
     public class ItemUser : InteractionReceiverBase
     {
-        public event Action<ItemParams, Item, PrankParams> OnItemUsed;
+        /// <summary>
+        /// Invoked when a prank is being performed, passing in the element it was used upon, the item used, and the prank itself.
+        /// </summary>
+        public event Action<UsableElement, Item, PrankParams> OnItemUsed;
         Dictionary<UsableElement, PrankParams> performedPranks = new Dictionary<UsableElement, PrankParams>();
 
         protected override void HandleInteractionDetected(InteractableElement interactedItem)
@@ -41,7 +44,7 @@ namespace NursingHome.Interactions
 
                     performedPranks[usedElement] = chosenItem.ItemParams.PrankParams[0];
                     usedElement.UseElement();
-                    OnItemUsed?.Invoke(usedElement.ItemParams, chosenItem, chosenItem.ItemParams.PrankParams[0]);
+                    OnItemUsed?.Invoke(usedElement, chosenItem, chosenItem.ItemParams.PrankParams[0]);
                 }
             }
         }

@@ -55,7 +55,7 @@ namespace NursingHome
             Cursor = new CursorHandler();
             Score = new ScoreCounter(itemUser);
             Time = new TimeHandler();
-            LureSpawner = new LureSpawner(itemUser, InteractionDetector);
+            LureSpawner = new LureSpawner(itemUser);
             interactionDetector = InteractionDetector;
             GameStateDispatcher = new GameStateDispatcher();
             AudioSystem = new AudioSystem(audioPlayer, GameStateDispatcher, backgroundAudioCollection);
