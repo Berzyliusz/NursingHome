@@ -39,9 +39,9 @@ namespace NursingHome.Interactions
                 if(!performedPranks.ContainsKey(usedElement))
                 {
                     chosenItem.UseCharge();
-                    performedPranks[usedElement] = chosenItem.ItemParams.PrankParams[0];
+                    performedPranks[usedElement] = chosenItem.PrankParams[0];
                     usedElement.UseElement();
-                    OnItemUsed?.Invoke(usedElement, chosenItem, chosenItem.ItemParams.PrankParams[0]);
+                    OnItemUsed?.Invoke(usedElement, chosenItem, chosenItem.PrankParams[0]);
                 }
             }
         }

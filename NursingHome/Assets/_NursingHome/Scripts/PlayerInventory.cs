@@ -51,7 +51,7 @@ namespace NursingHome
 
         void DisplayItemsInUI(Item pickedItem)
         {
-            foreach (var prank in pickedItem.ItemParams.PrankParams)
+            foreach (var prank in pickedItem.PrankParams)
             {
                 itemsByPranks[prank] = pickedItem;
             }

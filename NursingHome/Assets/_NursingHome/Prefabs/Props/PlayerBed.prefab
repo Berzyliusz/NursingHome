@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4990452402645859160}
   - component: {fileID: 4999248731294036152}
   - component: {fileID: 7480945000286184957}
-  - component: {fileID: 1855808091525210056}
+  - component: {fileID: 7867528080890420024}
   m_Layer: 10
   m_Name: PlayerBed
   m_TagString: Respawn
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1657495, y: 1.1489356, z: 2.8488927}
   m_Center: {x: 0, y: 0.5744678, z: -0.00000059604645}
---- !u!114 &1855808091525210056
+--- !u!114 &7867528080890420024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4986581870073211140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c52aeb67604bf4ab88bf61754cdcd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 906a014510f713141952f3bad93019c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Waypoint>k__BackingField: {fileID: 0}
+  onItemUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  itemParams: {fileID: 0}

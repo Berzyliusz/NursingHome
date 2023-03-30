@@ -59,7 +59,7 @@ namespace NursingHome.Interactions
                 uiParams.Names = new string[availablePranks.Count];
                 for (int i = 0; i < availablePranks.Count; i++)
                 {
-                    uiParams.Names[i] = string.Format($"{i + 1}. {availablePranks[i].ItemParams.PrankParams[0].DisplayName}");
+                    uiParams.Names[i] = string.Format($"{i + 1}. {availablePranks[i].PrankParams[0].DisplayName}");
                 }
 
                 Systems.Instance.UISystem.ShowScreen(UIType.Use);

@@ -268,7 +268,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBed
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1855808091525210056, guid: 5ccd942ee773fd946b37fba0117c6d52, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ccd942ee773fd946b37fba0117c6d52, type: 3}
 --- !u!4 &6028317608756606926 stripped
 Transform:
