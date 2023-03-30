@@ -27,6 +27,7 @@ namespace NursingHome.AI
 
         public void UpdateState()
         {
+            Systems.Instance.GameStateDispatcher.DisptachPrankFound();
             distanceToTarget = Vector3.Distance(transform.position, ai.NavAgent.destination);
         }
     }

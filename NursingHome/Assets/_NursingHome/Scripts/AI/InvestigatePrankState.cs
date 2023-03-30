@@ -32,8 +32,6 @@ namespace NursingHome.AI
         public void UpdateState()
         {
             workTimer -= Time.deltaTime;
-            Systems.Instance.GameStateDispatcher.DisptachPrankFound();
-
             var lureWaypoint = ai.StrongestLure.Waypoint;
             var lureRotation = lureWaypoint.transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, lureRotation, Time.deltaTime * rotationSpeed);
