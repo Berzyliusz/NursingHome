@@ -5,7 +5,7 @@ namespace NursingHome.Interactions
 {
     public class ItemUser : InteractionReceiverBase
     {
-        public event Action<ItemParams, PrankParams> OnItemUsed;
+        public event Action<ItemParams, Item, PrankParams> OnItemUsed;
         Dictionary<UsableElement, PrankParams> performedPranks = new Dictionary<UsableElement, PrankParams>();
 
         protected override void HandleInteractionDetected(InteractableElement interactedItem)
@@ -22,11 +22,10 @@ namespace NursingHome.Interactions
 
         void Update()
         {
-            var chosenPrank = ChoosePrankToUse();
+            var chosenItem = ChooseItemToUse();
             // We have no idea what item held this prank capabilities.
-            //Todo: Rework, so we can choose what item we want to use, as we may have many
 
-            if (chosenPrank == null)
+            if (chosenItem == null)
                 return;
 
             if(inputs.Use)
@@ -36,14 +35,18 @@ namespace NursingHome.Interactions
                 //Todo: Rework, so we can have multiple performed pranks per item.
                 if(!performedPranks.ContainsKey(usedElement))
                 {
-                    performedPranks[usedElement] = chosenPrank;
+                    // We are performing a prank. 
+                    // We need to know what item was it.
+                    // And use one charge of that item.
+
+                    performedPranks[usedElement] = chosenItem.ItemParams.PrankParams[0];
                     usedElement.UseElement();
-                    OnItemUsed?.Invoke(usedElement.ItemParams, chosenPrank);
+                    OnItemUsed?.Invoke(usedElement.ItemParams, chosenItem, chosenItem.ItemParams.PrankParams[0]);
                 }
             }
         }
 
-        PrankParams ChoosePrankToUse()
+        Item ChooseItemToUse()
         {
             var items = Systems.Instance.Inventory.GetAvailableItemsForElement(Systems.Instance.InteractionDetector.GetUsableElement().ItemParams);
             // TODO: Add scroll to choose item, highlight it too.
@@ -52,7 +55,7 @@ namespace NursingHome.Interactions
                 return null;
 
             // We dont need to scroll and choose what action we want -> for now there is only one.
-            return items[0].ItemParams.PrankParams[0];
+            return items[0];
         }
     }
 }

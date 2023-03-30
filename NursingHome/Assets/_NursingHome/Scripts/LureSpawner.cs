@@ -19,7 +19,7 @@ namespace NursingHome.Lures
             this.interactionDetector = interactionDetector;
         }
 
-        void HandleItemUsed(ItemParams itemParams, PrankParams prankParams)
+        void HandleItemUsed(ItemParams itemParams, Item item, PrankParams prankParams)
         {
             var selectedItem = interactionDetector.GetUsableElement();
 

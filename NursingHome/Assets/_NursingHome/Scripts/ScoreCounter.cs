@@ -1,7 +1,5 @@
 ﻿using NursingHome.Interactions;
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace NursingHome
 {
@@ -40,7 +38,7 @@ namespace NursingHome
             return totalScore;
         }
 
-        void HandleItemUsed(ItemParams itemParams, PrankParams prankParams)
+        void HandleItemUsed(ItemParams itemParams, Item item, PrankParams prankParams)
         {
             if(!pranksCount.ContainsKey(prankParams))
             {
