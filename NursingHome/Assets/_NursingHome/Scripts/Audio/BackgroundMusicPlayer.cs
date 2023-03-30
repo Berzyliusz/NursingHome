@@ -18,7 +18,10 @@ namespace NursingHome.Audio
             Chase = 2
         };
 
-        const float musicCooldownTime = 5;
+        //TODO: We should get params passed in constructor
+        const float musicCooldownTime = 5f;
+        const float musicFadeTime = 2f;
+
         float cooldownTimer = 0;
 
         ulong currentMusicIndex;
@@ -35,7 +38,7 @@ namespace NursingHome.Audio
             this.backgroundAudioCollection = backgroundAudioCollection;
             this.audioPlayer = audioPlayer;
 
-            // We should get params passed in constructor
+
 
             gameStateDispatcher.OnPlayerChased += HandlePlayerChased;
             gameStateDispatcher.OnPrankFound += HandlePrankFound;
@@ -84,22 +87,17 @@ namespace NursingHome.Audio
 
         void SwitchMusicTo(BackgroundMusicType musicType)
         {
-            Debug.Log($"Switching music from {(int)currentMusicType}: {currentMusicType} to {(int)musicType}: {musicType}");
-
             cooldownTimer = musicCooldownTime;
             currentMusicType = musicType;
 
-            audioPlayer.StopSound(currentMusicIndex);
             previousMusicIndex = currentMusicIndex;
-            // Actually make it stop delayed, after a fade out
-            // audioPlayer.StopSoundDelayed(currentMusicIndex, fadeDuration)
-            // audioPlayer.FadeTrackVolume.. 
+            audioPlayer.StopSoundDelayed(previousMusicIndex, musicFadeTime);
+            audioPlayer.SetSoundVolume(previousMusicIndex, 0, musicFadeTime);
 
             AudioClip clip = backgroundAudioCollection[(int)currentMusicType];
             currentMusicIndex = audioPlayer.PlaySound(clip, backgroundAudioCollection, Vector3.zero);
-
-            // Fade out previous music
-            // Fade in new music
+            audioPlayer.SetSoundVolume(currentMusicIndex, 0, 0.0f);
+            audioPlayer.SetSoundVolume(currentMusicIndex, backgroundAudioCollection.Volume, musicFadeTime);
         }
     }
 }

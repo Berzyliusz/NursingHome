@@ -280,7 +280,7 @@ namespace Audio
         /// <param name="id"></param>
         /// <param name="duration"></param>
         /// <returns></returns>
-        protected IEnumerator StopSoundDelayed(ulong id, float duration)
+        public IEnumerator StopSoundDelayed(ulong id, float duration)
         {
             yield return CoroutineWaitTimeUtility.GetWaitForSeconds(duration);
             AudioPoolItem activeSound;
