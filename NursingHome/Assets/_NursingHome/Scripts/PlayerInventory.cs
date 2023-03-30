@@ -11,7 +11,6 @@ namespace NursingHome
 
         public List<Item> Items { get; private set; } = new List<Item>();
         Dictionary<PrankParams, Item> itemsByPranks = new Dictionary<PrankParams, Item>();
-        IvnentoryUIParams uiParams = new();
 
         public PlayerInventory(ItemPicker picker, ItemUser user)
         {
@@ -48,6 +47,7 @@ namespace NursingHome
             }
 
             Systems.Instance.UISystem.ShowScreen(UIType.Inventory);
+            IvnentoryUIParams uiParams = new();
             uiParams.Names = new string[Items.Count];
             uiParams.Amounts = new string[Items.Count];
 
