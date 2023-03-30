@@ -64,7 +64,7 @@ namespace NursingHome
             for (int i = 0; i < Items.Count; i++)
             {
                 var item = Items[i];
-                uiParams.Names[i] = item.IsUsedUp ? item.ItemParams.AlternativeName : Items[i].ItemParams.ItemName;
+                uiParams.Names[i] = item.IsUsedUp ? item.AlternativeName : Items[i].DisplayName;
                 uiParams.Amounts[i] = Items[i].ChargesAmount.ToString() + '/' + Items[i].MaxChargesAmount.ToString();
             }
 

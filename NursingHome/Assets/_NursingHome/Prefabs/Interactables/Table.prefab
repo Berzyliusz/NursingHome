@@ -148,7 +148,7 @@ MonoBehaviour:
           m_StringArgument: Wobble
           m_BoolArgument: 0
         m_CallState: 2
-  itemParams: {fileID: 11400000, guid: 42c1f37e0f4fadf4ba97e9fc74188e68, type: 2}
+  itemParams: {fileID: 11400000, guid: b0d4bfbc44f08de4e982875b92d39dd3, type: 2}
 --- !u!1 &8440910084336695353
 GameObject:
   m_ObjectHideFlags: 0
