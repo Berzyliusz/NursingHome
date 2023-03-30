@@ -26,6 +26,9 @@ namespace NursingHome.Interactions
                 var item = interactionDetector.SelectedItem;
                 item.UseItem();
                 OnItemPicked?.Invoke(item.ItemParams);
+                // We pass just the params... the amount of charges is kinda lost
+                // We can pack it into small class, containing ALL parameters. 
+                // And forget the visual representation and mono
             }
         }
     }

@@ -6,7 +6,7 @@ namespace NursingHome.Interactions
     public class PickupItem : InteractableItem
     {
         public override string DisplayName => itemParams.ItemName;
-        public int ChargesAmount => chargesAmount;
+        public uint ChargesAmount => chargesAmount;
 
         [SerializeField]
         [Tooltip("How many charges this item has, before it uses up?")]
@@ -23,5 +23,16 @@ namespace NursingHome.Interactions
             gameObject.SetActive(false);
             Destroy(gameObject, 1f);
         }
+    }
+
+    public class Item
+    {
+        public uint ChargesAmount { get; }
+
+        public Item(uint chargesAmount)
+        {
+            ChargesAmount = chargesAmount;
+        }
+
     }
 }
