@@ -11,7 +11,7 @@ namespace NursingHome
 
         public List<Item> Items { get; private set; } = new List<Item>();
         Dictionary<PrankParams, Item> itemsByPranks = new Dictionary<PrankParams, Item>();
-        UIParams uiParams = new();
+        IvnentoryUIParams uiParams = new();
 
         public PlayerInventory(ItemPicker picker, ItemUser user)
         {
@@ -49,10 +49,12 @@ namespace NursingHome
 
             Systems.Instance.UISystem.ShowScreen(UIType.Inventory);
             uiParams.Names = new string[Items.Count];
-            for(int i = 0; i < Items.Count; i++)
+            uiParams.Amounts = new string[Items.Count];
+
+            for (int i = 0; i < Items.Count; i++)
             {
                 uiParams.Names[i] = Items[i].ItemParams.ItemName;
-                // also include the amount
+                uiParams.Amounts[i] = Items[i].ChargesAmount.ToString() + '/' + Items[i].MaxChargesAmount.ToString();
             }
 
             Systems.Instance.UISystem.UpdateScreen(UIType.Inventory, uiParams);
@@ -60,7 +62,7 @@ namespace NursingHome
 
         void HandleItemUsed(UsableElement prankedElement, Item usedItem, PrankParams prank)
         {
-            // Update UI of that item 
+            HandleItemPicked(usedItem);
         }
     }
 }
