@@ -38,10 +38,7 @@ namespace NursingHome.Interactions
                 //Todo: Rework, so we can have multiple performed pranks per item.
                 if(!performedPranks.ContainsKey(usedElement))
                 {
-                    // We are performing a prank. 
-                    // We need to know what item was it.
-                    // And use one charge of that item.
-
+                    chosenItem.UseCharge();
                     performedPranks[usedElement] = chosenItem.ItemParams.PrankParams[0];
                     usedElement.UseElement();
                     OnItemUsed?.Invoke(usedElement, chosenItem, chosenItem.ItemParams.PrankParams[0]);

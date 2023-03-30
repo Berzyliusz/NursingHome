@@ -14,11 +14,6 @@
         public void UseCharge()
         {
             ChargesAmount--;
-
-            if(ChargesAmount == 0)
-            {
-                //TODO: Notify UI that we have been all used up
-            }
         }
     }
 }

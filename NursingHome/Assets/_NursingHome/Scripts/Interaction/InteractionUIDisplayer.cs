@@ -5,7 +5,7 @@ namespace NursingHome.Interactions
 {
     public class InteractionUIDisplayer : MonoBehaviour
     {
-        UIParams uiParams;
+        UIParams uiParams = new();
 
         void Awake()
         {

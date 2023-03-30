@@ -14,7 +14,7 @@ namespace NursingHome.UserInterface
         AimDot
     }
 
-    public struct UIParams //TODO: Make it more generic or derived
+    public class UIParams
     {
         public string Name;
         public string[] Names;

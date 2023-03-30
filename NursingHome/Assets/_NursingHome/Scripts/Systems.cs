@@ -49,7 +49,7 @@ namespace NursingHome
         void Awake()
         {
             Instance = this;
-            Inventory = new PlayerInventory(itemPicker);
+            Inventory = new PlayerInventory(itemPicker, itemUser);
             Inputs = new Inputs();
             Player = playerController;
             Cursor = new CursorHandler();
