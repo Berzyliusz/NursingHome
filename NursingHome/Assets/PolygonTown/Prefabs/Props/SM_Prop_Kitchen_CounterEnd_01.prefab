@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4012786841156344}
   - component: {fileID: 33439228241967360}
   - component: {fileID: 23032737009350322}
+  - component: {fileID: 2177482003754975605}
   m_Layer: 0
   m_Name: SM_Prop_Kitchen_CounterEnd_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4012786841156344
 Transform:
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2177482003754975605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313768897056936}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66061276, y: 0.949573, z: 1.0000024}
+  m_Center: {x: -0.33030638, y: 0.4747865, z: 0.5000012}
