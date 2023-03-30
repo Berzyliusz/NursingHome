@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6345379081972066216}
   - component: {fileID: 6353683515952270982}
   - component: {fileID: 6036515512516948524}
-  - component: {fileID: -2043882428888573878}
   - component: {fileID: 1576682075455702259}
+  - component: {fileID: 8404292945020591716}
   m_Layer: 10
   m_Name: CookingPot
   m_TagString: Interactable
@@ -101,35 +101,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.24
   m_Center: {x: 0, y: 0.12, z: 0}
---- !u!114 &-2043882428888573878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6375982961867633222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Waypoint>k__BackingField: {fileID: 8143061363553693623}
-  onItemUsed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1576682075455702259}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Spice
-          m_BoolArgument: 0
-        m_CallState: 2
-  itemParams: {fileID: 11400000, guid: 551d247c6d6b19f40b2cb08ec8a17ac0, type: 2}
 --- !u!95 &1576682075455702259
 Animator:
   serializedVersion: 4
@@ -150,6 +121,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8404292945020591716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375982961867633222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906a014510f713141952f3bad93019c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Waypoint>k__BackingField: {fileID: 8143061363553693623}
+  onItemUsed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1576682075455702259}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Spice
+          m_BoolArgument: 0
+        m_CallState: 2
+  itemParams: {fileID: 11400000, guid: 551d247c6d6b19f40b2cb08ec8a17ac0, type: 2}
 --- !u!1 &6376621681917454666
 GameObject:
   m_ObjectHideFlags: 0

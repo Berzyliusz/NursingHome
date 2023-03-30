@@ -4872,7 +4872,7 @@ GameObject:
   - component: {fileID: 3394720750320089612}
   - component: {fileID: 3403329167979912420}
   - component: {fileID: 5547107508790106623}
-  - component: {fileID: 4363560811711898303}
+  - component: {fileID: 6348860972805328684}
   m_Layer: 10
   m_Name: TV
   m_TagString: Interactable
@@ -4961,7 +4961,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3545525, y: 1.0187819, z: 0.25562996}
   m_Center: {x: 0, y: 0.50939095, z: 0}
---- !u!114 &4363560811711898303
+--- !u!114 &6348860972805328684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4970,7 +4970,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3417276116551609318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 906a014510f713141952f3bad93019c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Waypoint>k__BackingField: {fileID: 8722151405681041010}

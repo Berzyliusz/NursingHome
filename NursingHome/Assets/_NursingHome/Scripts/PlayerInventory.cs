@@ -18,15 +18,18 @@ namespace NursingHome
             picker.OnItemPicked += HandleItemPicked;
         }
 
-        public List<PrankParams> GetAvailablePranksForItem(ItemParams itemParams)
+        public List<Item> GetAvailableItemsForElement(ItemParams usedElement)
         {
-            List<PrankParams> result = new List<PrankParams>();
+            List<Item> result = new List<Item>();
 
-            foreach(var prank in itemParams.PrankParams)
+            foreach(var prank in usedElement.PrankParams)
             {
                 if(itemsByPranks.ContainsKey(prank))
                 {
-                    result.Add(prank);
+                    if (itemsByPranks[prank].ChargesAmount > 0)
+                    {
+                        result.Add(itemsByPranks[prank]);
+                    }
                 }
             }
 

@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 2096531819920737840}
   - component: {fileID: 2107468919977491880}
   - component: {fileID: 3719025057962819169}
-  - component: {fileID: 4358597640808902532}
+  - component: {fileID: 8720994515226514430}
   m_Layer: 10
   m_Name: PC Mouse
   m_TagString: Interactable
@@ -147,7 +147,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08536912, y: 0.036583126, z: 0.12936594}
   m_Center: {x: 0, y: 0.018291563, z: 0}
---- !u!114 &4358597640808902532
+--- !u!114 &8720994515226514430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,8 +156,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2120403482857280576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 906a014510f713141952f3bad93019c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Waypoint>k__BackingField: {fileID: 1712439538955919874}
+  onItemUsed:
+    m_PersistentCalls:
+      m_Calls: []
   itemParams: {fileID: 11400000, guid: 8c4c356d0b496d942bbb14d57e89646b, type: 2}

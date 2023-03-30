@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7639452768492497371}
   - component: {fileID: 7647254383910650197}
   - component: {fileID: 2758747612700046222}
-  - component: {fileID: -2069977553092615935}
+  - component: {fileID: 3146401870352338794}
   m_Layer: 10
   m_Name: Toilet
   m_TagString: Interactable
@@ -268,7 +268,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5025358, y: 1.0298412, z: 0.86406267}
   m_Center: {x: 0.000000014901165, y: 0.5149206, z: 0}
---- !u!114 &-2069977553092615935
+--- !u!114 &3146401870352338794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7671741391433136315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74619e526697d674f86884f3527f5cb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 906a014510f713141952f3bad93019c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Waypoint>k__BackingField: {fileID: 1114391777270531542}

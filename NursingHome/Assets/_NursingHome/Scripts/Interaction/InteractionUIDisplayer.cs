@@ -54,12 +54,12 @@ namespace NursingHome.Interactions
         {
             if (item.CompareTag(Tags.Usable))
             {
-                var availablePranks = Systems.Instance.Inventory.GetAvailablePranksForItem(item.ItemParams);
+                var availablePranks = Systems.Instance.Inventory.GetAvailableItemsForElement(item.ItemParams);
 
                 uiParams.Names = new string[availablePranks.Count];
                 for (int i = 0; i < availablePranks.Count; i++)
                 {
-                    uiParams.Names[i] = string.Format($"{i + 1}. {availablePranks[i].DisplayName}");
+                    uiParams.Names[i] = string.Format($"{i + 1}. {availablePranks[i].ItemParams.PrankParams[0].DisplayName}");
                 }
 
                 Systems.Instance.UISystem.ShowScreen(UIType.Use);
