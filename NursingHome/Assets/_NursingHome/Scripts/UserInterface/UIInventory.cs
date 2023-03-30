@@ -24,6 +24,7 @@ namespace NursingHome.UserInterface
             {
                 var newItem = GameObject.Instantiate(itemPrefab, spawnParent.transform);
                 newItem.SetItemText(itemName);
+                // also set items #of charges
                 spawnedItems.Add(newItem);
             }
         }
