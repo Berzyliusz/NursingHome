@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe18027fc8980c745bb89e6423984130, type: 3}
   m_Name: Tampons Params
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Tampons
+  <ItemName>k__BackingField: Tampons Package
+  <AlternativeName>k__BackingField: Empty Tampons Package
   prankParams:
   - {fileID: 11400000, guid: aa28a9ce20e11024bb54c75eb2d9f0d3, type: 2}

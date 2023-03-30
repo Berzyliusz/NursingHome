@@ -7,6 +7,8 @@ namespace NursingHome.Interactions
     {
         [field:SerializeField] 
         public string ItemName { get; private set; }
+        [field:SerializeField]
+        public string AlternativeName { get; private set; }
 
         public PrankParams[] PrankParams => prankParams;
 

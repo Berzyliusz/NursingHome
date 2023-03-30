@@ -41,7 +41,17 @@ namespace NursingHome
             OnItemAdded?.Invoke(pickedItem);
             Items.Add(pickedItem);
 
-            foreach(var prank in pickedItem.ItemParams.PrankParams)
+            DisplayItemsInUI(pickedItem);
+        }
+
+        void HandleItemUsed(UsableElement prankedElement, Item usedItem, PrankParams prank)
+        {
+            DisplayItemsInUI(usedItem);
+        }
+
+        void DisplayItemsInUI(Item pickedItem)
+        {
+            foreach (var prank in pickedItem.ItemParams.PrankParams)
             {
                 itemsByPranks[prank] = pickedItem;
             }
@@ -53,16 +63,12 @@ namespace NursingHome
 
             for (int i = 0; i < Items.Count; i++)
             {
-                uiParams.Names[i] = Items[i].ItemParams.ItemName;
+                var item = Items[i];
+                uiParams.Names[i] = item.IsUsedUp ? item.ItemParams.AlternativeName : Items[i].ItemParams.ItemName;
                 uiParams.Amounts[i] = Items[i].ChargesAmount.ToString() + '/' + Items[i].MaxChargesAmount.ToString();
             }
 
             Systems.Instance.UISystem.UpdateScreen(UIType.Inventory, uiParams);
-        }
-
-        void HandleItemUsed(UsableElement prankedElement, Item usedItem, PrankParams prank)
-        {
-            HandleItemPicked(usedItem);
         }
     }
 }
