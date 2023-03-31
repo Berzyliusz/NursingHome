@@ -23,14 +23,14 @@ namespace NursingHome.AI
         {
             player = Systems.Instance.Player;
             ai.Animator.SetBool(AnimationHashes.ChaseHash, true);
-            ai.NavAgent.speed = ai.ChaseSpeed;
+            ai.NavAgent.speed = ai.Params.ChaseSpeed;
             chaseTimer = maxChaseTime;
         }
 
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.ChaseHash, false);
-            ai.NavAgent.speed = ai.WalkSpeed;
+            ai.NavAgent.speed = ai.Params.WalkSpeed;
             chaseTimer = float.MaxValue;
             distanceToTarget = float.MaxValue;
         }

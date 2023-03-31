@@ -23,7 +23,7 @@ namespace NursingHome.AI
         public bool IsStateDone()
         {
             float distanceToTarget = Vector3.Distance(transform.position, ai.NavAgent.destination);
-            return distanceToTarget < ai.InRangeDistance;
+            return distanceToTarget < ai.Params.InRangeDistance;
         }
 
         public void UpdateState()

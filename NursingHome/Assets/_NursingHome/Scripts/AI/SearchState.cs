@@ -47,7 +47,7 @@ namespace NursingHome.AI
             // TODO: Also look for and investigate patients
             // Consider checking line of sight too
 
-            if (Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.InRangeDistance)
+            if (Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.Params.InRangeDistance)
             {
                 GoToRandomPointNearby();
             }

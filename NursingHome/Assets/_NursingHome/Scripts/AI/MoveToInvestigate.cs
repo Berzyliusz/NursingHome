@@ -22,7 +22,7 @@ namespace NursingHome.AI
 
         public bool IsStateDone()
         {
-            return distanceToTarget < ai.InRangeDistance;
+            return distanceToTarget < ai.Params.InRangeDistance;
         }
 
         public void UpdateState()

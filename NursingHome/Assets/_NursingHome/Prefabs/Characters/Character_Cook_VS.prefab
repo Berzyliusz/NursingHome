@@ -217,9 +217,7 @@ MonoBehaviour:
   lureDetector: {fileID: 3728691392075268831}
   <Animator>k__BackingField: {fileID: 95920329354498498}
   <NavAgent>k__BackingField: {fileID: 907868677}
-  <WalkSpeed>k__BackingField: 3.2
-  <ChaseSpeed>k__BackingField: 5
-  <InRangeDistance>k__BackingField: 0.4
+  aiParams: {fileID: 11400000, guid: eb98707672d04d74c8ac12d92df70718, type: 2}
 --- !u!114 &5843515233961032622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,6 +1984,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   inFrontAngle: 30
+  eyesightRange: 30
+  shouldCheckEyesight: 0
 --- !u!1 &1163420341299918461
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using NursingHome.Interactions;
 using NursingHome.Lures;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,14 +17,11 @@ namespace NursingHome.AI
         [field: SerializeField]
         public NavMeshAgent NavAgent { get; private set; }
 
-        //Todo:
-        // Organize it into some params container
-        [field: SerializeField]
-        public float WalkSpeed { get; private set; } = 3.2f;
-        [field: SerializeField]
-        public float ChaseSpeed { get; private set; } = 5.0f;
-        [field: SerializeField]
-        public float InRangeDistance { get; private set; } = 0.2f;
+        [SerializeField]
+        [InlineEditor]
+        AIParams aiParams;
+
+        public AIParams Params => aiParams;
 
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
         LureProcessor lureProcessor;
