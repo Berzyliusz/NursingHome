@@ -1985,7 +1985,7 @@ MonoBehaviour:
   eyesLayerMask:
     serializedVersion: 2
     m_Bits: 257
-  inFrontAngle: 30
+  inFrontAngle: 60
   eyesightRange: 30
 --- !u!1 &1163420341299918461
 GameObject:
