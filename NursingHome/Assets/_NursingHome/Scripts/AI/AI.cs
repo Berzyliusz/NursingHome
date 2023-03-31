@@ -61,9 +61,6 @@ namespace NursingHome.AI
 
             updateables = new IUpdateable[1];
             updateables[0] = eyes;
-            
-            // Just for testing, delete later
-            eyes.SetEyesightChecking(true);
         }
 
         void Update()

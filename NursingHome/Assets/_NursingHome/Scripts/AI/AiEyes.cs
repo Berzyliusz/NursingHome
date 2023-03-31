@@ -58,7 +58,6 @@ namespace NursingHome.AI
             }
 
             RaycastToPlayer(directionToPlayer);
-            Debug.Log($"Can see player: {CanSeePlayer}");
         }
 
         void RaycastToPlayer(Vector3 directionToPlayer)
