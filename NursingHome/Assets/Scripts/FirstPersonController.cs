@@ -10,7 +10,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 	[RequireComponent(typeof(PlayerInput))]
 #endif
-	public class FirstPersonController : MonoBehaviour, IPlayer
+	public class FirstPersonController : MonoBehaviour
     {
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -75,8 +75,6 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
-		bool freezePlayer;
-
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -88,25 +86,6 @@ namespace StarterAssets
 				#endif
 			}
 		}
-
-		//Todo: Extract player interface into a wrapper
-		[SerializeField]
-		Transform aimpoint;
-
-        public Vector3 GetPlayerPosition()
-        {
-            return transform.position;
-        }
-
-        public void SetFreezePlayer(bool isFrozen)
-        {
-            freezePlayer = isFrozen;
-        }
-
-        public Vector3 GetPlayerAimPosition()
-        {
-			return aimpoint.position;
-        }
 
         private void Awake()
 		{
@@ -134,9 +113,6 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (freezePlayer)
-				return;
-
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -144,9 +120,6 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-            if (freezePlayer)
-                return;
-
             CameraRotation();
 		}
 

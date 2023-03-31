@@ -1,7 +1,6 @@
 using UnityEngine;
 using NursingHome.UserInterface;
 using NursingHome.Interactions;
-using StarterAssets;
 using NursingHome.Lures;
 using Audio;
 using NursingHome.Audio;
@@ -21,7 +20,7 @@ namespace NursingHome
         //Todo: Make all those HARD dependencies be provided via externall bridge
         // converting hard dependancies into interfaces
         [SerializeField]
-        FirstPersonController playerController;
+        PlayerWrapper playerController;
         [SerializeField]
         AudioPlayer audioPlayer;
         [SerializeField]
