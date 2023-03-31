@@ -1,4 +1,5 @@
 using NursingHome;
+using NursingHome.Interactions;
 using UnityEngine;
 
 public class AiEyes : MonoBehaviour
@@ -16,13 +17,9 @@ public class AiEyes : MonoBehaviour
     [Tooltip("How far can we see?")]
     [SerializeField] float eyesightRange = 30.0f;
 
-    [SerializeField]
-    [Tooltip("Draws helpful eyesight gizmos for easier checking of sight")]
-    bool drawDebugGizmos;
-
     float eyesightRangeSquared;
-
     IPlayer player;
+    Vector3 lastSeenPosition;
 
     void Awake()
     {
@@ -39,40 +36,45 @@ public class AiEyes : MonoBehaviour
         // If we DONT need to check sight ( we are searching, we have spotted sth )
             // bail
 
-        var directionToPlayer = player.GetPlayerPosition() - eyesTransform.position;
+        var directionToPlayer = player.GetPlayerAimPosition() - eyesTransform.position;
         var angleToPlayer = Vector3.Angle(eyesTransform.forward, directionToPlayer);
 
         if(angleToPlayer > inFrontAngle)
         {
-            CanSeePlayer = false;
             Debug.Log("Not in front");
+            CanSeePlayer = false;
             return;
         }
 
         var distanceToPlayerSqaured = Vector3.SqrMagnitude(directionToPlayer);
         if(distanceToPlayerSqaured > eyesightRangeSquared)
         {
+            Debug.Log("Too far");
             CanSeePlayer = false;
-            Debug.Log("too far");
             return;
         }
 
-        Ray ray = new Ray(eyesTransform.position, player.GetPlayerAimPosition());
-        if(Physics.Raycast(ray, eyesightRange, eyesLayerMask))
+        
+        Ray ray = new Ray(eyesTransform.position, directionToPlayer);
+        Debug.DrawLine(eyesTransform.position, player.GetPlayerAimPosition(), Color.blue, 0.5f);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, eyesightRange, eyesLayerMask))
         {
-            CanSeePlayer = true;
-            Debug.Log("Visible");
+            if(hit.transform.CompareTag(Tags.Player))
+            {
+                CanSeePlayer = true;
+                lastSeenPosition = player.GetPlayerPosition();
+                Debug.Log("Visible");
+            }
+            else
+            {
+                Debug.Log("Not visible");
+            }
         }
         else
         {
             CanSeePlayer = false;
-            Debug.Log("Not visible");
+            Debug.Log("Nothing hit");
         }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(eyesTransform.position, eyesTransform.forward * eyesightRange);
     }
 }

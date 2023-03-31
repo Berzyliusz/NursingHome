@@ -1984,8 +1984,9 @@ MonoBehaviour:
   eyesTransform: {fileID: 4817202070341598}
   eyesLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 257
   inFrontAngle: 30
+  eyesightRange: 30
 --- !u!1 &1163420341299918461
 GameObject:
   m_ObjectHideFlags: 0

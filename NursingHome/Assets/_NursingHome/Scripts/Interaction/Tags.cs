@@ -6,5 +6,6 @@
         public const string Usable = "Interactable";
         public const string Respawn = "Respawn";
         public const string Lure = "Lure";
+        public const string Player = "Player";
     }
 }
