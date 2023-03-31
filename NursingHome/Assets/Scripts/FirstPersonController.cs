@@ -89,6 +89,10 @@ namespace StarterAssets
 			}
 		}
 
+		//Todo: Extract player interface into a wrapper
+		[SerializeField]
+		Transform aimpoint;
+
         public Vector3 GetPlayerPosition()
         {
             return transform.position;
@@ -97,6 +101,11 @@ namespace StarterAssets
         public void SetFreezePlayer(bool isFrozen)
         {
             freezePlayer = isFrozen;
+        }
+
+        public Vector3 GetPlayerAimPosition()
+        {
+			return aimpoint.position;
         }
 
         private void Awake()

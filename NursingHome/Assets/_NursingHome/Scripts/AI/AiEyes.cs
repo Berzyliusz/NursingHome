@@ -1,5 +1,4 @@
 using NursingHome;
-using System;
 using UnityEngine;
 
 public class AiEyes : MonoBehaviour
@@ -21,7 +20,14 @@ public class AiEyes : MonoBehaviour
     [Tooltip("Draws helpful eyesight gizmos for easier checking of sight")]
     bool drawDebugGizmos;
 
+    float eyesightRangeSquared;
+
     IPlayer player;
+
+    void Awake()
+    {
+        eyesightRangeSquared = eyesightRange * eyesightRange;
+    }
 
     void Start()
     {
@@ -39,15 +45,29 @@ public class AiEyes : MonoBehaviour
         if(angleToPlayer > inFrontAngle)
         {
             CanSeePlayer = false;
-            Debug.Log("NO");
+            Debug.Log("Not in front");
             return;
         }
 
-        Debug.Log("YES");
-        // if player is within proper angle in front of our eyesTransform 
-        // raycast towards him 
+        var distanceToPlayerSqaured = Vector3.SqrMagnitude(directionToPlayer);
+        if(distanceToPlayerSqaured > eyesightRangeSquared)
+        {
+            CanSeePlayer = false;
+            Debug.Log("too far");
+            return;
+        }
 
-        // if player raycast hit, we see player, store hist last known position
+        Ray ray = new Ray(eyesTransform.position, player.GetPlayerAimPosition());
+        if(Physics.Raycast(ray, eyesightRange, eyesLayerMask))
+        {
+            CanSeePlayer = true;
+            Debug.Log("Visible");
+        }
+        else
+        {
+            CanSeePlayer = false;
+            Debug.Log("Not visible");
+        }
     }
 
     void OnDrawGizmosSelected()
