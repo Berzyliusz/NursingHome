@@ -15,3 +15,8 @@ MonoBehaviour:
   <WalkSpeed>k__BackingField: 3.2
   <ChaseSpeed>k__BackingField: 5
   <InRangeDistance>k__BackingField: 0.2
+  <InFrontAngle>k__BackingField: 30
+  <EyesightRange>k__BackingField: 30
+  <EyesLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 257

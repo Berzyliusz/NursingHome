@@ -18,6 +18,9 @@ namespace NursingHome.AI
         public NavMeshAgent NavAgent { get; private set; }
 
         [SerializeField]
+        Transform eyesTransform;
+
+        [SerializeField]
         [InlineEditor]
         AIParams aiParams;
 
@@ -25,8 +28,11 @@ namespace NursingHome.AI
 
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
         LureProcessor lureProcessor;
+        IEyes eyes;
 
         List<PrankParams> investigatedPranks = new List<PrankParams>();
+
+        IUpdateable[] updateables;
 
         public void OnPrankInvestigated()
         {
@@ -51,6 +57,18 @@ namespace NursingHome.AI
         void Awake()
         {
             lureProcessor = new LureProcessor(lureDetector);
+            eyes = new AiEyes(Systems.Instance.Player, aiParams, eyesTransform);
+
+            updateables = new IUpdateable[1];
+            updateables[0] = eyes;
+        }
+
+        void Update()
+        {
+            foreach(var updatable in updateables)
+            {
+                updatable.Update(Time.deltaTime);
+            }
         }
     }
 }

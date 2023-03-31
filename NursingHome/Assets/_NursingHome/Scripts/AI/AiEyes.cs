@@ -1,89 +1,87 @@
-using NursingHome;
 using NursingHome.Interactions;
 using UnityEngine;
 
-public class AiEyes : MonoBehaviour
+namespace NursingHome.AI
 {
-    public bool CanSeePlayer { get; private set; }
-    public Vector3 LastPlayerSeenPosition { get; private set; }
-
-    [Tooltip("Place where to fire raycasts from.")]
-    [SerializeField] Transform eyesTransform;
-    [Tooltip("Layer mask for player, and things we consider, that can obstruct him")]
-    [SerializeField] LayerMask eyesLayerMask;
-
-    [Tooltip("Half of the angle that we consider to be in front of us")]
-    [SerializeField] float inFrontAngle = 30.0f;
-    [Tooltip("How far can we see?")]
-    [SerializeField] float eyesightRange = 30.0f;
-
-    [SerializeField]
-    bool shouldCheckEyesight;
-
-    float eyesightRangeSquared;
-    IPlayer player;
-    
-
-    public void SetEyesightChecking(bool shouldCheckEyesight)
+    public interface IEyes : IUpdateable
     {
-        this.shouldCheckEyesight = shouldCheckEyesight;
+        bool CanSeePlayer { get; }
+        Vector3 LastPlayerSeenPosition { get; }
+
+        void SetEyesightChecking(bool shouldCheckEyesight);
     }
 
-    void Awake()
+    public class AiEyes : IEyes
     {
-        eyesightRangeSquared = eyesightRange * eyesightRange;
-    }
+        public bool CanSeePlayer { get; private set; }
+        public Vector3 LastPlayerSeenPosition { get; private set; }
 
-    void Start()
-    {
-        //Todo: Make player injected here
-        player = Systems.Instance.Player;
-    }
+        readonly Transform eyesTransform;
+        readonly float eyesightRangeSquared;
+        readonly IPlayer player;
+        readonly AIParams aiParams;
+        bool shouldCheckEyesight;
 
-    void Update()
-    {
-        if (!shouldCheckEyesight)
-            return;
-
-        var directionToPlayer = player.GetPlayerAimPosition() - eyesTransform.position;
-        var angleToPlayer = Vector3.Angle(eyesTransform.forward, directionToPlayer);
-
-        if (angleToPlayer > inFrontAngle)
+        public AiEyes(IPlayer player, AIParams aiParams, Transform eyesTransform)
         {
-            CanSeePlayer = false;
-            return;
+            this.player = player;
+            this.aiParams = aiParams;
+            this.eyesTransform = eyesTransform;
+
+            eyesightRangeSquared = aiParams.EyesightRange * aiParams.EyesightRange;
         }
 
-        var distanceToPlayerSqaured = Vector3.SqrMagnitude(directionToPlayer);
-        if (distanceToPlayerSqaured > eyesightRangeSquared)
+        public void SetEyesightChecking(bool shouldCheckEyesight)
         {
-            CanSeePlayer = false;
-            return;
+            this.shouldCheckEyesight = shouldCheckEyesight;
         }
 
-        RaycastToPlayer(directionToPlayer);
-    }
-
-    void RaycastToPlayer(Vector3 directionToPlayer)
-    {
-        Ray ray = new Ray(eyesTransform.position, directionToPlayer);
-        Debug.DrawLine(eyesTransform.position, player.GetPlayerAimPosition(), Color.blue, 0.5f);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, eyesightRange, eyesLayerMask))
+        public void Update(float deltaTime)
         {
-            if (hit.transform.CompareTag(Tags.Player))
+            if (!shouldCheckEyesight)
+                return;
+
+            var directionToPlayer = player.GetPlayerAimPosition() - eyesTransform.position;
+            var angleToPlayer = Vector3.Angle(eyesTransform.forward, directionToPlayer);
+
+            if (angleToPlayer > aiParams.InFrontAngle)
             {
-                CanSeePlayer = true;
-                LastPlayerSeenPosition = player.GetPlayerPosition();
+                CanSeePlayer = false;
+                return;
+            }
+
+            var distanceToPlayerSqaured = Vector3.SqrMagnitude(directionToPlayer);
+            if (distanceToPlayerSqaured > eyesightRangeSquared)
+            {
+                CanSeePlayer = false;
+                return;
+            }
+
+            RaycastToPlayer(directionToPlayer);
+            Debug.Log($"Can see player: {CanSeePlayer}");
+        }
+
+        void RaycastToPlayer(Vector3 directionToPlayer)
+        {
+            Ray ray = new Ray(eyesTransform.position, directionToPlayer);
+            Debug.DrawLine(eyesTransform.position, player.GetPlayerAimPosition(), Color.blue, 0.5f);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, aiParams.EyesightRange, aiParams.EyesLayerMask))
+            {
+                if (hit.transform.CompareTag(Tags.Player))
+                {
+                    CanSeePlayer = true;
+                    LastPlayerSeenPosition = player.GetPlayerPosition();
+                }
+                else
+                {
+                    CanSeePlayer = false;
+                }
             }
             else
             {
                 CanSeePlayer = false;
             }
-        }
-        else
-        {
-            CanSeePlayer = false;
         }
     }
 }
