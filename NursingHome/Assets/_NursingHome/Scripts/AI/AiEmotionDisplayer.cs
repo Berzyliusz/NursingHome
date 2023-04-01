@@ -23,7 +23,7 @@ namespace NursingHome.AI
         readonly Transform emotionIconTransform;
         Dictionary<EmotionType, GameObject> iconsByEmotions = new Dictionary<EmotionType, GameObject>();
 
-        GameObject currentEmotionIcon;
+        Transform currentEmotionIcon;
 
         public AiEmotionDisplayer(Transform emotionIconTransform, EmotionWithType[] emotions)
         {
@@ -44,17 +44,18 @@ namespace NursingHome.AI
             //TODO: Pool emotions gameobjects
 
             if(currentEmotionIcon)
-                GameObject.Destroy(currentEmotionIcon);
+                GameObject.Destroy(currentEmotionIcon.gameObject);
 
             CurrentEmotion = newEmotion;
 
             if (newEmotion == EmotionType.None)
                 return;
 
-            currentEmotionIcon = GameObject.Instantiate(iconsByEmotions[newEmotion]);
-            currentEmotionIcon.transform.parent = emotionIconTransform;
-            currentEmotionIcon.transform.localPosition = Vector3.zero;
-            currentEmotionIcon.transform.localScale = Vector3.one;
+            var instancedIcon = GameObject.Instantiate(iconsByEmotions[newEmotion]);
+            currentEmotionIcon = instancedIcon.transform;
+            currentEmotionIcon.parent = emotionIconTransform;
+            currentEmotionIcon.localPosition = Vector3.zero;
+            currentEmotionIcon.localScale = Vector3.one;
         }
 
         public void Update(float deltaTime)
@@ -62,7 +63,11 @@ namespace NursingHome.AI
             if (!currentEmotionIcon)
                 return;
 
-            //TODO: Make icons rotate towards the camera
+            //TODO: Get the player injected
+            var playerPos = Systems.Instance.Player.GetPlayerPosition();
+            var lookAtPos = new Vector3(playerPos.x, currentEmotionIcon.position.y, playerPos.z);
+
+            currentEmotionIcon.LookAt(lookAtPos);
         }
     }
 }
