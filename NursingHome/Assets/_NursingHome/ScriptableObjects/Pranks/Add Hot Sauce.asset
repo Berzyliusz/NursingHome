@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4f77a6130193e6439c9377e8ec03678, type: 3}
-  m_Name: Spice up the soup
+  m_Name: Add Hot Sauce
   m_EditorClassIdentifier: 
   <ActivationDelay>k__BackingField: 1
-  <DisplayName>k__BackingField: Spice up the soup
+  <DisplayName>k__BackingField: Add Hot Sauce
   <PrankPoints>k__BackingField: 75
   <LureRange>k__BackingField: 3
-  prefabToSpawn: {fileID: 0}

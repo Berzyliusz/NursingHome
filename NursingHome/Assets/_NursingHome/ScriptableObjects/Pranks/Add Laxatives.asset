@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4f77a6130193e6439c9377e8ec03678, type: 3}
-  m_Name: Fountain Add Dish Soap
+  m_Name: Add Laxatives
   m_EditorClassIdentifier: 
-  <ActivationDelay>k__BackingField: 10
-  <DisplayName>k__BackingField: Add Dish Soap
-  <PrankPoints>k__BackingField: 60
+  <ActivationDelay>k__BackingField: 1
+  <DisplayName>k__BackingField: Add Laxatives
+  <PrankPoints>k__BackingField: 75
   <LureRange>k__BackingField: 2
