@@ -13,11 +13,13 @@ namespace NursingHome.AI
             ai.Animator.SetBool(AnimationHashes.WalkHash, true);
             ai.NavAgent.SetDestination(lure.transform.position);
             distanceToTarget = float.MaxValue;
+            ai.Emotions.SetEmotion(EmotionType.Curious);
         }
 
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.WalkHash, false);
+            ai.Emotions.SetEmotion(EmotionType.None);
         }
 
         public bool IsStateDone()

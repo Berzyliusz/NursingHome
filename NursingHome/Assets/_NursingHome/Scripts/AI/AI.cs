@@ -30,8 +30,9 @@ namespace NursingHome.AI
 
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
         LureProcessor lureProcessor;
-        IEyes eyes;
-        IEmotionDisplayer emotions;
+
+        public IEyes Eyes { get ; private set; }
+        public IEmotionDisplayer Emotions { get; private set; }
 
         List<PrankParams> investigatedPranks = new List<PrankParams>();
 
@@ -60,11 +61,12 @@ namespace NursingHome.AI
         void Start()
         {
             lureProcessor = new LureProcessor(lureDetector);
-            eyes = new AiEyes(Systems.Instance.Player, aiParams, eyesTransform);
-            emotions = new AiEmotionDisplayer(emotionIconTransform, aiParams.Emotions);
+            Eyes = new AiEyes(Systems.Instance.Player, aiParams, eyesTransform);
+            Emotions = new AiEmotionDisplayer(emotionIconTransform, aiParams.Emotions);
 
-            updateables = new IUpdateable[1];
-            updateables[0] = eyes;
+            updateables = new IUpdateable[2];
+            updateables[0] = Eyes;
+            updateables[1] = Emotions;
         }
 
         void Update()

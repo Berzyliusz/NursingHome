@@ -5,6 +5,7 @@ namespace NursingHome.AI
 {
     public class SearchState : StateBase, IState
     {
+        //TODO: Moe to aiParams
         [SerializeField]
         float searchTime = 10f;
         [SerializeField]
@@ -19,13 +20,15 @@ namespace NursingHome.AI
         {
             GoToRandomPointNearby();
             ai.Animator.SetBool(AnimationHashes.WalkHash, true);
-
+            ai.Emotions.SetEmotion(EmotionType.Angry);
             searchTimer = searchTime;
         }
 
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.WalkHash, false);
+            ai.Emotions.SetEmotion(EmotionType.None);
+
             spottedPlayer = false;
         }
 

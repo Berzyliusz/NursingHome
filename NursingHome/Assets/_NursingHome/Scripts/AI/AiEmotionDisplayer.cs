@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace NursingHome.AI
 {
-    public interface IEmotionDisplayer
+    public interface IEmotionDisplayer : IUpdateable
     {
         EmotionType CurrentEmotion { get; }
         void SetEmotion(EmotionType type);
@@ -17,21 +18,51 @@ namespace NursingHome.AI
 
     public class AiEmotionDisplayer : IEmotionDisplayer
     {
-        public EmotionType CurrentEmotion => throw new System.NotImplementedException();
+        public EmotionType CurrentEmotion { get; private set; }
 
         readonly Transform emotionIconTransform;
-        private readonly EmotionWithType[] emotions;
+        Dictionary<EmotionType, GameObject> iconsByEmotions = new Dictionary<EmotionType, GameObject>();
+
+        GameObject currentEmotionIcon;
 
         public AiEmotionDisplayer(Transform emotionIconTransform, EmotionWithType[] emotions)
         {
             this.emotionIconTransform = emotionIconTransform;
-            this.emotions = emotions;
+            
+            foreach(var emotion in emotions)
+            {
+                iconsByEmotions.Add(emotion.Type, emotion.Icon);
+            }
         }
 
 
-        public void SetEmotion(EmotionType type)
+        public void SetEmotion(EmotionType newEmotion)
         {
-            throw new System.NotImplementedException();
+            if (newEmotion == CurrentEmotion)
+                return;
+
+            //TODO: Pool emotions gameobjects
+
+            if(currentEmotionIcon)
+                GameObject.Destroy(currentEmotionIcon);
+
+            CurrentEmotion = newEmotion;
+
+            if (newEmotion == EmotionType.None)
+                return;
+
+            currentEmotionIcon = GameObject.Instantiate(iconsByEmotions[newEmotion]);
+            currentEmotionIcon.transform.parent = emotionIconTransform;
+            currentEmotionIcon.transform.localPosition = Vector3.zero;
+            currentEmotionIcon.transform.localScale = Vector3.one;
+        }
+
+        public void Update(float deltaTime)
+        {
+            if (!currentEmotionIcon)
+                return;
+
+            //TODO: Make icons rotate towards the camera
         }
     }
 }
