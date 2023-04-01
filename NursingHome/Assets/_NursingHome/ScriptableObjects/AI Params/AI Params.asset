@@ -20,3 +20,12 @@ MonoBehaviour:
   <EyesLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 257
+  <Emotions>k__BackingField:
+  - <Type>k__BackingField: 0
+    <Icon>k__BackingField: {fileID: 0}
+  - <Type>k__BackingField: 1
+    <Icon>k__BackingField: {fileID: 1218226641745716, guid: 739d483b7f2e9b542af115dd3353ad7a,
+      type: 3}
+  - <Type>k__BackingField: 2
+    <Icon>k__BackingField: {fileID: 1104850273578950, guid: 2fb9237466bb67a4aba3a1257a0190fb,
+      type: 3}

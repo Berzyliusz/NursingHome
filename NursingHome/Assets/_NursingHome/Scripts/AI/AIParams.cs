@@ -3,6 +3,16 @@ using UnityEngine;
 
 namespace NursingHome.AI
 {
+    [System.Serializable]
+    public struct EmotionWithType
+    {
+        [field: SerializeField]
+        public EmotionType Type { get; private set; }
+        [field: SerializeField]
+        [AssetsOnly]
+        public GameObject Icon { get; private set; }
+    }
+
     [CreateAssetMenu(menuName = "NursingHome /AI Params")]
     public class AIParams : ScriptableObject
     {
@@ -25,5 +35,9 @@ namespace NursingHome.AI
         [FoldoutGroup("Eyesight")]
         [field: SerializeField]
         public LayerMask EyesLayerMask { get; private set; }
+
+        [field: SerializeField]
+        [FoldoutGroup("Emotions")]
+        public EmotionWithType[] Emotions { get; private set; } = new EmotionWithType[0];
     }
 }

@@ -19,6 +19,8 @@ namespace NursingHome.AI
 
         [SerializeField]
         Transform eyesTransform;
+        [SerializeField]
+        Transform emotionIconTransform;
 
         [SerializeField]
         [InlineEditor]
@@ -29,6 +31,7 @@ namespace NursingHome.AI
         public Lure StrongestLure => lureProcessor.CurrentStrongestLure;
         LureProcessor lureProcessor;
         IEyes eyes;
+        IEmotionDisplayer emotions;
 
         List<PrankParams> investigatedPranks = new List<PrankParams>();
 
@@ -58,6 +61,7 @@ namespace NursingHome.AI
         {
             lureProcessor = new LureProcessor(lureDetector);
             eyes = new AiEyes(Systems.Instance.Player, aiParams, eyesTransform);
+            emotions = new AiEmotionDisplayer(emotionIconTransform, aiParams.Emotions);
 
             updateables = new IUpdateable[1];
             updateables[0] = eyes;
