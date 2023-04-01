@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Fountain Usable Item Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Fountain
+  <AlternativeName>k__BackingField: 
   prankParams:
   - {fileID: 11400000, guid: d486216776009e14ba33c51c6b337076, type: 2}

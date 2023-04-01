@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PC Mouse Usable Item Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Toilet
+  <AlternativeName>k__BackingField: 
   prankParams:
   - {fileID: 11400000, guid: 8f26bbc44a6629c4faacf3892911faaa, type: 2}
