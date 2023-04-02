@@ -14,11 +14,11 @@ namespace NursingHome
 
         [field:SerializeField]
         public UISystem UISystem { get; private set; }
-        [field: SerializeField]
-        public InteractionDetector InteractionDetector { get; private set; }
 
         //Todo: Make all those HARD dependencies be provided via externall bridge
         // converting hard dependancies into interfaces
+        [SerializeField]
+        InteractionDetector InteractionDetector;
         [SerializeField]
         PlayerWrapper playerController;
         [SerializeField]

@@ -5,19 +5,21 @@ namespace NursingHome
 {
     public interface IScoreCounter
     {
-        public int GetTotalScore();
-        public Dictionary<PrankParams, int> GetPranks();
+        int GetTotalScore();
+        int GetScoreEarnedForDay();
+        int GetStartingScore();
+        Dictionary<PrankParams, int> GetPranks();
     }
 
     public class ScoreCounter : IScoreCounter
     {
         Dictionary<PrankParams, int> pranksCount = new Dictionary<PrankParams, int>();
-        private int startomgPointss;
+        int startingPoints;
 
         public ScoreCounter(ItemUser itemUser, int v)
         {
             itemUser.OnItemUsed += HandleItemUsed;
-            this.startomgPointss = v;
+            this.startingPoints = v;
         }
 
         public Dictionary<PrankParams, int> GetPranks()
@@ -25,11 +27,11 @@ namespace NursingHome
             return pranksCount;
         }
 
-        public int GetTotalScore()
+        public int GetScoreEarnedForDay()
         {
             int totalScore = 0;
 
-            foreach(var pair in pranksCount)
+            foreach (var pair in pranksCount)
             {
                 var prankScore = pair.Key.PrankPoints;
                 var amount = pair.Value;
@@ -38,6 +40,16 @@ namespace NursingHome
             }
 
             return totalScore;
+        }
+
+        public int GetStartingScore()
+        {
+            return startingPoints;
+        }
+
+        public int GetTotalScore()
+        {
+            return GetStartingScore() + GetScoreEarnedForDay();
         }
 
         void HandleItemUsed(UsableElement prankedElement, Item item, PrankParams prankParams)

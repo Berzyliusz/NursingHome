@@ -4,12 +4,12 @@ namespace NursingHome.Interactions
 {
     public class InteractionReceiverBase : MonoBehaviour
     {
-        protected InteractionDetector interactionDetector;
+        protected IInteractionDetector interactionDetector;
         protected IInputs inputs;
 
         protected virtual void Start()
         {
-            interactionDetector = Systems.Instance.InteractionDetector;
+            interactionDetector = Systems.Instance.interactionDetector;
             inputs = Systems.Instance.Inputs;
             interactionDetector.OnInteracted += HandleInteractionDetected;
             enabled = false;

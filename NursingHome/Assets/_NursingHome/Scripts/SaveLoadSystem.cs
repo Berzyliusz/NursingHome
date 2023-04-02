@@ -24,6 +24,7 @@ namespace NursingHome
 
         public void SavePoints(int amount)
         {
+            Debug.Log($"Saving score: {amount}");
             PlayerPrefs.SetInt(PointSaveName, amount);
         }
     }
