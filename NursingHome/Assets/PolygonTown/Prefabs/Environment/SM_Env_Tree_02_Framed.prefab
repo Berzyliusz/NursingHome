@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4430000796333122}
   - component: {fileID: 33405354078514052}
   - component: {fileID: 23133700895621722}
+  - component: {fileID: 5826114952016320063}
   m_Layer: 0
   m_Name: SM_Env_Tree_02_Framed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4430000796333122
 Transform:
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5826114952016320063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116052499985904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99463123, y: 2.1569448, z: 0.9803896}
+  m_Center: {x: 0.018375605, y: 1.0784724, z: -0.03167294}
