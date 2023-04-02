@@ -23,7 +23,14 @@ public class ItemGameEnder : InteractionReceiverBase
     {
         if (!inputs.Use)
             return;
-        
+
+        WinGame();
+
+        //TODO: Also be able to handle game lost
+    }
+
+    void WinGame()
+    {
         var systems = Systems.Instance;
         systems.Time.SetTimeScale(0.0f);
         systems.Player.SetFreezePlayer(true);
@@ -34,11 +41,11 @@ public class ItemGameEnder : InteractionReceiverBase
 
         systems.UISystem.ShowScreen(UIType.WinScreen);
 
-        var totalScore = systems.Score.GetTotalScore();
-        var pranks = systems.Score.GetPranks();
+        var score = systems.Score;
+        var pranks = score.GetPranks();
 
         UIParams winParams = new();
-        winParams.Name = totalScore.ToString();
+        winParams.Name = $"{score.GetStartingScore()} starting points + {score.GetScoreEarnedForDay()} points = {score.GetTotalScore()} total points";
 
         winParams.Names = new string[pranks.Count];
 
