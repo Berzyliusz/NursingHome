@@ -5,12 +5,11 @@ namespace NursingHome.AI
 {
     public class SearchState : StateBase, IState
     {
+        //TODO: Moe to aiParams
         [SerializeField]
         float searchTime = 10f;
         [SerializeField]
         Vector2 randomPointRanges = new Vector2(-5, 5);
-        [SerializeField]
-        float chaseDistance = 10f;
 
         bool spottedPlayer;
         float searchTimer;
@@ -19,13 +18,17 @@ namespace NursingHome.AI
         {
             GoToRandomPointNearby();
             ai.Animator.SetBool(AnimationHashes.WalkHash, true);
-
+            ai.Emotions.SetEmotion(EmotionType.Angry);
             searchTimer = searchTime;
+            ai.Eyes.SetEyesightChecking(true);
         }
 
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.WalkHash, false);
+            ai.Emotions.SetEmotion(EmotionType.None);
+            ai.Eyes.SetEyesightChecking(false);
+
             spottedPlayer = false;
         }
 
@@ -38,16 +41,15 @@ namespace NursingHome.AI
         {
             searchTimer -= Time.deltaTime;
 
-            if(Vector3.Distance(transform.position, Systems.Instance.Player.GetPlayerPosition()) < chaseDistance)
+            if(ai.Eyes.CanSeePlayer)
             {
                 spottedPlayer = true;
                 return;
             }
 
             // TODO: Also look for and investigate patients
-            // Consider checking line of sight too
 
-            if (Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.InRangeDistance)
+            if (Vector3.Distance(transform.position, ai.NavAgent.destination) < ai.Params.InRangeDistance)
             {
                 GoToRandomPointNearby();
             }

@@ -1,11 +1,11 @@
 using UnityEngine;
 using NursingHome.UserInterface;
 using NursingHome.Interactions;
-using StarterAssets;
 using NursingHome.Lures;
 using Audio;
 using NursingHome.Audio;
 using System.Collections.Generic;
+using Opencoding.CommandHandlerSystem;
 
 namespace NursingHome
 {
@@ -15,13 +15,13 @@ namespace NursingHome
 
         [field:SerializeField]
         public UISystem UISystem { get; private set; }
-        [field: SerializeField]
-        public InteractionDetector InteractionDetector { get; private set; }
 
         //Todo: Make all those HARD dependencies be provided via externall bridge
         // converting hard dependancies into interfaces
         [SerializeField]
-        FirstPersonController playerController;
+        InteractionDetector InteractionDetector;
+        [SerializeField]
+        PlayerWrapper playerController;
         [SerializeField]
         AudioPlayer audioPlayer;
         [SerializeField]
@@ -43,17 +43,19 @@ namespace NursingHome
         public ILureSpawner LureSpawner { get; private set; }
         public IAudioSystem AudioSystem { get; private set; }
         public IGameStateDispatcher GameStateDispatcher { get; private set; }
+        public ISaveLoad SaveLoadSystem { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
         void Awake()
         {
             Instance = this;
+            SaveLoadSystem = new SaveLoadSystem();
             Inventory = new PlayerInventory(itemPicker, itemUser);
             Inputs = new Inputs();
             Player = playerController;
             Cursor = new CursorHandler();
-            Score = new ScoreCounter(itemUser);
+            Score = new ScoreCounter(itemUser, SaveLoadSystem.GetSavedPoints());
             Time = new TimeHandler();
             LureSpawner = new LureSpawner(itemUser);
             interactionDetector = InteractionDetector;

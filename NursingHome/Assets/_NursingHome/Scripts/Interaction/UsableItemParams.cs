@@ -5,8 +5,6 @@ namespace NursingHome.Interactions
     [CreateAssetMenu(menuName = "NursingHome/UsableItemParams")]
     public class UsableItemParams : ItemParams
     {
-        // Hold params for:
-        // What actions are available for this item?
-        // What pranks are available for this item?
+        // TODO: This class is totally unnecessary. It should be deleted, and SO replugged :panic:
     }
 }

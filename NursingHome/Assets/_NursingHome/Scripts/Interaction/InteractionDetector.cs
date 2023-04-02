@@ -10,6 +10,7 @@ namespace NursingHome.Interactions
         void SetCanDetectInteraction(bool canDetectInteraction);
         PickupElement GetPickupElement();
         UsableElement GetUsableElement();
+        event Action<InteractableElement> OnInteracted;
     }
 
     public class InteractionDetector : MonoBehaviour, IInteractionDetector

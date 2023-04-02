@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Soup Usable Item Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Cooking Pot
+  <AlternativeName>k__BackingField: 
   prankParams:
   - {fileID: 11400000, guid: 1ec3dccc865a5b443a7ae91d65a453bb, type: 2}

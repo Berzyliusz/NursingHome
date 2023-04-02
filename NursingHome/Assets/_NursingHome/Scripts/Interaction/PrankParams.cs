@@ -2,7 +2,8 @@
 
 namespace NursingHome.Interactions
 {
-    public abstract class PrankParams : ScriptableObject
+    [CreateAssetMenu(menuName = "NursingHome/PrankParams")]
+    public class PrankParams : ScriptableObject
     {
         [field: SerializeField]
         public float ActivationDelay { get; private set; }

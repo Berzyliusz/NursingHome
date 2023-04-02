@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Table Usable Item Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Table
+  <AlternativeName>k__BackingField: 
   prankParams:
   - {fileID: 11400000, guid: 386c14b7325da5d46adfccabf450baf4, type: 2}

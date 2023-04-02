@@ -33,7 +33,7 @@ namespace NursingHome.Interactions
 
             if(inputs.Use)
             {
-                var usedElement = Systems.Instance.InteractionDetector.GetUsableElement();
+                var usedElement = Systems.Instance.interactionDetector.GetUsableElement();
 
                 //Todo: Rework, so we can have multiple performed pranks per item.
                 if(!performedPranks.ContainsKey(usedElement))
@@ -48,7 +48,7 @@ namespace NursingHome.Interactions
 
         Item ChooseItemToUse()
         {
-            var items = Systems.Instance.Inventory.GetAvailableItemsForElement(Systems.Instance.InteractionDetector.GetUsableElement().ItemParams);
+            var items = Systems.Instance.Inventory.GetAvailableItemsForElement(Systems.Instance.interactionDetector.GetUsableElement().ItemParams);
             // TODO: Add scroll to choose item, highlight it too.
 
             if (items == null || items.Count == 0)

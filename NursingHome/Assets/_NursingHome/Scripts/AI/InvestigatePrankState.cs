@@ -14,13 +14,14 @@ namespace NursingHome.AI
         {
             workTimer = Random.Range(workDurationMinMax.x, workDurationMinMax.y);
             ai.Animator.SetBool(AnimationHashes.WorkHash, true);
+            ai.Emotions.SetEmotion(EmotionType.Curious);
         }
 
         public void EndState()
         {
             ai.Animator.SetBool(AnimationHashes.WorkHash, false);
             workTimer = float.MaxValue;
-
+            ai.Emotions.SetEmotion(EmotionType.None);
             ai.OnPrankInvestigated();
         }
 

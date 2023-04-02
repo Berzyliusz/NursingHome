@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Toilet Usable Item Params
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Toilet
+  <AlternativeName>k__BackingField: 
   prankParams:
   - {fileID: 11400000, guid: aa28a9ce20e11024bb54c75eb2d9f0d3, type: 2}
