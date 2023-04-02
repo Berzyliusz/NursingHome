@@ -42,17 +42,19 @@ namespace NursingHome
         public ILureSpawner LureSpawner { get; private set; }
         public IAudioSystem AudioSystem { get; private set; }
         public IGameStateDispatcher GameStateDispatcher { get; private set; }
+        public ISaveLoad SaveLoadSystem { get; private set; }
 
         public PlayerInventory Inventory { get; private set; }
 
         void Awake()
         {
             Instance = this;
+            SaveLoadSystem = new SaveLoadSystem();
             Inventory = new PlayerInventory(itemPicker, itemUser);
             Inputs = new Inputs();
             Player = playerController;
             Cursor = new CursorHandler();
-            Score = new ScoreCounter(itemUser);
+            Score = new ScoreCounter(itemUser, SaveLoadSystem.GetSavedPoints());
             Time = new TimeHandler();
             LureSpawner = new LureSpawner(itemUser);
             interactionDetector = InteractionDetector;

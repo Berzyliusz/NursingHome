@@ -12,10 +12,12 @@ namespace NursingHome
     public class ScoreCounter : IScoreCounter
     {
         Dictionary<PrankParams, int> pranksCount = new Dictionary<PrankParams, int>();
+        private int startomgPointss;
 
-        public ScoreCounter(ItemUser itemUser)
+        public ScoreCounter(ItemUser itemUser, int v)
         {
             itemUser.OnItemUsed += HandleItemUsed;
+            this.startomgPointss = v;
         }
 
         public Dictionary<PrankParams, int> GetPranks()
