@@ -45,7 +45,8 @@ public class ItemGameEnder : InteractionReceiverBase
         var pranks = score.GetPranks();
 
         UIParams winParams = new();
-        winParams.Name = $"{score.GetStartingScore()} starting points + {score.GetScoreEarnedForDay()} points = {score.GetTotalScore()} total points";
+        var totalScore = score.GetTotalScore();
+        winParams.Name = $"{score.GetStartingScore()} starting points + {score.GetScoreEarnedForDay()} points = {totalScore} total points";
 
         winParams.Names = new string[pranks.Count];
 
@@ -60,6 +61,7 @@ public class ItemGameEnder : InteractionReceiverBase
             i++;
         }
 
+        systems.SaveLoadSystem.SavePoints(totalScore);
         systems.UISystem.UpdateScreen(UIType.WinScreen, winParams);
         systems.interactionDetector.SetCanDetectInteraction(false);
     }
