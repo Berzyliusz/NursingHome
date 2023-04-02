@@ -1,5 +1,7 @@
 ﻿using NursingHome.Interactions;
+using Opencoding.CommandHandlerSystem;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace NursingHome
 {
@@ -16,10 +18,13 @@ namespace NursingHome
         Dictionary<PrankParams, int> pranksCount = new Dictionary<PrankParams, int>();
         int startingPoints;
 
-        public ScoreCounter(ItemUser itemUser, int v)
+        public ScoreCounter(ItemUser itemUser, int startingPoints)
         {
             itemUser.OnItemUsed += HandleItemUsed;
-            this.startingPoints = v;
+            this.startingPoints = startingPoints;
+
+            CommandHandlers.RegisterCommandHandlers(this);
+            //Todo: We will need to nicely unregister this command handler.
         }
 
         public Dictionary<PrankParams, int> GetPranks()
@@ -62,6 +67,15 @@ namespace NursingHome
             {
                 pranksCount[prankParams]++;
             }
+        }
+
+        [CommandHandler(Description = "Resets saved points, current day points, performed pranks. All goes back to zero.")]
+        void ResetAllPoints()
+        {
+            Debug.Log("Reset points command heard");
+            pranksCount.Clear();
+            startingPoints = 0;
+            Systems.Instance.SaveLoadSystem.SavePoints(0);
         }
     }
 }
